@@ -1,0 +1,124 @@
+.wxSearch{
+  position: absolute;
+  top: 43rpx;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-top: 1rpx #eee solid; 
+  background-color: rgba(0, 0, 0, 0.2); 
+}
+.wxSearchInner{
+  background-color: #fff;
+}
+.wxSearch-section{
+  background-color: #fff;
+  padding: 5rpx 10rpx;
+  position:absolute;
+  /* border: 1rpx #eee solid;  */
+}
+.wxSearch-pancel{
+  display: flex;
+  flex-direction: row;
+}
+
+
+.wxSearch-input{
+  background-color: #F3F4F6;
+  padding: 5rpx 51rpx;
+  height: 70rpx;
+  width:460rpx;
+  font-size: 30rpx;
+  border: 3rpx #333333 solid; 
+  color: #98989f;
+  border-radius:15rpx;
+}
+.placeholder{
+  z-index:2; 
+  position:absolute;
+  color: #98989f;
+  font-size: 14rpx;
+  left: 20rpx;
+  top: 25rpx; 
+  transform: translate3d(0,-50%,0); 
+}
+
+.wxSearch-button{
+  width:150rpx;
+  color: rgb(5, 146, 228);
+  margin-left: 15rpx;
+  border: 3rpx rgb(5, 146, 228) solid; 
+  font-size: 35rpx;
+  line-height:73rpx;
+  height: 75rpx;
+  display: flex;
+  justify-content: center;
+  border-radius: 15rpx;
+}
+
+.wxSearchTitle{
+  display: block;
+  padding: 10rpx 5rpx 5rpx 10rpx;
+  font-size: 12rpx;
+  text-align: center;
+}
+
+
+.wxSearchMindKeyItem{
+  padding: 10rpx 5rpx;
+  border-bottom: 1rpx solid #eee;
+  display: flex;
+  font-size: 14rpx;
+  color: cornflowerblue;
+}
+
+.wxSearchKeyList{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.wxSearchKeyItem{
+  flex: 0 0 20%;
+  font-size: 14rpx;
+  text-align: center;
+  border: 1rpx solid #eee;
+  margin: 5rpx;
+  padding: 5rpx 10rpx;
+  border-radius: 5rpx;
+}
+.wxSearchHistoryItem{
+  padding: 10rpx 5rpx;
+  border-bottom: 1rpx solid #eee;
+  display: flex;
+}
+.wxSearchHistoryItemText{
+  flex: 8;
+  font-size: 14rpx;
+}
+.wxSearchHistoryItemDel{
+  flex: 1;
+  font-size: 12rpx;
+  text-align: center;
+  padding: 3rpx 5rpx;
+  border: 1rpx solid #eee;
+  border-radius: 5rpx;
+}
+.wxSearchHistoryEmpty{
+  text-align: center;
+  height: 50rpx;
+  line-height: 50rpx;
+  font-size: 12rpx;
+}
+.wxSearchDeleteAllBtn{
+  height: 50rpx;
+  line-height: 50rpx;
+  text-align: center;
+  font-size: 12rpx;
+}
+
+.weui-icon-search_in-box{
+  margin-top: 48rpx;
+  margin-left: 10rpx;
+  height: 35rpx;
+  width: 35rpx;
+}
