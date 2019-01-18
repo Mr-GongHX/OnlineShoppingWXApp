@@ -8,7 +8,7 @@
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#FF3030",
     "navigationBarTitleText": "在线购物",
-    "navigationBarTextStyle":"write"
+    "navigationBarTextStyle":"white"
   },
   "tabBar": {
     "selectedColor": "#333333",
