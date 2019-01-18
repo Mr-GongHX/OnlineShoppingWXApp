@@ -19,13 +19,14 @@
 .wxSearch-pancel{
   display: flex;
   flex-direction: row;
+  margin-top: 10rpx;
 }
 
 
 .wxSearch-input{
   background-color: #F3F4F6;
   padding: 5rpx 51rpx;
-  height: 70rpx;
+  height: 50rpx;
   width:460rpx;
   font-size: 30rpx;
   border: 3rpx #333333 solid; 
@@ -48,8 +49,8 @@
   margin-left: 15rpx;
   border: 3rpx rgb(5, 146, 228) solid; 
   font-size: 35rpx;
-  line-height:73rpx;
-  height: 75rpx;
+  line-height:60rpx;
+  height: 58rpx;
   display: flex;
   justify-content: center;
   border-radius: 15rpx;
@@ -117,7 +118,7 @@
 }
 
 .weui-icon-search_in-box{
-  margin-top: 48rpx;
+  margin-top: 50rpx;
   margin-left: 10rpx;
   height: 35rpx;
   width: 35rpx;

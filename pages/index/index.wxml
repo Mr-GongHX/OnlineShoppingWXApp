@@ -6,7 +6,7 @@
 <!--search start-->
 <view class="wxSearch-section">
    <view class="wxSearch-pancel">
-      <input bindinput="wxSearchInput" bindfocus="wxSerchFocus" value="{{wxSearchData.value}}" bindblur="wxSearchBlur"        class="wxSearch-input" placeholder='请输入商品名称'/>
+      <input bindinput="wxSearchInput" bindfocus="wxSerchFocus" value="{{wxSearchData.value}}" bindblur="wxSearchBlur"        class="wxSearch-input" placeholder='搜索喜欢的商品'/>
       <view class="placeholder">
         <icon class="weui-icon-search_in-box" type="search" size="14"></icon> 
       </view> 
@@ -33,12 +33,12 @@
   </swiper> 
 <!-- banner end-->
 
-<!--实时热销榜 start-->
+<!--特价商品 start-->
 <view class="hots-container"> 
   <view class="category-title">
-    <text class="title">实时热销榜</text>
+    <text class="title">特价商品</text>
     <view class="line_name">
-      <text>每15分钟更新一次</text>
+      <text>欢迎选购！</text>
       <text>查看全部 ></text>
     </view>
   </view>  
@@ -54,14 +54,14 @@
       </view>
     </scroll-view>   
 </view> 
-<!--实时热销榜 end-->
+<!--特价商品 end-->
 
-<!--福利专场 start-->
+<!--新上架商品 start-->
 <view class="welfare-container"> 
   <view class="category-title">
-    <text class="title">福利专场</text>
+    <text class="title">新上架</text>
     <view class="line_name">
-      <text>每天早10晚8准时上新</text>
+      <text>欢迎挑选！</text>
     </view>
   </view>  
   <scroll-view scroll-y="true">

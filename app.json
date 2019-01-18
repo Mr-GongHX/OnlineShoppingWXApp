@@ -11,7 +11,7 @@
     "navigationBarTextStyle":"write"
   },
   "tabBar": {
-    "selecctedColor": "yellow",
+    "selectedColor": "#333333",
     "backgroundColor": "#FFFFFF",
     "position": "bottom",
     "list": [

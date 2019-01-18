@@ -11,7 +11,7 @@ page{
 .navbar{  
   flex: none;  
   display: flex;  
-  margin-top: 100rpx;
+  margin-top: 80rpx;
   background: #fff;  
 }  
 .navbar .item{  
