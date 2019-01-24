@@ -1,4 +1,4 @@
-<!--pages/me/me.wxml-->
+<!-- 我的 -->
 <view>
   <view class='My-Main'>
       <image src="{{userImage}}" class="UserImage"></image>

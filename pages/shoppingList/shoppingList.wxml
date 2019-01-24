@@ -1,4 +1,4 @@
-<!--pages/shoppingList/shoppingList.wxml-->
+<!-- 购物车 -->
 <view class='cartMain'>
     <view wx:key="{{cartItems}}">
         <view data-id="{{item.id}}"  class='cart-box' data-index="{{index}}">

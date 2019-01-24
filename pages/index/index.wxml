@@ -1,24 +1,32 @@
-<!--index.wxml-->
+<!-- 首页 -->
 
-<!--导入wxSearch.wxml-->
+<!-- 导入wxSearch.wxml -->
 <import src="/wxSearch/wxSearch.wxml"/>
 
-<!--search start-->
+<!-- 搜索 start -->
 <view class="wxSearch-section">
    <view class="wxSearch-pancel">
-      <input bindinput="wxSearchInput" bindfocus="wxSerchFocus" value="{{wxSearchData.value}}" bindblur="wxSearchBlur"        class="wxSearch-input" placeholder='搜索喜欢的商品'/>
+      <input 
+        bindinput="wxSearchInput" 
+        bindfocus="wxSerchFocus" 
+        value="{{wxSearchData.value}}" 
+        bindblur="wxSearchBlur" 
+        class="wxSearch-input" 
+        placeholder='搜索喜欢的商品'
+      />
       <view class="placeholder">
         <icon class="weui-icon-search_in-box" type="search" size="14"></icon> 
       </view> 
-      <view class='wxSearch-button'>
-        <text>搜索</text>
+      <view class='wxSearch-button' bindtap='search'>
+        <text style="font-weight:bold;">搜索</text>
       </view>  
    </view>
 </view>
-<!--引入模板，注意 is="wxSearch" 和模板template name名称相对应-->
+
+<!-- 引入模板，注意 is="wxSearch" 和模板template name名称相对应 -->
 <template is="wxSearch" data="{{wxSearchData}}"/>
 
-<!--导航栏-->  
+<!-- 导航栏 -->  
 <view class="navbar">  
   <text 
       wx:for="{{navbar}}" 
@@ -30,21 +38,21 @@
 </view>
 
 <!-- 轮播图 start-->
-   <swiper 
-      indicator-dots="{{indicatorDots}}" 
-      indicator-active-color="{{indicatorActiveColor}}"
-      indicator-color="{{indicatorColor}}" 
-      circular="{{circular}}"
-      autoplay="{{autoplay}}" 
-      interval="{{interval}}" 
-      duration="{{duration}}"
-    >
-      <block wx:for="{{imgUrls}}" wx:key="*this">
-        <swiper-item>
-          <image src="{{item}}" />
-        </swiper-item>
-      </block>
-  </swiper> 
+<swiper 
+    indicator-dots="{{indicatorDots}}" 
+    indicator-active-color="{{indicatorActiveColor}}"
+    indicator-color="{{indicatorColor}}" 
+    circular="{{circular}}"
+    autoplay="{{autoplay}}" 
+    interval="{{interval}}" 
+    duration="{{duration}}"
+>
+    <block wx:for="{{imgUrls}}" wx:key="*this">
+      <swiper-item>
+        <image src="{{item}}" />
+      </swiper-item>
+    </block>
+</swiper> 
 <!-- 轮播图 end-->
 
 <!--特价商品 start-->
@@ -55,11 +63,18 @@
       <text>欢迎选购！</text>
       <text>查看全部 ></text>
     </view>
-  </view>  
+  </view> 
+  <!-- 横向滚动 -->
   <scroll-view scroll-x="true">
       <view class="goods">
          <block wx:for-items="{{goodsHotItems}}" wx:key="name">
-          <view class="goods-item" catchtap="catchTapCategory" data-type="{{item.name}}" data-typeid="{{item.typeId}}">
+          <view 
+            class="goods-item" 
+            catchtap="catchTapCategory" 
+            data-type="{{item.name}}" 
+            data-typeid="{{item.typeId}}"
+            bindtap="productInfo"
+          >
               <image src="{{item.imageurl}}" class="goods-image" />   
             <text>{{item.name}}</text>
             <p>￥{{item.newprice}}</p>  
@@ -78,6 +93,7 @@
       <text>欢迎挑选！</text>
     </view>
   </view>  
+  <!-- 纵向滚动 -->
   <scroll-view scroll-y="true">
       <view class="welfares">
          <block wx:for-items="{{goodsWelfareItems}}" wx:key="name">
@@ -99,9 +115,9 @@
       </view>
   </scroll-view>  
 </view> 
-<!--福利专场 end-->
+<!-- 新上架 end -->
 
 <view class="weui-loadmore" hidden="{{isHideLoadMore}}">
     <view class="weui-loading"></view>
-    <view class="weui-loadmore__tips">努力加载中</view>
-  </view>
+    <view class="weui-loadmore__tips">努力加载中...</view>
+</view>

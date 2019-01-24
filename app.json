@@ -2,7 +2,10 @@
   "pages":[
     "pages/index/index",
     "pages/shoppingList/shoppingList",
-    "pages/me/me"
+    "pages/me/me",
+    "pages/orderCheck/orderCheck",
+    "pages/productInfo/productInfo",
+    "pages/searchList/searchList"
   ],
   "window":{
     "backgroundTextStyle":"light",

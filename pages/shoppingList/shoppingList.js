@@ -113,6 +113,9 @@ Page({
       cartItems: []
     })
     wx.setStorageSync("cartItems", [])
+    wx.navigateTo({
+      url: '../orderCheck/orderCheck',
+    })
   },
 
 
