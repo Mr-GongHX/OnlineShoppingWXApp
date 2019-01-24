@@ -5,15 +5,18 @@ const app = getApp()
 Page({
   data: {
     indicatorDots: true, //设置是否显示面板指示点
+    indicatorActiveColor: "white",  //设置指示点的颜色为白色
+    indicatorColor: "#ccc",  //设置当前选中点的颜色为灰色
     autoplay: true, //设置是否自动切换
-    interval: 3000, //设置自动切换时间间隔,3s
-    duration: 1000, //  设置滑动动画时长1s
+    circular: true, //设置是否衔接滑动
+    interval: 3000, //设置自动切换时间间隔：3s
+    duration: 300,  //设置滑动动画时长：0.3s
     imgUrls: [
       'https://a4.vimage1.com/upload/flow/2017/10/20/117/15084947982974.jpg',
       'https://a2.vimage1.com/upload/flow/2017/11/07/73/15100619325212.jpg',
       'https://b.vimage1.com/upload/mst/2017/11/04/139/23b96f0e89abed2d9415e848fc3715ff_604x290_80.jpg'
     ],
-    // 实时热销榜
+    // 特价商品
     goodsHotItems: [
       {
         goodId: 0,
@@ -71,7 +74,7 @@ Page({
         oldprice: "324.00",
       }
     ],
-    // 福利专场
+    // 新上架商品
     goodsWelfareItems: [
       {
         goodId: 0,
@@ -253,6 +256,6 @@ Page({
     })
   },
   onLoad: function () {
-
+    
   }
 })

@@ -3,7 +3,7 @@
     <view wx:key="{{cartItems}}">
         <view data-id="{{item.id}}"  class='cart-box' data-index="{{index}}">
             <view class='icon'>
-                <icon wx:if="{{item.selected}}" type="success" color="#405F80" size="20" bindtap="selectedCart" data-index="{{index}}" />
+                <icon wx:if="{{item.selected}}" type="success" color="#FF3030" size="20" bindtap="selectedCart" data-index="{{index}}" />
                 <icon wx:else type="circle" bindtap="selectedCart" size="20" data-index="{{index}}"/>
             </view>
 
@@ -31,17 +31,17 @@
           
             <!-- 底部 -->
             <view class="cart-bottom">
-              <icon wx:if="{{CheckAll}}"  class="cart-icon" type="success" color="#405F80" size="20" bindtap="select" data-index="{{index}}" />
+              <icon wx:if="{{CheckAll}}"  class="cart-icon" type="success" color="#FF3030" size="20" bindtap="select" data-index="{{index}}" />
               <icon wx:else type="circle"   class="cart-icon" size="20" bindtap="select" data-index="{{index}}"/>
               <text class='checkAll'>全选</text>
 
               <view class='cart-pay'>
-                <text class='cart_pay' bindtap="go" data-id="{{item.id}}">清空购物车</text>
+                <text class='cart_pay' bindtap="go" data-id="{{item.id}}">去结算</text>
               </view>
 
               <view class='cart-sum'>
                   <text class='cart_sum'>
-                      <text class='sum_text'>合计：</text>
+                      <text class='sum_text'>总计：</text>
                       <text class='sum_color'>￥{{total}}元</text>
                   </text>
               </view>

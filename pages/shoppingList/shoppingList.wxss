@@ -99,7 +99,7 @@
   font-size: 30rpx;
 }
 .cart-icon{
-  margin:18rpx 20rpx;
+  margin: 25rpx 20rpx;
   float: left;
 }
 .cart-sum{
@@ -113,7 +113,7 @@
 .cart-pay{
   width: 230rpx;
   height: 100%;
-  background: #405F80;
+  background: #FF3030;
   float: right;
 }
 .cart_pay{
@@ -121,16 +121,24 @@
   line-height: 87rpx;
   text-align: center;
   font-size: 30rpx;
+  font-weight: bold;
   color: white;
 }
 .sum_color{
   color: red;
-  font-size: 25rpx;
+  font-weight: bold;
+  font-size: 30rpx;
 }
 .sum_text{
+  font-weight: bold;
   font-size: 30rpx;
 }
 .checkAll{
   line-height: 87rpx;
-  font-size: 28rpx;
+  font-weight: bold;
+  font-size: 30rpx;
+}
+.cart_sum{
+  margin-bottom: 25rpx;
+  margin-right: -100rpx;
 }

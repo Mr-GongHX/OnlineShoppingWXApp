@@ -20,18 +20,32 @@
 
 <!--导航栏-->  
 <view class="navbar">  
-  <text wx:for="{{navbar}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" wx:key="unique" bindtap="navbarTap">{{item}}</text>  
+  <text 
+      wx:for="{{navbar}}" 
+      data-idx="{{index}}" 
+      class="item {{currentTab==index ? 'active' : ''}}" 
+      wx:key="unique" 
+      bindtap="navbarTap"
+  >{{item}}</text>  
 </view>
 
-<!-- banner start-->
-   <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
-    <block wx:for="{{imgUrls}}">
-      <swiper-item>
-        <image src="{{item}}" />
-      </swiper-item>
-    </block>
+<!-- 轮播图 start-->
+   <swiper 
+      indicator-dots="{{indicatorDots}}" 
+      indicator-active-color="{{indicatorActiveColor}}"
+      indicator-color="{{indicatorColor}}" 
+      circular="{{circular}}"
+      autoplay="{{autoplay}}" 
+      interval="{{interval}}" 
+      duration="{{duration}}"
+    >
+      <block wx:for="{{imgUrls}}" wx:key="*this">
+        <swiper-item>
+          <image src="{{item}}" />
+        </swiper-item>
+      </block>
   </swiper> 
-<!-- banner end-->
+<!-- 轮播图 end-->
 
 <!--特价商品 start-->
 <view class="hots-container"> 
