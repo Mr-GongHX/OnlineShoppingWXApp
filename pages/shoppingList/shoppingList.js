@@ -19,7 +19,6 @@ Page({
     this.getsumTotal()
 
   },
-
   //选择
   select: function (e) {
     var CheckAll = this.data.CheckAll;
@@ -50,7 +49,6 @@ Page({
 
     wx.setStorageSync("cartItems", cartItems)  //存缓存
   },
-
   //减
   reduce: function (e) {
     var cartItems = this.data.cartItems  //获取购物车列表
@@ -70,7 +68,6 @@ Page({
     this.getsumTotal()
     wx.setStorageSync("cartItems", cartItems)
   },
-
   // 选择
   selectedCart: function (e) {
 
@@ -86,10 +83,6 @@ Page({
     this.getsumTotal();
     wx.setStorageSync("cartItems", cartItems)
   },
-
-
-
-
   //删除
   shanchu: function (e) {
     var cartItems = this.data.cartItems  //获取购物车列表
@@ -106,8 +99,7 @@ Page({
     this.getsumTotal()
     wx.setStorageSync("cartItems", cartItems)
   },
-
-  //提示
+  // 跳转确认订单页
   go: function (e) {
     this.setData({
       cartItems: []
@@ -117,8 +109,6 @@ Page({
       url: '../orderCheck/orderCheck',
     })
   },
-
-
   //合计
   getsumTotal: function () {
     var sum = 0

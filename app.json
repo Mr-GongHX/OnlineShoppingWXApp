@@ -5,7 +5,8 @@
     "pages/me/me",
     "pages/orderCheck/orderCheck",
     "pages/productInfo/productInfo",
-    "pages/searchList/searchList"
+    "pages/searchList/searchList",
+    "pages/commentDetail/commentDetail"
   ],
   "window":{
     "backgroundTextStyle":"light",

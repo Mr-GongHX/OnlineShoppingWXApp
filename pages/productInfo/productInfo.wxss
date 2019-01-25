@@ -1,1 +1,104 @@
 /* pages/productInfo/productInfo.wxss */
+.clear{clear: both;overflow: hidden;}
+.banner{height:600rpx;}
+.slide-image {width:100%;height:100%;}
+ 
+.info-title{ background: #fff; padding:10rpx 15rpx;font-size: 40rpx;font-weight: bold;}
+.info-price{border-bottom:1rpx solid #ccc;background: #fff;padding:0rpx 15rpx;}
+.price{ float:left;height:50rpx;line-height:50rpx;color:#FF6666;font-weight: bold;font-size: 40rpx; }
+ 
+.price em{font-size:12rpx;margin-left:20rpx;}
+
+.store-info{ background: #fff;}
+.store-info .store,.store-info .rz-item{ padding: 10rpx 15rpx;}
+.store-info .rz-item view{ margin-right: 10rpx;}
+ 
+.list_item{position:relative;padding:15rpx 10rpx;background:#fff; border-bottom:1rpx solid #ccc;}
+ 
+.details_box{ margin-top:10rpx;padding:0 15rpx;font-weight: bold;font-size: 30rpx;background:#fff;}
+ 
+.pj_box{margin-top:10rpx;padding:0 15rpx;font-size: 13rpx;background:#fff;}
+.ico_img_jt{vertical-align: middle;width:16rpx; height: 16rpx;}
+ 
+.pj_u_info .header_img{float:left;}
+.pj_u_info .header_img image{width:100rpx;height:100rpx;border-radius: 50%;overflow: hidden;}
+.pj_u_info .name{float:left; margin-left:10rpx;font-weight: bold;font-size: 25rpx;color:#333;}
+.pj_u_info .time{ float:right;font-size: 25rpx;color:#999;}
+ 
+.pj_cont{position: absolute;left: 110rpx;top:50rpx;font-size: 25rpx;}
+.pj_img{ margin:10rpx 10rpx 0rpx 10rpx;width:120rpx;height:100rpx;}
+
+.wxParse {
+  height: 1000rpx;
+  width: 100%;
+}
+ 
+ /* 底部悬浮栏 */
+.detail-nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  float: left;
+  background-color: #fff;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+  width: 100%;
+  height: 80rpx;
+}
+
+.car{
+  height: 80rpx;
+  width: 15%;
+  background-color:white;
+}
+
+.car image {
+  width: 55rpx;
+  height: 55rpx;
+  margin: 10rpx 27rpx;
+}
+
+
+.car text {
+  text-align: center;
+  font-size: 15rpx;
+  display: inline-block;
+  position: absolute;
+  top: 60rpx;
+  left: 33rpx;
+  font-weight: bold;
+  color: gray;
+}
+
+.button{
+  width: 85%;
+  height: 80rpx;
+}
+
+.addCar {
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 30rpx;
+  background-color: #f78f06; 
+  width: 50%;
+  height: 80rpx;
+  line-height: 85rpx;
+  font-weight: bold;
+}
+
+.buyNow {
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 30rpx;
+  background-color: red; 
+  width: 50%;
+  height: 80rpx;
+  line-height: 85rpx;
+  font-weight: bold;
+}

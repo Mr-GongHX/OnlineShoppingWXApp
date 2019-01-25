@@ -74,7 +74,7 @@ Page({
       }
     ],
     // 新上架商品
-    goodsWelfareItems: [
+    newGoodsItems: [
       {
         goodId: 0,
         name: '泊尔崖蜜蜜光面膜（5片盒装）',
@@ -142,14 +142,15 @@ Page({
   },
   // 搜索
   search: function() {
-    if(this.data.wxSearchData == ""){
+    if(this.data.wxSearchData === ""){
+      // 提示用户输入信息不能为空
       wx.showModal({
         title: "请输入要搜索的商品名!",
         content: "文字不能为空！",
         showCancel: false
       })
     } else{
-      console.log(this.data.wxSearchData)
+      // 跳转到商品列表页
       wx.navigateTo({
         url: '../searchList/searchList?searchName='+this.data.wxSearchData
       })
@@ -158,39 +159,20 @@ Page({
   wxSerchFocus: function(){
 
   },
+  // 输入框内容
   wxSearchInput: function(e){
     this.data.wxSearchData = e.detail.value;
   },
   wxSearchBlur: function(){
-
+ 
   },
-  // 
+  // 跳转商品详情页
   catchTapCategory: function () {
-
+    wx.navigateTo({
+      url: '../productInfo/productInfo',
+    })
   },
-  // 触底加载更多
-  onReachBottom: function () {
-    console.log('加载更多');
-    var that = this; 
-    setTimeout(function () {
-      console.log("进入方法");
-      that.setData({
-        isHideLoadMore: true,
-        goodsWelfareItems: [
-          {
-            goodId: 100,
-            name: '测试数据1',
-            url: 'bill',
-            imageurl: 'https://a3.vimage1.com/upload/merchandise/pdcvis/2017/08/21/142/fb2960bf8e074d029c24315279289c19-5_218x274_70.jpg',
-            newprice: "8612",
-            oldprice: "88",
-            discount: "8.8",
-          }
-        ]
-      });
-    }, 100);
-  },
-  //跳转商品详情页
+  // 跳转商品详情页
   productInfo: function () {
     console.log("点击")
     wx.navigateTo({
@@ -227,5 +209,28 @@ Page({
   },
   onLoad: function () {
     
+  },
+  // 触底加载更多
+  onReachBottom: function () {
+    console.log('加载更多');
+    var that = this;
+    setTimeout(function () {
+      console.log("进入方法");
+      that.setData({
+        isHideLoadMore: true,
+        newGoodsItems: [
+          {
+            goodId: 100,
+            name: '测试数据1',
+            url: 'bill',
+            imageurl: 'https://a3.vimage1.com/upload/merchandise/pdcvis/2017/08/21/142/fb2960bf8e074d029c24315279289c19-5_218x274_70.jpg',
+            newprice: "8612",
+            oldprice: "88",
+            discount: "8.8",
+          }
+        ]
+      });
+    }, 100);
   }
 })
+

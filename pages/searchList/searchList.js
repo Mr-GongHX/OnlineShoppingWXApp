@@ -4,7 +4,47 @@ Page({
    * 页面的初始数据
    */
   data: {
-    title:""
+    title:"",
+    dataList: [
+      {
+        goods_id: 1,
+        goods_title: '商品标题1',
+        goods_img: 'https://a3.vimage1.com/upload/merchandise/pdcvis/2017/08/21/142/fb2960bf8e074d029c24315279289c19-5_218x274_70.jpg',
+        goods_store: '苹果旗舰店',
+        goods_price: '60'
+      }, {
+        goods_id: 1,
+        goods_title: '商品标题2',
+        goods_img: 'https://a3.vimage1.com/upload/merchandise/pdcvis/2017/08/21/142/fb2960bf8e074d029c24315279289c19-5_218x274_70.jpg',
+        goods_store: '苹果旗舰店',
+        goods_price: '70'
+      }, {
+        goods_id: 1,
+        goods_title: '商品标题3',
+        goods_img: 'https://a3.vimage1.com/upload/merchandise/pdcvis/2017/08/21/142/fb2960bf8e074d029c24315279289c19-5_218x274_70.jpg',
+        goods_store: '苹果旗舰店',
+        goods_price: '80'
+      }, {
+        goods_id: 1,
+        goods_title: '商品标题4',
+        goods_img: 'https://a3.vimage1.com/upload/merchandise/pdcvis/2017/08/21/142/fb2960bf8e074d029c24315279289c19-5_218x274_70.jpg',
+        goods_store: '苹果旗舰店',
+        goods_price: '90'
+      }, {
+        goods_id: 1,
+        goods_title: '商品标题5',
+        goods_img: 'https://a3.vimage1.com/upload/merchandise/pdcvis/2017/08/21/142/fb2960bf8e074d029c24315279289c19-5_218x274_70.jpg',
+        goods_store: '苹果旗舰店',
+        goods_price: '110'
+      },
+      {
+        goods_id: 1,
+        goods_title: '商品标题6',
+        goods_img: 'https://a3.vimage1.com/upload/merchandise/pdcvis/2017/08/21/142/fb2960bf8e074d029c24315279289c19-5_218x274_70.jpg',
+        goods_store: '苹果旗舰店',
+        goods_price: '110'
+      }
+    ]
   },
 
   /**
@@ -60,7 +100,23 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    
+    console.log('加载更多');
+    var that = this;
+    setTimeout(function () {
+      console.log("进入方法");
+      that.setData({
+        isHideLoadMore: true,
+        dataList: [
+          {
+            goods_id: 10,
+            goods_title: '商品标题5',
+            goods_img: 'https://a3.vimage1.com/upload/merchandise/pdcvis/2017/08/21/142/fb2960bf8e074d029c24315279289c19-5_218x274_70.jpg',
+            goods_store: '三星旗舰店',
+            goods_price: '110'        
+          }
+        ]
+      });
+    }, 100);
   },
 
   /**

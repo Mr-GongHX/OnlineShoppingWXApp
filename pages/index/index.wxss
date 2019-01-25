@@ -50,7 +50,7 @@ swiper-item image {
   height: 100%;
 }
 
-/*==========实时热销榜========*/
+/*========== 特价商品 =======*/
 .category-title {
   display: flex;
   flex-direction: column;
@@ -75,7 +75,7 @@ swiper-item image {
 .goods {
    display: flex;
 } 
-.goods-item{
+.goods-item {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -86,22 +86,22 @@ swiper-item image {
   width: 280rpx;
   height: 300rpx; 
 }
-.goods-item text {
+.goods-item  text {
   font-size: 25rpx;
 } 
 .goods-item p{
   font-size: 30rpx;
 }
 
-/**=========福利专场============**/
-.welfares{
+/**========= 新上架商品 ============**/
+.new{
   display: flex;
   justify-content: left;
   flex-direction: row;
   flex-wrap: wrap;
   margin:10px 5px;
 }
-.welfares-good{
+.new-good{
   height: 560rpx; 
   width: 47%;
   margin:0px auto;
@@ -110,12 +110,12 @@ swiper-item image {
   display: inline-block;
   font-size: 24rpx;
 }
-.welfares-image{
+.new-image{
   width: 100%;
   display: inline-block;
   border: 1px #eee solid; 
 }
-.welfares-good .product-name{
+.new-good .product-name{
   color: #000;
   height: 28px;
   text-align:left;
