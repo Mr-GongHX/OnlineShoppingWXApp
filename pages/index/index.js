@@ -166,6 +166,12 @@ Page({
   wxSearchBlur: function(){
  
   },
+  // 跳转特价商品列表页
+  moveToHotGoodsList: function() {
+    wx.navigateTo({
+      url: "../hotGoodsList/hotGoodsList"
+    })
+  },
   // 跳转商品详情页
   catchTapCategory: function () {
     wx.navigateTo({
@@ -174,7 +180,6 @@ Page({
   },
   // 跳转商品详情页
   productInfo: function () {
-    console.log("点击")
     wx.navigateTo({
       url: '../productInfo/productInfo',
     })
@@ -190,8 +195,6 @@ Page({
         'Accept': 'application/json'
       },
       success: function(res){
-        console.log("返回结果："+res)
-        console.log("res:"+res.data)
         if(res.data == null){
           return;
         } else{
@@ -212,10 +215,8 @@ Page({
   },
   // 触底加载更多
   onReachBottom: function () {
-    console.log('加载更多');
     var that = this;
     setTimeout(function () {
-      console.log("进入方法");
       that.setData({
         isHideLoadMore: true,
         newGoodsItems: [

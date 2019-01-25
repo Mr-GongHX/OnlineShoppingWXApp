@@ -6,7 +6,8 @@
     "pages/orderCheck/orderCheck",
     "pages/productInfo/productInfo",
     "pages/searchList/searchList",
-    "pages/commentDetail/commentDetail"
+    "pages/commentDetail/commentDetail",
+    "pages/hotGoodsList/hotGoodsList"
   ],
   "window":{
     "backgroundTextStyle":"light",

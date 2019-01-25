@@ -44,7 +44,7 @@ navigator{
 .list .list_item .info .price{
   color:#FF2727;
   margin-left: 7rpx;
-  margin-top: 10rpx;
+  margin-top: 70rpx;
   font-size: 30rpx;
 }
  

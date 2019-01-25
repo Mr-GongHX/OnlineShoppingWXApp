@@ -59,7 +59,7 @@
 
 <!--特价商品 start-->
 <view class="hots-container"> 
-  <view class="category-title">
+  <view class="category-title" bindtap="moveToHotGoodsList">
     <text class="title">特价商品</text>
     <view class="line_name">
       <text>欢迎选购！</text>

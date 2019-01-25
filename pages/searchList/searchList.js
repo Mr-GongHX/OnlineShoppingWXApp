@@ -52,7 +52,6 @@ Page({
    */
   onLoad: function (options) {
     var searchName = options.searchName;
-    console.log(searchName);
     this.setData({
       title: searchName
     })
@@ -100,10 +99,8 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    console.log('加载更多');
     var that = this;
     setTimeout(function () {
-      console.log("进入方法");
       that.setData({
         isHideLoadMore: true,
         dataList: [
