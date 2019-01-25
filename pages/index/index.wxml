@@ -9,7 +9,7 @@
       <input 
         bindinput="wxSearchInput" 
         bindfocus="wxSerchFocus" 
-        value="{{wxSearchData.value}}" 
+        value="{{wxSearchData}}" 
         bindblur="wxSearchBlur" 
         class="wxSearch-input" 
         placeholder='搜索喜欢的商品'

@@ -9,6 +9,7 @@ Page({
     circular: true, //设置是否衔接滑动
     interval: 3000, //设置自动切换时间间隔：3s
     duration: 300,  //设置滑动动画时长：0.3s
+    wxSearchData: "",  //输入框数据
     imgUrls: [
       'https://a4.vimage1.com/upload/flow/2017/10/20/117/15084947982974.jpg',
       'https://a2.vimage1.com/upload/flow/2017/11/07/73/15100619325212.jpg',
@@ -141,15 +142,33 @@ Page({
   },
   // 搜索
   search: function() {
-    wx.navigateTo({
-      url: '../searchList/searchList'
-    })
+    if(this.data.wxSearchData == ""){
+      wx.showModal({
+        title: "请输入要搜索的商品名!",
+        content: "文字不能为空！",
+        showCancel: false
+      })
+    } else{
+      console.log(this.data.wxSearchData)
+      wx.navigateTo({
+        url: '../searchList/searchList?searchName='+this.data.wxSearchData
+      })
+    }
+  },
+  wxSerchFocus: function(){
+
+  },
+  wxSearchInput: function(e){
+    this.data.wxSearchData = e.detail.value;
+  },
+  wxSearchBlur: function(){
+
   },
   // 
   catchTapCategory: function () {
 
   },
-  //触底加载更多
+  // 触底加载更多
   onReachBottom: function () {
     console.log('加载更多');
     var that = this; 

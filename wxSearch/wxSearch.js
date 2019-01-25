@@ -1,22 +1,19 @@
 // 定义数据格式
 
-/***
- * 
- * "wxSearchData":{
- *  configconfig:{
- *    style: "wxSearchNormal"
- *  },
- *  view:{
- *    hidden: true,
- *    searchbarHeght: 20
- *  }
- *  keys:[],//自定义热门搜索
- *  his:[]//历史搜索关键字
- *  value
- * }
- * 
- * 
- */
+
+//   "wxSearchData" : {
+//     configconfig : {
+//     style : "wxSearchNormal"
+//   },
+//   view : {
+//     hidden : true,
+//     searchbarHeght : 20
+//   }
+//   keys : [],  //自定义热门搜索
+//   his : [],   //历史搜索关键字
+//   value
+//  }
+ 
 var __keysColor = [];
 
 var __mindKeys = [];
