@@ -7,7 +7,10 @@
     "pages/productInfo/productInfo",
     "pages/searchList/searchList",
     "pages/commentDetail/commentDetail",
-    "pages/hotGoodsList/hotGoodsList"
+    "pages/hotGoodsList/hotGoodsList",
+    "pages/login/login",
+    "pages/myOrder/myOrder",
+    "pages/createAccount/createAccount"
   ],
   "window":{
     "backgroundTextStyle":"light",

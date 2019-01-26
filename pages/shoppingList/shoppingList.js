@@ -11,8 +11,8 @@ Page({
     total: 0,
     CheckAll: true
   },
-  onLoad: function (e) {
-
+  onLoad: function () {
+    
   },
   onShow: function () {
     var cartItems = wx.getStorageSync("cartItems")
@@ -111,7 +111,7 @@ Page({
     wx.setStorageSync("cartItems", [])
     wx.navigateTo({
       url: '../orderCheck/orderCheck',
-    })
+    });
   },
   //合计
   getsumTotal: function () {
@@ -125,5 +125,5 @@ Page({
     this.setData({
       total: sum
     })
-  },
+  }
 })

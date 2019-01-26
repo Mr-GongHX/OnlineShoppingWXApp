@@ -67,7 +67,15 @@ Page({
   },
   // 加入购物车
   addCar: function() {
-    
+    wx.showToast({
+      title: '添加成功',
+      icon: 'success',
+      duration: 1000,
+      mask: true,
+      success: function() { //添加成功回调
+        
+      }
+    })
   },
   // 立即购买
   buyNow: function() {

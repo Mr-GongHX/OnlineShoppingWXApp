@@ -1,15 +1,34 @@
 <!-- 我的 -->
-<view>
-  <view class='My-Main'>
-      <image src="{{userImage}}" class="UserImage"></image>
-      <text class="Username">{{username}}</text>
+<view class="mine-wrapper">
+  <!-- 头部 start -->
+  <view class="avatar-wrapper">
+      <view class="avatar">
+        <image 
+          style="border-radius:50%; border:1rpx solid white;" 
+          src="{{userPic}}" 
+        />
+      </view>
+      <view class="text">
+        <text wx:if="{{nickName}}">{{nickName}}</text>
+        <text wx:else bindtap="toLogin">注册 / 登录</text>
+      </view>
   </view>
+  <!-- 头部 end -->
 
-  <view class='My-MainTwo'>
+  <view class="separate"></view>
 
+  <!-- 底部 start -->
+  <view class="weui-cells weui-cells_after-title">
+      <view class="content" bindtap="moveToMyAddress">
+        <text>收货地址</text>
+        <image src="../img/right.png"></image>
+      </view>
+      <navigator url="../myOrder/myOrder" class="weui-cell">
+        <view class="content">
+          <text>我的订单</text>
+          <image src="../img/right.png"></image>
+        </view>
+      </navigator>
   </view>
-  
-  <view class='My-MainThree'>
-      
-  </view>
-</view> 
+  <!-- 底部 end -->
+</view>

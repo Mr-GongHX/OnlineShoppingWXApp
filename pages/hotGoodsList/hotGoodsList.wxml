@@ -1,2 +1,24 @@
 <!-- 特价商品列表页 -->
-<text>pages/hotGoodsList/hotGoodsList.wxml</text>
+<view class='list'>
+  <block wx:for='{{dataList}}' wx:key='list' wx:for-item="item">
+  <view class="list_item">
+      <navigator url='../productInfo/productInfo?id={{item.goods_id}}'>
+      <view class='img'>
+        <image src="{{imghref}}{{item.goods_img}}"  mode="scaleToFill"/>
+      </view>
+      <view class='info'>
+        <view class='title'>{{item.goods_title}}</view>
+        <view class='price'>￥{{item.goods_price}}</view>
+        <view class='store'>{{item.goods_store}} ></view>
+      </view>
+       </navigator>
+      <view class='clear'></view>
+  </view>
+  </block>
+</view>
+
+<!-- 触底加载 -->
+<view class="weui-loadmore" hidden="{{isHideLoadMore}}">
+    <view class="weui-loading"></view>
+    <view class="weui-loadmore__tips">努力加载中...</view>
+</view>
