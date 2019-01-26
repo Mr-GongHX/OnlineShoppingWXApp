@@ -16,6 +16,7 @@ Page({
       goods_yunfei: 0, 
       goods_kucun: 100, 
       goods_xiaoliang: 1, 
+      goods_shopName:"苹果旗舰店",
       content: "商品介绍详情啦啦啦啦啦啦啦啦啦阿拉"
     },
     goods_img: [
@@ -26,13 +27,13 @@ Page({
     ],
     pjDataList: [
       { 
-        headpic: 'https://a3.vimage1.com/upload/merchandise/pdcvis/2017/08/03/8/4fb444e7-3417-4f4a-b5a1-7f1d884c610f_218x274_70.jpg', 
+        headpic: 'http://t2.hddhhn.com/uploads/tu/201610/198/scx30045vxd.jpg', 
         author: '张三', 
         add_time: '2018-06-01', 
         content: '好评好评，真实太好了!' 
       },
       { 
-        headpic: 'https://a3.vimage1.com/upload/merchandise/pdcvis/2017/08/03/8/4fb444e7-3417-4f4a-b5a1-7f1d884c610f_218x274_70.jpg', 
+        headpic: 'http://t2.hddhhn.com/uploads/tu/201610/198/scx30045vxd.jpg', 
         author: '张三', 
         add_time: '2018-06-01',
         content: '好评好评，真实太好了!' 

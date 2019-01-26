@@ -1,2 +1,21 @@
 <!-- 评价详情页 -->
-<text>pages/commentDetail/commentDetail.wxml</text>
+<!-- 评论详情 start -->
+<block wx:for="{{pjDataList}}" wx:for-item="item" wx:key="pj">
+      <view class="list_item">
+        <view class='pj_u_info clear'>
+          <view class='header_img'><image src="{{item.headpic}}" mode="aspectFit"></image></view>
+          <view class='name'>{{item.author}}</view>
+          <view class='time'>{{item.add_time}}</view>
+        </view>
+        <view class='pj_cont'>
+          {{item.content}}
+        </view>
+      </view>
+</block>
+<!-- 评论详情 end -->
+
+<!-- 触底加载 -->
+<view class="weui-loadmore" hidden="{{isHideLoadMore}}">
+    <view class="weui-loading"></view>
+    <view class="weui-loadmore__tips">努力加载中...</view>
+</view>

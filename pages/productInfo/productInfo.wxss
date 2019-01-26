@@ -4,7 +4,8 @@
 .slide-image {width:100%;height:100%;}
  
 .info-title{ background: #fff; padding:10rpx 15rpx;font-size: 40rpx;font-weight: bold;}
-.info-price{border-bottom:1rpx solid #ccc;background: #fff;padding:0rpx 15rpx;}
+.info-price{ border-bottom:1rpx solid #ccc;background: #fff;padding:10rpx 15rpx;}
+.info-shop{ border-bottom:1rpx solid #ccc;height: 60rpx;margin-top: 10rpx;background: #fff; padding:10rpx 15rpx;font-size: 35rpx;font-weight: bold;}
 .price{ float:left;height:50rpx;line-height:50rpx;color:#FF6666;font-weight: bold;font-size: 40rpx; }
  
 .price em{font-size:12rpx;margin-left:20rpx;}
@@ -15,7 +16,7 @@
  
 .list_item{position:relative;padding:15rpx 10rpx;background:#fff; border-bottom:1rpx solid #ccc;}
  
-.details_box{ margin-top:10rpx;padding:0 15rpx;font-weight: bold;font-size: 30rpx;background:#fff;}
+.details_box{ margin-top:6rpx;padding:0 15rpx;font-weight: bold;font-size: 30rpx;background:#fff;}
  
 .pj_box{margin-top:10rpx;padding:0 15rpx;font-size: 13rpx;background:#fff;}
 .ico_img_jt{vertical-align: middle;width:16rpx; height: 16rpx;}

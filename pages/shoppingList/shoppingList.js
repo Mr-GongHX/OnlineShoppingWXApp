@@ -3,7 +3,11 @@ var json = require('../../utils/Home_data.js')
 
 Page({
   data: {
-    cartItems: [],
+    cartItems: [
+      {
+        id:0
+      }
+    ],
     total: 0,
     CheckAll: true
   },

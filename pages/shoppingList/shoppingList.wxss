@@ -1,5 +1,4 @@
 /* pages/shoppingList/shoppingList.wxss */
-/* pages/cart/cart.wxss */
 .cartMain{
  margin-bottom: 120rpx;
 }

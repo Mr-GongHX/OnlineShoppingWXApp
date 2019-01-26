@@ -5,7 +5,66 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    isHideLoadMore: false,
+    pjDataList: [
+      {
+        headpic: 'http://t2.hddhhn.com/uploads/tu/201610/198/scx30045vxd.jpg',
+        author: '张三',
+        add_time: '2018-06-01',
+        content: '好评好评，真实太好了!'
+      },
+      {
+        headpic: 'http://t2.hddhhn.com/uploads/tu/201610/198/scx30045vxd.jpg',
+        author: '李四',
+        add_time: '2019-06-01',
+        content: '差评！！！！！！！！！!'
+      },
+      {
+        headpic: 'http://t2.hddhhn.com/uploads/tu/201610/198/scx30045vxd.jpg',
+        author: '李四',
+        add_time: '2019-06-01',
+        content: '差评！！！！！！！！！!'
+      },
+      {
+        headpic: 'http://t2.hddhhn.com/uploads/tu/201610/198/scx30045vxd.jpg',
+        author: '李四',
+        add_time: '2019-06-01',
+        content: '差评！！！！！！！！！!'
+      },
+      {
+        headpic: 'http://t2.hddhhn.com/uploads/tu/201610/198/scx30045vxd.jpg',
+        author: '李四',
+        add_time: '2019-06-01',
+        content: '差评！！！！！！！！！!'
+      }, {
+        headpic: 'http://t2.hddhhn.com/uploads/tu/201610/198/scx30045vxd.jpg',
+        author: '李四',
+        add_time: '2019-06-01',
+        content: '差评！！！！！！！！！!'
+      }, {
+        headpic: 'http://t2.hddhhn.com/uploads/tu/201610/198/scx30045vxd.jpg',
+        author: '李四',
+        add_time: '2019-06-01',
+        content: '差评斯蒂芬非常！！！！！！！！！!'
+      }, {
+        headpic: 'http://t2.hddhhn.com/uploads/tu/201610/198/scx30045vxd.jpg',
+        author: '李四',
+        add_time: '2019-06-01',
+        content: '差评！！！！！！！！！!'
+      },
+      {
+        headpic: 'http://t2.hddhhn.com/uploads/tu/201610/198/scx30045vxd.jpg',
+        author: '李四',
+        add_time: '2019-06-01',
+        content: '差评！！！！！！！！！!'
+      },
+      {
+        headpic: 'http://t2.hddhhn.com/uploads/tu/201610/198/scx30045vxd.jpg',
+        author: '李四',
+        add_time: '2019-06-01',
+        content: '差评！！！！！！！！！!'
+      },
+    ],//评价数据
   },
 
   /**
@@ -54,7 +113,21 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    console.log("进入")
+    var that = this;
+    setTimeout(function () {
+      that.setData({
+        isHideLoadMore: true,
+        pjDataList: [
+          {
+            headpic: 'http://t2.hddhhn.com/uploads/tu/201610/198/scx30045vxd.jpg',
+            author: '王五',
+            add_time: '2018-06-01',
+            content: '好评好评，真实太好了!'
+          }
+        ]
+      });
+    }, 100);
   },
 
   /**

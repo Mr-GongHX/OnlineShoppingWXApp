@@ -3,8 +3,21 @@
     <view wx:key="{{cartItems}}">
         <view data-id="{{item.id}}"  class='cart-box' data-index="{{index}}">
             <view class='icon'>
-                <icon wx:if="{{item.selected}}" type="success" color="#FF3030" size="20" bindtap="selectedCart" data-index="{{index}}" />
-                <icon wx:else type="circle" bindtap="selectedCart" size="20" data-index="{{index}}"/>
+                <icon 
+                  wx:if="{{item.selected}}" 
+                  type="success" 
+                  color="#FF3030" 
+                  size="20" 
+                  bindtap="selectedCart" 
+                  data-index="{{index}}"
+                />
+                <icon 
+                  wx:else 
+                  type="circle" 
+                  bindtap="selectedCart" 
+                  size="20" 
+                  data-index="{{index}}"
+                />
             </view>
 
             <view class='cart_main'>
@@ -16,7 +29,6 @@
                 <view class='left_box'>
                     <text class="cart-title">{{item.title}}</text>
                     <text class="cart-price">￥{{item.price}}</text>
-
                     <text bindtap='reduce'  class="input cart-reduce"  data-index="{{index}}">-</text>
                     <text class="input cart-text">{{item.value}}</text>
                     <text bindtap='add' class="input cart-add"  data-index="{{index}}">+</text>
@@ -28,8 +40,7 @@
               </view>
             </view>
 
-          
-            <!-- 底部 -->
+            <!-- 底部 start  -->
             <view class="cart-bottom">
               <icon wx:if="{{CheckAll}}"  class="cart-icon" type="success" color="#FF3030" size="20" bindtap="select" data-index="{{index}}" />
               <icon wx:else type="circle"   class="cart-icon" size="20" bindtap="select" data-index="{{index}}"/>
@@ -47,5 +58,6 @@
               </view>
             </view>
           </view>
+          <!-- 底部 end -->
       </view>
 </view>
