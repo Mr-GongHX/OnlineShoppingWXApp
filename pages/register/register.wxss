@@ -59,7 +59,7 @@
   border-radius: 40rpx; 
 }
 
-/* 登录按钮 */
+/* 提交按钮 */
 .button {
   margin-top: 0px;
   margin-bottom: 0px;

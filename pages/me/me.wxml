@@ -35,6 +35,15 @@
           <image src="../img/right.png"></image>
         </view>
       </navigator>
+      <!-- 退出登录 -->
+      <view class="button">  
+            <button 
+              class="logoutBtn" 
+              bindtap='logout'
+            >
+            退出登录
+            </button>  
+        </view> 
   </view>
   <view class="toLogin" wx:else>
       <view class="text">

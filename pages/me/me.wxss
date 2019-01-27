@@ -63,6 +63,24 @@
   border-top: none;
 }
 
+/* 退出登录按钮 */
+.button {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}
+
+.logoutBtn {
+  width: 90%;
+  height: 80rpx;
+  line-height: 80rpx;
+  margin-top: 400rpx;
+  color: #FF3030;
+  background-color:white;
+  border: 3rpx solid #FF3030;
+  border-radius: 40rpx;
+}
+
 .toLogin{
   width: 100;
   height: 200rpx;

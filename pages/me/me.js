@@ -88,8 +88,24 @@ Page({
     //判断用户是否授权访问地址权限
     wx.getSetting({
       success: function(res){
-        //授权
-        if(res.authSetting['scope.address']){
+        //用户从未授权
+        if(res.authSetting['scope.address'] === undefined){
+          wx.chooseAddress({
+            success: function (res) {
+                console.log(res.userName)
+                console.log(res.postalCode)
+                console.log(res.provinceName)
+                console.log(res.cityName)
+                console.log(res.countyName)
+                console.log(res.detailInfo)
+                console.log(res.nationalCode)
+                console.log(res.telNumber)
+            },
+            fail: function (res) {
+            }
+          });
+          // 用户授权
+        } else if(res.authSetting['scope.address']){
           wx.chooseAddress({
             success: function (res) {
               console.log(res.userName)
@@ -103,7 +119,7 @@ Page({
             },
             fail: function (res) {
             }
-          })
+          });
         //未授权
         }else{
           wx.showModal({
@@ -118,6 +134,18 @@ Page({
         }
       }
     });
-
+  },
+  // 退出登录
+  logout: function () {
+    app.globalData.isLogin = false;
+    app.globalData.userId = "";
+    app.globalData.userProfile = "";
+    app.globalData.nickName = "";
+    this.setData({
+      isLogin: app.globalData.isLogin,
+      userId: app.globalData.userId,
+      userProfile: app.globalData.userProfile,
+      nickName: app.globalData.nickName
+    });
   }
 })

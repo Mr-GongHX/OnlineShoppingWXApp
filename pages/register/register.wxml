@@ -1,4 +1,4 @@
-<!--pages/register/register.wxml-->
+<!-- 注册页 -->
 <view class="container">
     <!-- 标题 start -->
     <view class="title">
