@@ -10,6 +10,7 @@
         bindinput="wxSearchInput" 
         bindfocus="wxSerchFocus" 
         bindconfirm="search"
+        confirm-type="search"
         value="{{wxSearchData}}" 
         bindblur="wxSearchBlur" 
         class="wxSearch-input" 

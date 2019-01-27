@@ -17,7 +17,7 @@
   height: 200rpx;
 }
 
-.avatar-wrapper .text {
+.avatar-wrapper .show {
   text-align: center;
   font-weight: bold;
   font-size: 40rpx;
@@ -61,6 +61,24 @@
 
 .weui-cells::before{
   border-top: none;
+}
+
+.toLogin{
+  width: 100;
+  height: 200rpx;
+}
+
+.text {
+  margin-top: 200rpx;
+  margin-left: 80rpx;
+  width: 80%;
+  height: 50%;
+}
+
+.text view {
+  text-align: center;
+  color: #aaa;
+  font-size: 30rpx;
 }
 /* 底部 end */
 

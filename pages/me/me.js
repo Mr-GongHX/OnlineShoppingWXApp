@@ -1,17 +1,28 @@
 // pages/me/me.js
+
+// 获取小程序实例
+const app = getApp();
+
 Page({
   /**
    * 页面的初始数据
    */
   data: {
-    userPic: "https://a4.vimage1.com/upload/flow/2017/10/20/117/15084947982974.jpg",
-    nickName: "测试用户昵称"
+    isLogin: false,
+    userId: "",
+    userProfile: "",
+    nickName: ""
   },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-
+  onLoad: function () {
+    this.setData({
+      isLogin : app.globalData.isLogin,
+      userId : app.globalData.userId,
+      userProfile : app.globalData.userProfile,
+      nickName : app.globalData.nickName
+    });
   },
 
   /**
@@ -74,8 +85,10 @@ Page({
    * 跳转到我的地址页
    */
   moveToMyAddress: function() {
+    //判断用户是否授权访问地址权限
     wx.getSetting({
       success: function(res){
+        //授权
         if(res.authSetting['scope.address']){
           wx.chooseAddress({
             success: function (res) {
@@ -91,8 +104,17 @@ Page({
             fail: function (res) {
             }
           })
+        //未授权
         }else{
-          wx.openSetting({});
+          wx.showModal({
+            title: '提示',
+            content: '未授权访问地址，将无法下单。点击“确定”授权！',
+            success: function(res) {
+              if(res.confirm){
+                wx.openSetting({});
+              }
+            }
+          })
         }
       }
     });

@@ -1,2 +1,56 @@
-<!--pages/login/login.wxml-->
-<text>登录</text>
+<!-- 登录页 -->
+<view class="container">
+    <!-- 标题 start -->
+    <view class="title">
+      <view>欢迎登录在线购物网</view>
+    </view>
+    <!-- 标题 end -->
+
+    <!-- form表单 start -->
+    <form bindsubmit="formSubmit" class="form">
+        <!-- 用户名 -->
+        <view class="username">
+            <view class="input">
+                <input 
+                  class="weui-input" 
+                  bindinput='usernameInput'
+                  placeholder="请输入用户名" 
+                  value='{{username}}' 
+                />
+            </view>
+        </view>
+        <!-- 密码 -->
+        <view class="password">
+            <view class="input">
+                <input 
+                  class="weui-input" 
+                  type="password" 
+                  bindinput='passwordInput'
+                  placeholder="请输入密码" 
+                  value='{{password}}'
+                />
+            </view>
+        </view>  
+        <!-- 登录按钮 -->  
+        <view class="button">  
+            <button 
+              class="loginBtn" 
+              form-type='submit' 
+            >
+            登录
+            </button>  
+        </view> 
+    </form>
+    <!-- form表单 end -->
+    
+    <!-- 注册按钮 -->
+    <view class="button">
+        <button 
+          class="registerBtn" 
+          form-type='submit' 
+          bindtap="register"
+        >
+        没有账号？去注册 →
+        </button> 
+    </view>
+</view>

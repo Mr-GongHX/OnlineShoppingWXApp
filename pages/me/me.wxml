@@ -4,12 +4,18 @@
   <view class="avatar-wrapper">
       <view class="avatar">
         <image 
+          wx:if="{{isLogin}}"
           style="border-radius:50%; border:1rpx solid white;" 
-          src="{{userPic}}" 
+          src="{{userProfile}}" 
+        />
+        <image 
+          wx:else
+          style="border-radius:50%; border:1rpx solid white;" 
+          src="" 
         />
       </view>
-      <view class="text">
-        <text wx:if="{{nickName}}">{{nickName}}</text>
+      <view class="show">
+        <text wx:if="{{isLogin}}">{{nickName}}</text>
         <text wx:else bindtap="toLogin">注册 / 登录</text>
       </view>
   </view>
@@ -18,9 +24,9 @@
   <view class="separate"></view>
 
   <!-- 底部 start -->
-  <view class="weui-cells weui-cells_after-title">
+  <view class="weui-cells weui-cells_after-title" wx:if="{{isLogin}}">
       <view class="content" bindtap="moveToMyAddress">
-        <text>收货地址</text>
+        <text>我的地址</text>
         <image src="../img/right.png"></image>
       </view>
       <navigator url="../myOrder/myOrder" class="weui-cell">
@@ -29,6 +35,12 @@
           <image src="../img/right.png"></image>
         </view>
       </navigator>
+  </view>
+  <view class="toLogin" wx:else>
+      <view class="text">
+        <view>登录后，您才可以在本购物网站进行购买商</view>
+        <view>品，管理地址，评价商品等操作 *^_^*</view>
+      </view>
   </view>
   <!-- 底部 end -->
 </view>

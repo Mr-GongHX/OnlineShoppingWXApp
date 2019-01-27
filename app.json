@@ -10,7 +10,8 @@
     "pages/hotGoodsList/hotGoodsList",
     "pages/login/login",
     "pages/myOrder/myOrder",
-    "pages/createAccount/createAccount"
+    "pages/createAccount/createAccount",
+    "pages/register/register"
   ],
   "window":{
     "backgroundTextStyle":"light",
