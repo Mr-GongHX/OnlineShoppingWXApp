@@ -17,7 +17,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) { 
-      // console.log(app.globalData.nickname);
+     
   },
 
   /**
@@ -100,28 +100,34 @@ Page({
           'content-type': 'application/x-www-form-urlencoded',
           'Accept': 'application/json'
         },
-        success: function (res) {  // 登录成功
-          wx.showToast({
-            title: '登录成功',
-            icon: 'success',
-            duration: 1000
-          });
+        success: function (res) {  // 登录成功         
           // 赋值（昵称）
-          app.globalData.nickname = res.data.nickname;
+          app.globalData.nickName = "res.data.nickName";
           // 赋值（用户头像）
-          app.globalData.userProfile = res.data.userProfile;
+          app.globalData.userProfile = "res.data.userProfile";
           // 赋值（userId）
-          app.globalData.userId = res.data.userId;
+          app.globalData.userId = "res.data.userId";
           // 修改登录状态 isLogin 为 true
           app.globalData.isLogin = true;
-          // 跳转到“我的”页面
-          wx.switchTab({
-            url: "../me/me"
+          wx.showToast({
+            title: '登录成功！',
+            icon: 'success',
+            duration: 1000,
+            success: function() {
+              // 延时1s跳转
+              setTimeout(function(){
+                // 跳转到“我的”页面
+                wx.switchTab({
+                  url: "../me/me"
+                });
+              },1000);
+              clearTimeout();
+            }
           });
         },
         fail: function () {  // 登录失败
           wx.showToast({
-            title: '登录失败',
+            title: '登录失败！',
             icon: 'loading',
             duration: 1000
           });

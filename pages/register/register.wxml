@@ -1,2 +1,62 @@
 <!--pages/register/register.wxml-->
-<text>pages/register/register.wxml</text>
+<view class="container">
+    <!-- 标题 start -->
+    <view class="title">
+      <view>欢迎注册</view>
+    </view>
+    <!-- 标题 end -->
+
+    <!-- form表单 start -->
+    <form bindsubmit="formSubmit" class="form">
+        <!-- 选择头像 -->
+        <view class="userProfile">
+
+        </view>
+        <!-- 用户名 -->
+        <view class="username">
+            <view class="input">
+                <input 
+                  class="weui-input" 
+                  bindinput='usernameInput'
+                  placeholder="请输入用户名" 
+                  value='{{username}}' 
+                />
+            </view>
+        </view>
+        <!-- 密码 -->
+        <view class="password">
+            <view class="input">
+                <input 
+                  class="weui-input" 
+                  type="password" 
+                  bindinput='passwordInputPrevious'
+                  placeholder="请输入密码" 
+                  value='{{password}}'
+                />
+            </view>
+        </view>  
+        <!-- 再次确认密码 -->
+        <view class="password">
+            <view class="input">
+                <input 
+                  class="weui-input" 
+                  type="password" 
+                  bindinput='passwordInputAfter'
+                  placeholder="请重新输入您的密码" 
+                  value='{{password}}'
+                />
+            </view>
+        </view> 
+        <!-- 注册按钮 -->  
+        <view class="button">  
+            <button 
+              class="registerBtn" 
+              form-type='submit' 
+            >
+            提交
+            </button>  
+        </view> 
+    </form>
+    <!-- form表单 end -->
+    
+</view>
