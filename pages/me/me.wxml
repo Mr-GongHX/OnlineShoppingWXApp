@@ -7,6 +7,7 @@
           wx:if="{{isLogin}}"
           style="border-radius:50%; border:1rpx solid white;" 
           src="{{userProfile}}" 
+          bindtap="setUserProfile"
         />
         <image 
           wx:else

@@ -82,6 +82,24 @@ Page({
     })
   },
   /**
+   * 用户上传头像
+   */
+  setUserProfile: function () {
+    var that = this;
+    // 上传图片
+    wx.chooseImage({
+      count: 1,
+      sizeType: ['original', 'compressed'],
+      sourceType: ['album', 'camera'],
+      success: function(res) {
+        var imgUrl = res.tempFilePaths;
+        that.setData({
+          userProfile: imgUrl
+        })
+      },
+    })
+  },
+  /**
    * 跳转到我的地址页
    */
   moveToMyAddress: function() {

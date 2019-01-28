@@ -17,6 +17,7 @@
             <view class="input">
                 <input 
                   class="weui-input" 
+                  focus= "true"
                   bindinput='usernameInput'
                   placeholder="请输入用户名" 
                   value='{{username}}' 
@@ -42,11 +43,22 @@
                   class="weui-input" 
                   type="password" 
                   bindinput='passwordInputAfter'
-                  placeholder="请重新输入您的密码" 
+                  placeholder="请再次输入您的密码" 
                   value='{{password}}'
                 />
             </view>
         </view> 
+        <!-- 昵称 -->
+        <view class="nickname">
+            <view class="input">
+                <input 
+                  class="weui-input" 
+                  bindinput='nicknameInput'
+                  placeholder="请填写您的昵称" 
+                  value='{{nickname}}' 
+                />
+            </view>
+        </view>
         <!-- 注册按钮 -->  
         <view class="button">  
             <button 

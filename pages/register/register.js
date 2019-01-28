@@ -7,63 +7,9 @@ Page({
   data: {
     username: "",
     passwordPrevious: "",
-    passwordAfter: ""
-  },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+    passwordAfter: "",
+    nickname: "",
+    isUsernameDuplicate: true
   },
   // 获取用户名
   usernameInput: function (e) {
@@ -83,16 +29,25 @@ Page({
       passwordAfter: e.detail.value
     })
   },
+  // 获取昵称
+  nicknameInput: function (e) {
+    this.setData({
+      nickname: e.detail.value
+    })
+  },
   // 提交FORM表单
   formSubmit: function () {
-    // 提示用户
-    if(this.data.username === "" || this.data.passwordInputPrevious === "" || this.data.passwordAfter === ""){
-      wx.showModal({
-        title: "请将信息填写完整!",
-        showCancel: false
-      });
+    // 1.提示用户(输入信息均不能为空)
+    if(this.data.username === "" || 
+      this.data.passwordInputPrevious === "" || 
+      this.data.passwordAfter === "" || 
+      this.data.nickname === ""){
+        wx.showModal({
+          title: "请将信息填写完整!",
+          showCancel: false
+        });
     } else {
-      // 输入判断
+      // 输入密码判断是否一致
       if(this.data.passwordPrevious !== this.data.passwordAfter){
         wx.showModal({
           title: '提示',
@@ -100,26 +55,78 @@ Page({
           showCancel: false
         });
       } else {
-        // 成功注册
-        wx.showToast({
-          title: '注册成功！',
-          icon: 'success',
-          duration: 1000,
-          success: function(){
-            // 延时1s跳转
-            setTimeout(function () {
-              // 返回登录页面进行登录
-              wx.navigateBack({
-                delta: 1
-              })
-            }, 1000);
-            clearTimeout();
-          }
+        // 发起POST查询用户名是否重复请求
+        wx.request({
+          url: 'http://localhost:8080/checkUsernameDuplicate.do',
+          method: 'POST',
+          data: 'username=' + this.data.username,
+          header: {
+            //设置参数内容类型为x-www-form-urlencoded
+            'content-type': 'application/x-www-form-urlencoded',
+            'Accept': 'application/json'
+          },
+          success: function (res) {
+            // 将返回用户名是否重复的结果（true/false）
+            this.data.isUsernameDuplicate = res.data.isUsernameDuplicate;
+          },
+          fail: function() {
+            wx.showToast({
+              title: '请稍后再试！',
+              icon: 'loading',
+              duration: 1000,
+            });
+          }         
         });
+        
+        // 判断用户名是否重复
+        if(this.data.isUsernameDuplicate) {
+          wx.showToast({
+            title: '用户名重复！',
+            icon: 'loading',
+            duration: 1000,
+          });
+        } else {
+          // 发起POST注册请求
+          wx.request({
+            url: 'http://localhost:8080/userRegister.do',
+            method: 'POST',
+            data: 'username=' + this.data.username + 
+            '&password=' + this.data.passwordAfter + 
+            '&nickname=' + this.data.nickname,
+            header: {
+              //设置参数内容类型为x-www-form-urlencoded
+              'content-type': 'application/x-www-form-urlencoded',
+              'Accept': 'application/json'
+            },
+            success: function (res) {
+              // 成功注册
+              wx.showToast({
+                title: '注册成功！',
+                icon: 'success',
+                duration: 1000,
+                success: function () {
+                  // 延时1s跳转
+                  setTimeout(function () {
+                    // 返回登录页面进行登录
+                    wx.navigateBack({
+                      delta: 1
+                    })
+                  }, 1000);
+                  // 清空计时器
+                  clearTimeout();
+                }
+              });
+            },
+            fail: function (res) {
+              wx.showToast({
+                title: '注册失败！',
+                icon: 'loading',
+                duration: 1000
+              });
+            }
+          });
+        }      
       }
     }
-
-
   }
-
 })

@@ -59,6 +59,26 @@
   border-radius: 40rpx; 
 }
 
+/* 昵称 */
+.form .nickname {
+  margin-left: 8rpx;
+  margin-top: 20rpx; 
+  width: 94%;
+}
+.form .nickname .input .weui-input {
+  background-color: white;
+  font-size: 32rpx;
+  text-align: center;
+  margin-left: 35rpx;
+  margin-top: 25rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  color: #98989f;
+  border: 3rpx black solid; 
+  border-radius: 40rpx;
+}
+
+
 /* 提交按钮 */
 .button {
   margin-top: 0px;
