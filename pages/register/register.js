@@ -99,23 +99,31 @@ Page({
               'Accept': 'application/json'
             },
             success: function (res) {
-              // 成功注册
-              wx.showToast({
-                title: '注册成功！',
-                icon: 'success',
-                duration: 1000,
-                success: function () {
-                  // 延时1s跳转
-                  setTimeout(function () {
-                    // 返回登录页面进行登录
-                    wx.navigateBack({
-                      delta: 1
-                    })
-                  }, 1000);
-                  // 清空计时器
-                  clearTimeout();
-                }
-              });
+              if(res.statusCode == 200) {
+                // 成功注册
+                wx.showToast({
+                  title: '注册成功！',
+                  icon: 'success',
+                  duration: 1000,
+                  success: function () {
+                    // 延时1s跳转
+                    setTimeout(function () {
+                      // 返回登录页面进行登录
+                      wx.navigateBack({
+                        delta: 1
+                      })
+                    }, 1000);
+                    // 清空计时器
+                    clearTimeout();
+                  }
+                });
+              } else {
+                wx.showToast({
+                  title: '注册失败！',
+                  icon: 'loading',
+                  duration: 1000
+                });
+              }
             },
             fail: function (res) {
               wx.showToast({

@@ -12,62 +12,6 @@ Page({
     username: "",
     password: ""
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) { 
-     
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  },
   // 获取用户名
   usernameInput: function(e) {
     this.setData({
@@ -109,21 +53,31 @@ Page({
           app.globalData.userId = "res.data.userId";
           // 修改登录状态 isLogin 为 true
           app.globalData.isLogin = true;
-          wx.showToast({
-            title: '登录成功！',
-            icon: 'success',
-            duration: 1000,
-            success: function() {
-              // 延时1s跳转
-              setTimeout(function(){
-                // 跳转到“我的”页面
-                wx.switchTab({
-                  url: "../me/me"
-                });
-              },1000);
-              clearTimeout();
-            }
-          });
+          // 判断服务器返回的状态码是否是200
+          if (res.statusCode == 200) {
+            wx.showToast({
+              title: '登录成功！',
+              icon: 'success',
+              duration: 1000,
+              success: function() {
+                // 延时1s跳转
+                setTimeout(function(){
+                  // 跳转到“我的”页面
+                  wx.switchTab({
+                    url: "../me/me"
+                  });
+                },1000);
+                // 清空计时器
+                clearTimeout();
+              }
+            });
+          } else {
+            wx.showToast({
+              title: '登录失败！',
+              icon: 'loading',
+              duration: 1000
+            });
+          }
         },
         fail: function () {  // 登录失败
           wx.showToast({
