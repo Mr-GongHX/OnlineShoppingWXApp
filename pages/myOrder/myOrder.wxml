@@ -1,2 +1,61 @@
-<!--pages/myOrder/myOrder.wxml-->
-<text>pages/myOrder/myOrder.wxml</text>
+<!-- 我的订单 -->
+<view class='container'>
+  <block wx:if="{{list.length>0}}">
+    <!-- 订单列表 start -->
+    <view class='orderList' wx:for="{{list}}" wx:key="key">
+      <navigator url='../orderDetail/orderDetail?orderId={{item.orderId}}' open-type="navigate">
+        <!-- 订单头部 start -->
+        <view class='head'>
+          <label class='shopName'>店铺：{{item.shopName}}</label>
+          <!-- 订单状态 -->
+          <label class='status'>{{item.status}}</label>
+        </view>
+        <!-- 订单头部 end -->
+
+        <!-- 商品列表 start -->
+        <view class='goodsList' wx:for="{{item.goodsItem}}" wx:for-item="goods" wx:key="key">
+          <!-- 列表图片 -->
+          <image class='list_img' src='{{goods.image}}'></image>
+          <!-- 列表标题 -->
+          <label class='list_name'>{{goods.name}}</label>
+          <!-- 列表价格 -->
+          <label class='list_price'>￥{{goods.price}}</label>
+        </view>
+        <!-- 商品列表 end -->
+
+        <!-- 订单底部 start -->
+        <view class='bottom'>
+          <!-- 底部信息 -->
+          <view class='bottom_center'>
+            <!-- 商品数量 -->
+            <text class='amount'>共{{item.amount}}件商品</text>
+            <!-- 合计 -->
+            <text class='totalPrice'>合计: ￥{{item.totalPrice}}</text>
+          </view>
+        </view>
+        <!-- 订单底部 end -->
+
+        <!-- 订单底部按钮 start -->
+        <view class='button'> 
+          <!-- 确认收货 -->
+          <label class='checkBtn' bindtap='confirmReceipt'>确认收货</label>
+        </view>
+        <!-- 订单底部按钮 end -->
+      </navigator>
+    </view>
+    <!-- 订单列表 end -->
+  </block>
+  <!-- 无订单数据图层 start -->
+  <block wx:else>
+    <view class='text'>
+      <view>无订单数据！</view>
+    </view>
+  </block>
+  <!-- 无订单数据图层 end -->
+</view>
+
+<!-- 触底加载
+<view class="weui-loadmore" hidden="{{isHideLoadMore}}">
+    <view class="weui-loading"></view>
+    <view class="weui-loadmore__tips">努力加载中...</view>
+</view> -->

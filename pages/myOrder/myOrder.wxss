@@ -1,1 +1,137 @@
 /* pages/myOrder/myOrder.wxss */
+.container {
+  background-color: #EBEBEB;
+}
+/* 全部 */
+.orderList{
+  padding-top: 6rpx;
+  position: relative;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 6rpx;
+  background-color:#fff;
+}
+/* 订单头部 */
+.head{
+  position: relative;
+  display: inline-block;
+  width: 90%;
+  height: 70rpx;
+  line-height: 70rpx;
+  border-bottom: 1rpx solid #D4D4D4;
+}
+/* 订单商家名称 */
+.shopName {
+  position: absolute;
+  font-size: 28rpx;
+  font-weight: bold;
+  color: black;
+  left: 0rpx;
+}
+
+/* 订单状态 */
+.status {
+  position: absolute;
+  right:0rpx;
+  color: #999;
+  font-size: 28rpx;
+}
+ 
+/* 商品列表区 */
+.goodsList{
+  position: relative;
+  width: 90%;
+  display: inline-block;
+  padding-bottom: 10rpx;
+  height: 200rpx;
+  border-bottom: 1rpx solid #ccc;
+}
+/* 列表图片 */
+.list_img{
+  position: absolute;
+  width:144rpx;
+  height: 144rpx;
+  left: 0rpx;
+  top: 30rpx; 
+}
+/* 列表标题 */
+.list_name{
+  position: absolute;
+  text-align: left;
+  top: 30rpx;
+  left: 180rpx;
+  color: #333333;
+  width: 350rpx;
+  font-size: 30rpx;
+  display: -webkit-box;    
+  -webkit-box-orient: vertical;    
+  -webkit-line-clamp: 2;    
+  overflow: hidden;
+}
+/* 列表价格 */
+.list_price{
+  position: absolute;
+  font-size: 32rpx;
+  right: 0rpx;
+  bottom: 30rpx;
+}
+/* 订单底部区 */
+.bottom{
+  position: relative;
+  width: 100%;
+  height: 90rpx;
+  line-height: 90rpx;
+  border-bottom: 2rpx solid #EBEBEB;
+}
+/* 底部信息 */
+.bottom_center{
+  position: relative;
+  width: 90%;
+  display: inline-block;
+  height: 90rpx;
+  line-height: 90rpx;
+}
+/* 商品数量 */
+.amount{
+  position: relative;
+  font-size: 28rpx;
+  float: left;
+}
+/* 总计金额 */
+.totalPrice{
+  position: relative;
+  font-size: 28rpx;
+  margin-right: 15rpx;
+  float: right;
+}
+/* 底部按钮区 */
+.button{
+  position: relative;
+  width: 100%;
+  height: 150rpx;
+  line-height: 150rpx;
+  background-color:  #fff;
+} 
+/* 确认收货按钮 */
+.checkBtn{
+  position: absolute;
+  top: 30%;
+  color: #FF3030;
+  right: 40rpx;
+  display: inline-block;
+  width: 180rpx;
+  height: 56rpx;
+  text-align: center;
+  border: 3rpx #FF3030 solid; 
+  border-radius: 15rpx;
+  font-size: 30rpx;
+  line-height: 56rpx;
+}
+/* 无订单数据样式 */
+.text view {
+  margin-top: 100rpx;
+  background-color: white;
+  text-align: center;
+  color: black;
+  font-size: 30rpx;
+}

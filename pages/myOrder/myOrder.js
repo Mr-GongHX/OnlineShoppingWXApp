@@ -1,66 +1,57 @@
 // pages/myOrder/myOrder.js
-Page({
 
+// 获取小程序实例
+var app = getApp();
+
+Page({
   /**
-   * 页面的初始数据
+   * 页面初始数据
    */
   data: {
-
+    // 订单列表数据
+    list: [{
+      orderId: "1",
+      shopName: "苹果旗舰店",
+      status: "已发货",
+      goodsItem: [{
+        name: "这里是昵称这里是昵称这里是昵称这里是昵称这里是昵称",
+        image: "https://a4.vimage1.com/upload/flow/2017/10/20/117/15084947982974.jpg",
+        price: "56",
+      },
+      {
+        name: "这里是昵称这里是昵称这里是昵称这里是昵称这里是昵称",
+        image: "https://a4.vimage1.com/upload/flow/2017/10/20/117/15084947982974.jpg",
+        price: "99999",
+      },
+      ],
+      amount: "2",
+      totalPrice: "112",
+    },
+      {
+        orderId: "3",
+        shopName: "苹果旗舰店",
+        status: "已发货",
+        goodsItem: [{
+          name: "这里是昵称这里是昵称这里是昵称这里是昵称这里是昵称",
+          image: "https://a4.vimage1.com/upload/flow/2017/10/20/117/15084947982974.jpg",
+          price: "56",
+        },
+        {
+          name: "这里是昵称这里是昵称这里是昵称这里是昵称这里是昵称",
+          image: "https://a4.vimage1.com/upload/flow/2017/10/20/117/15084947982974.jpg",
+          price: "99999",
+        },
+        ],
+        amount: "2",
+        totalPrice: "112",
+      }],
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  // 确认收货
+  confirmReceipt: function () {
+    console.log("qwer")
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  // 初始化加载
+  onLoad: function () {
+    var that = this;
   }
 })

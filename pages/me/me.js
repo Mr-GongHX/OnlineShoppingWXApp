@@ -140,15 +140,47 @@ Page({
   },
   // 退出登录
   logout: function () {
-    app.globalData.isLogin = false;
-    app.globalData.userId = "";
-    app.globalData.userProfile = "";
-    app.globalData.nickName = "";
-    this.setData({
-      isLogin: app.globalData.isLogin,
-      userId: app.globalData.userId,
-      userProfile: app.globalData.userProfile,
-      nickName: app.globalData.nickName
+    wx.request({
+      url: 'http://localhost:8080/userLogout.do',
+      method: 'POST',
+      data: 'userId=' + app.globalData.userId,
+      header: {
+        //设置参数内容类型为x-www-form-urlencoded
+        'content-type': 'application/x-www-form-urlencoded',
+        'Accept': 'application/json'
+      },
+      success: function (res) {
+        if(res.statusCode == 200) {
+          wx.showToast({
+            title: '退出成功！',
+            icon: 'success',
+            duration: 1000
+          });
+          app.globalData.isLogin = false;
+          app.globalData.userId = "";
+          app.globalData.userProfile = "";
+          app.globalData.nickName = "";
+          this.setData({
+            isLogin: app.globalData.isLogin,
+            userId: app.globalData.userId,
+            userProfile: app.globalData.userProfile,
+            nickName: app.globalData.nickName
+          });
+        } else {
+          wx.showToast({
+            title: '退出失败！',
+            icon: 'loading',
+            duration: 1000
+          });
+        }
+      },
+      fail: function () {
+        wx.showToast({
+          title: '退出失败！',
+          icon: 'loading',
+          duration: 1000
+        });
+      }
     });
   }
 })
