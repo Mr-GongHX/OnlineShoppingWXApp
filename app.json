@@ -11,7 +11,8 @@
     "pages/login/login",
     "pages/myOrder/myOrder",
     "pages/register/register",
-    "pages/orderDetail/orderDetail"
+    "pages/orderDetail/orderDetail",
+    "pages/goodsComment/goodsComment"
   ],
   "window":{
     "backgroundTextStyle":"light",

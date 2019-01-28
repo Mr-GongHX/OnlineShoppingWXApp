@@ -1,1 +1,23 @@
 /* pages/orderDetail/orderDetail.wxss */
+
+/* 去下单按钮 */
+.button {
+  width: 100%;
+  height: 80rpx;
+  position: fixed;
+  background-color: red;
+  text-align: center;
+  bottom: 0rpx;
+  right: 0rpx;
+}
+
+.comment {
+  font-size: 30rpx;
+  text-decoration: none;
+  display: inline-block;
+  width: 50%;
+  height: 80rpx;
+  line-height: 85rpx;
+  color: white;
+  font-weight: bold;
+}

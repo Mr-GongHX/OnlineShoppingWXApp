@@ -5,7 +5,20 @@ Page({
    * 页面的初始数据
    */
   data: {
-    orderId: ""
+    orderId: "",
+    status: "",
+    name: "",
+    phone: "",
+    address: "",
+    shopName: "",
+    goodsItem: [
+      {
+        name: "",
+        iamge: "",
+        price: "",
+        amount: ""
+      }
+    ]
 
   },
 
@@ -15,7 +28,7 @@ Page({
   onLoad: function (options) {
     // 我的订单页的订单id
     this.data.orderId = options.orderId;
-    
+
   },
 
   /**

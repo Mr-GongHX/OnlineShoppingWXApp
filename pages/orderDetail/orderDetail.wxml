@@ -1,1 +1,65 @@
-<!-- 订单详情 -->
+<!-- 订单详情页 -->
+<view class='container'>
+  <!-- 订单状态 start -->
+  <view class='orderStatus'>
+    <block wx:if="{{status==0}}">
+      <icon type='success' color='red' size='20rpx' />
+      <text>已完成</text>
+    </block>
+    <block wx:elif="{{status==1}}">
+      <icon type='success' color='blue' size='20rpx' />
+      <text>已发货</text>
+    </block>
+    <block wx:elif="{{status==2}}">
+      <icon type='cancel' color='red' size='20rpx' />
+      <text>异常</text>
+    </block>
+  </view>
+  <!-- 订单状态 end -->
+
+  <!-- 收货人信息 start -->
+  <view class='receiver'>
+    <image src='../img/address.png' class='addressImg' />
+    <text class='name'>{{name}}</text>
+    <text class='phone'>{{phone}}</text>
+    <text class='address'>{{address}}</text>
+  </view>
+  <!-- 收货人信息 end -->
+
+  <!-- 店铺商品详情 start -->
+  <view class='shopDetail'>
+    <text class='shopName'>店铺：{{shopName}}</text>
+    <text class='amount'>共计{{amount}}件商品</text>
+    <!-- 商品列表 start -->
+    <view class='goodsList' wx:for="{{item.goodsItem}}" wx:for-item="goods" wx:key="key">
+        <!-- 列表图片 -->
+        <image class='list_img' src='{{goods.image}}' />
+        <view class='info'>
+          <!-- 列表名称 -->
+          <label class='list_name'>{{goods.name}}</label>
+          <!-- 列表数量 -->
+          <label class='list_amount'>数量：{{goods.amount}}</label>
+          <!-- 列表单价 -->
+          <label class='list_price'>单价：￥{{goods.price}}</label>
+        </view>
+    </view>
+    <!-- 商品列表 end -->
+  </view>
+  <!-- 店铺商品详情 end -->
+
+  <!-- 订单详情 start -->
+  <view class='orderDetail'>
+    <text class='orderNum'>订单编号：{{orderNum}}</text>
+    <text class='orderCreateTime'>下单时间：{{orderCreateTime}}</text>
+    <text class='orderTotalAmount'>商品金额：{{orderTotalAmount}}</text>
+  </view>
+  <!-- 订单详情 end -->
+
+  <!-- 去评价 start -->
+  <navigator url='../goodsComment/goodsComment?goodsId={{goodsId}}'>
+    <view class='button'>
+      <view class='comment'>去评价 →</view>
+    </view>
+  </navigator>
+  <!-- 去评价 end -->
+</view>

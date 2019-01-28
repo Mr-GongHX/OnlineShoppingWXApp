@@ -3,7 +3,10 @@
   <block wx:if="{{list.length>0}}">
     <!-- 订单列表 start -->
     <view class='orderList' wx:for="{{list}}" wx:key="key">
-      <navigator url='../orderDetail/orderDetail?orderId={{item.orderId}}' open-type="navigate">
+      <navigator url='../orderDetail/orderDetail?orderId={{item.orderId}}' 
+        hover-class='none'
+        open-type="navigate"
+      >
         <!-- 订单头部 start -->
         <view class='head'>
           <label class='shopName'>店铺：{{item.shopName}}</label>
@@ -38,7 +41,7 @@
         <!-- 订单底部按钮 start -->
         <view class='button'> 
           <!-- 确认收货 -->
-          <label class='checkBtn' bindtap='confirmReceipt'>确认收货</label>
+          <label class='checkBtn' catchtap='confirmReceipt'>确认收货</label>
         </view>
         <!-- 订单底部按钮 end -->
       </navigator>
