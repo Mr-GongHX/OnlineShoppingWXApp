@@ -3,15 +3,15 @@
   <!-- 订单状态 start -->
   <view class='orderStatus'>
     <block wx:if="{{status==0}}">
-      <icon type='success' color='red' size='20rpx' />
+      <icon type='success' color='red' size='40rpx' />
       <text>已完成</text>
     </block>
     <block wx:elif="{{status==1}}">
-      <icon type='success' color='blue' size='20rpx' />
+      <icon type='success' color='blue' size='40rpx' />
       <text>已发货</text>
     </block>
     <block wx:elif="{{status==2}}">
-      <icon type='cancel' color='red' size='20rpx' />
+      <icon type='cancel' color='red' size='40rpx' />
       <text>异常</text>
     </block>
   </view>
@@ -28,10 +28,12 @@
 
   <!-- 店铺商品详情 start -->
   <view class='shopDetail'>
-    <text class='shopName'>店铺：{{shopName}}</text>
-    <text class='amount'>共计{{amount}}件商品</text>
+    <view class='shopHead'>
+      <text class='shopName'>店铺：{{shopName}}</text>
+      <text class='amount'>共计{{amount}}件商品</text>
+    </view>
     <!-- 商品列表 start -->
-    <view class='goodsList' wx:for="{{item.goodsItem}}" wx:for-item="goods" wx:key="key">
+    <view class='goodsList' wx:for="{{goodsItem}}" wx:for-item="goods" wx:key="key">
         <!-- 列表图片 -->
         <image class='list_img' src='{{goods.image}}' />
         <view class='info'>
