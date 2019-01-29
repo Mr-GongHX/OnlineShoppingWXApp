@@ -30,7 +30,7 @@
   <view class='shopDetail'>
     <view class='shopHead'>
       <text class='shopName'>店铺：{{shopName}}</text>
-      <text class='amount'>共计{{amount}}件商品</text>
+      <text class='amount'>共{{totalAmount}}件商品</text>
     </view>
     <!-- 商品列表 start -->
     <view class='goodsList' wx:for="{{goodsItem}}" wx:for-item="goods" wx:key="key">
@@ -40,25 +40,28 @@
           <!-- 列表名称 -->
           <label class='list_name'>{{goods.name}}</label>
           <!-- 列表数量 -->
-          <label class='list_amount'>数量：{{goods.amount}}</label>
+          <label class='list_amount'>x{{goods.amount}}</label>
           <!-- 列表单价 -->
-          <label class='list_price'>单价：￥{{goods.price}}</label>
+          <label class='list_price'>￥{{goods.price}}</label>
         </view>
     </view>
     <!-- 商品列表 end -->
   </view>
   <!-- 店铺商品详情 end -->
 
+  <!-- 分离区 -->
+  <view class='separate'></view>
+
   <!-- 订单详情 start -->
   <view class='orderDetail'>
     <text class='orderNum'>订单编号：{{orderNum}}</text>
     <text class='orderCreateTime'>下单时间：{{orderCreateTime}}</text>
-    <text class='orderTotalAmount'>商品金额：{{orderTotalAmount}}</text>
+    <text class='orderTotalAmount'>商品金额：￥{{orderTotalPrice}}</text>
   </view>
   <!-- 订单详情 end -->
 
   <!-- 去评价 start -->
-  <navigator url='../goodsComment/goodsComment?goodsId={{goodsId}}'>
+  <navigator url='../goodsComment/goodsComment?goodsId={{goodsId}}' hover-class='none'>
     <view class='button'>
       <view class='comment'>去评价 →</view>
     </view>

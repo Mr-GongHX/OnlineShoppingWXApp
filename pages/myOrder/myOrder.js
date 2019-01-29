@@ -17,15 +17,17 @@ Page({
         name: "这里是昵称这里是昵称这里是昵称这里是昵称这里是昵称",
         image: "https://a4.vimage1.com/upload/flow/2017/10/20/117/15084947982974.jpg",
         price: "56",
+        amount: "1"
       },
       {
         name: "这里是昵称这里是昵称这里是昵称这里是昵称这里是昵称",
         image: "https://a4.vimage1.com/upload/flow/2017/10/20/117/15084947982974.jpg",
         price: "99999",
+        amount: "4"
       },
       ],
-      amount: "2",
-      totalPrice: "112",
+      totalAmount: "2",
+      totalPrice: "112223",
     },
       {
         orderId: "3",
@@ -35,14 +37,16 @@ Page({
           name: "这里是昵称这里是昵称这里是昵称这里是昵称这里是昵称",
           image: "https://a4.vimage1.com/upload/flow/2017/10/20/117/15084947982974.jpg",
           price: "56",
+          amount: "4"
         },
         {
           name: "这里是昵称这里是昵称这里是昵称这里是昵称这里是昵称",
           image: "https://a4.vimage1.com/upload/flow/2017/10/20/117/15084947982974.jpg",
           price: "99999",
+          amount: "4"
         },
         ],
-        amount: "2",
+        totalAmount: "2",
         totalPrice: "112",
       }],
   },

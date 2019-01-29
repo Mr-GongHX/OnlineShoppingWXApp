@@ -19,8 +19,10 @@
         <view class='goodsList' wx:for="{{item.goodsItem}}" wx:for-item="goods" wx:key="key">
           <!-- 列表图片 -->
           <image class='list_img' src='{{goods.image}}'></image>
-          <!-- 列表标题 -->
+          <!-- 列表名称 -->
           <label class='list_name'>{{goods.name}}</label>
+          <!-- 列表数量 -->
+          <label class='list_amount'>x{{goods.amount}}</label>
           <!-- 列表价格 -->
           <label class='list_price'>￥{{goods.price}}</label>
         </view>
@@ -31,7 +33,7 @@
           <!-- 底部信息 -->
           <view class='bottom_center'>
             <!-- 商品数量 -->
-            <text class='amount'>共{{item.amount}}件商品</text>
+            <text class='amount'>共{{item.totalAmount}}件商品</text>
             <!-- 合计 -->
             <text class='totalPrice'>合计: ￥{{item.totalPrice}}</text>
           </view>

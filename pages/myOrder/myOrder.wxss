@@ -7,15 +7,14 @@
   padding-top: 6rpx;
   position: relative;
   width: 100%;
-  text-align: center;
-  margin-bottom: 6rpx;
+  border-bottom: 20rpx solid #eee;
   background-color:#fff;
 }
 /* 订单头部 */
 .head{
   position: relative;
   display: inline-block;
-  width: 90%;
+  width: 100%;
   height: 70rpx;
   line-height: 70rpx;
   border-bottom: 1rpx solid #D4D4D4;
@@ -23,24 +22,24 @@
 /* 订单商家名称 */
 .shopName {
   position: absolute;
-  font-size: 28rpx;
+  font-size: 30rpx;
   font-weight: bold;
   color: black;
-  left: 0rpx;
+  left: 20rpx;
 }
 
 /* 订单状态 */
 .status {
   position: absolute;
-  right:0rpx;
+  right: 20rpx;
   color: #999;
-  font-size: 28rpx;
+  font-size: 30rpx;
 }
  
 /* 商品列表区 */
 .goodsList{
   position: relative;
-  width: 90%;
+  width: 100%;
   display: inline-block;
   padding-bottom: 10rpx;
   height: 200rpx;
@@ -51,17 +50,16 @@
   position: absolute;
   width:144rpx;
   height: 144rpx;
-  left: 0rpx;
+  left: 20rpx;
   top: 30rpx; 
 }
-/* 列表标题 */
+/* 列表名称 */
 .list_name{
   position: absolute;
-  text-align: left;
-  top: 30rpx;
-  left: 180rpx;
+  top: 25rpx;
+  left: 200rpx;
   color: #333333;
-  width: 350rpx;
+  width: 60%;
   font-size: 30rpx;
   display: -webkit-box;    
   -webkit-box-orient: vertical;    
@@ -71,61 +69,75 @@
 /* 列表价格 */
 .list_price{
   position: absolute;
-  font-size: 32rpx;
-  right: 0rpx;
-  bottom: 30rpx;
+  color: #FF6666;
+  font-size: 30rpx;
+  left: 195rpx;
+  bottom: 35rpx;
+}
+
+/* 列表数量 */
+.list_amount {
+  position: absolute;
+  font-size: 30rpx;
+  color: gray;
+  right: 20rpx;
+  bottom: 35rpx;
 }
 /* 订单底部区 */
 .bottom{
   position: relative;
   width: 100%;
-  height: 90rpx;
+  height: 70rpx;
   line-height: 90rpx;
   border-bottom: 2rpx solid #EBEBEB;
 }
 /* 底部信息 */
 .bottom_center{
   position: relative;
-  width: 90%;
+  width: 100%;
   display: inline-block;
   height: 90rpx;
   line-height: 90rpx;
 }
-/* 商品数量 */
+/* 订单商品数量 */
 .amount{
   position: relative;
-  font-size: 28rpx;
+  font-size: 30rpx;
+  top: -15rpx;
   float: left;
+  left: 20rpx;
 }
 /* 总计金额 */
 .totalPrice{
   position: relative;
-  font-size: 28rpx;
-  margin-right: 15rpx;
+  font-size: 30rpx;
+  top: -15rpx;
   float: right;
+  right: 20rpx;
 }
 /* 底部按钮区 */
 .button{
   position: relative;
   width: 100%;
-  height: 150rpx;
+  height: 80rpx;
   line-height: 150rpx;
   background-color:  #fff;
 } 
 /* 确认收货按钮 */
 .checkBtn{
   position: absolute;
-  top: 30%;
+  top: 12rpx;
   color: #FF3030;
-  right: 40rpx;
+  right: 20rpx;
   display: inline-block;
-  width: 180rpx;
-  height: 56rpx;
+  width: 170rpx;
+  height: 55rpx;
   text-align: center;
+  font-weight: bold;
   border: 3rpx #FF3030 solid; 
   border-radius: 15rpx;
   font-size: 30rpx;
-  line-height: 56rpx;
+  line-height: 57rpx;
 }
 /* 无订单数据样式 */
 .text view {
