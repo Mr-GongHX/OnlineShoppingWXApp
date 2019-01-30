@@ -1,2 +1,25 @@
 <!--pages/goodsComment/goodsComment.wxml-->
-<text>pages/goodsComment/goodsComment.wxml</text>
+<view class='container'>
+  <!-- 商品区 start -->
+  <view class='goods' wx:for="{{goodsItem}}" wx:for-item="goods" wx:key="key">
+    <!-- 商品图片 -->
+    <image class='img' src='{{goods.image}}' />
+    <!-- 商品名称 -->
+    <label class='name'>{{goods.name}}</label>
+  </view>
+  <!-- 商品区 end -->
+
+  <!-- 输入框 -->
+  <textarea 
+    class='input' 
+    placeholder='请输入您的评价,不要超过30个字' 
+    bindblur='commentContent' 
+    type='text'
+    maxlength='30' 
+  />
+
+  <!-- 提交按钮 -->
+  <view class='button'>
+    <button class='submitBtn' bindtap='commentSubmit'>提交</button>
+  </view>
+</view>

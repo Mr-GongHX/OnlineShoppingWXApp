@@ -42,16 +42,20 @@
     </view>
     <!-- 商品列表 start -->
     <view class='goodsList' wx:for="{{goodsItem}}" wx:for-item="goods" wx:key="key">
-        <!-- 列表图片 -->
-        <image class='list_img' src='{{goods.image}}' />
-        <view class='info'>
-          <!-- 列表名称 -->
-          <label class='list_name'>{{goods.name}}</label>
-          <!-- 列表数量 -->
-          <label class='list_amount'>x{{goods.amount}}</label>
-          <!-- 列表单价 -->
-          <label class='list_price'>￥{{goods.price}}</label>
+      <navigator url='../goodsComment/goodsComment?goodsId={{goods.goodsId}}' hover-class='none'>
+        <view class='goods'>  
+            <!-- 列表图片 -->
+            <image class='list_img' src='{{goods.image}}' />
+            <view class='info'>
+              <!-- 列表名称 -->
+              <label class='list_name'>{{goods.name}}</label>
+              <!-- 列表数量 -->
+              <label class='list_amount'>x{{goods.amount}}</label>
+              <!-- 列表单价 -->
+              <label class='list_price'>￥{{goods.price}}</label>
+            </view>
         </view>
+      </navigator>
     </view>
     <!-- 商品列表 end -->
   </view>
@@ -64,15 +68,15 @@
   <view class='orderDetail'>
     <text class='orderNum'>订单编号：{{orderNum}}</text>
     <text class='orderCreateTime'>下单时间：{{orderCreateTime}}</text>
-    <text class='orderTotalAmount'>商品金额：￥{{orderTotalPrice}}</text>
+    <text class='orderTotalAmount'>商品金额：￥{{totalPrice}}</text>
   </view>
   <!-- 订单详情 end -->
 
   <!-- 去评价 start -->
-  <navigator url='../goodsComment/goodsComment?goodsId={{goodsId}}' hover-class='none'>
+  <!-- <navigator url='../goodsComment/goodsComment?goodsId={{goodsId}}' hover-class='none'>
     <view class='button'>
       <view class='comment'>去评价 →</view>
     </view>
-  </navigator>
+  </navigator> -->
   <!-- 去评价 end -->
 </view>

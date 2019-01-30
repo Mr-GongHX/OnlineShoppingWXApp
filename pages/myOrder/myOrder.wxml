@@ -1,8 +1,9 @@
 <!-- 我的订单 -->
 <view class='container'>
-  <block wx:if="{{list.length>0}}">
+  <block wx:if="{{list.length>0}}">   
     <!-- 订单列表 start -->
     <view class='orderList' wx:for="{{list}}" wx:key="key">
+      <navigator url='../orderDetail/orderDetail?orderId={{item.orderId}}' hover-class='none'>
         <!-- 订单头部 start -->
         <view class='head'>
           <label class='shopName'>店铺：{{item.shopName}}</label>
@@ -51,35 +52,33 @@
         <!-- 订单底部 end -->
 
         <!-- 订单底部按钮 start -->
-        <view class='button'>
+        <!-- <view class='button'>
             <!-- 确认收货 -->
-            <label 
+            <!-- <label 
               class='checkBtn' 
-              style='{{isConfirmBtnShow}}' 
               catchtap='confirmReceipt' 
               wx:if="{{!list[index].isConfirm}}"
             >                
               确认收货
             </label>
-            <!-- <navigator url='../orderDetail/orderDetail?orderId={{item.orderId}}' hover-class='none'> -->
-              <label class='checkBtn' wx:else>去评价</label>
-            <!-- </navigator> -->
+            <label class='checkBtn' wx:else>已完成</label> -->
 
             <!-- 取消订单 -->
-            <label 
+            <!-- <label 
               class='cancelBtn' 
-              style='{{isCancelBtnShow}}' 
               catchtap='cancelOrder' 
-              wx:if="{{!list[index].isCancelled}}"
+              wx:if="{{list[index].status==0&&!list[index].isCancelled}}"
             >
               取消订单
             </label>
             <label class='cancelBtn' wx:else>已取消</label>
-        </view>
+        </view> -->
         <!-- 订单底部按钮 end -->
+      </navigator>
     </view>
     <!-- 订单列表 end -->
   </block>
+
   <!-- 无订单数据图层 start -->
   <block wx:else>
     <view class='text'>
