@@ -28,7 +28,7 @@
 /* 分离层 */
 .separate{
   width: 100%;
-  height: 50rpx;
+  height: 20rpx;
   background-color: #eee;
 }
 

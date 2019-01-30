@@ -38,6 +38,7 @@ Page({
   onLoad: function (options) {
     // 我的订单页的订单id
     this.data.orderId = options.orderId;
+    console.log(this.data.orderId)
   },
 
   /**

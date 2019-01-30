@@ -3,15 +3,25 @@
   <block wx:if="{{list.length>0}}">
     <!-- 订单列表 start -->
     <view class='orderList' wx:for="{{list}}" wx:key="key">
-      <navigator url='../orderDetail/orderDetail?orderId={{item.orderId}}' 
-        hover-class='none'
-        open-type="navigate"
-      >
         <!-- 订单头部 start -->
         <view class='head'>
           <label class='shopName'>店铺：{{item.shopName}}</label>
           <!-- 订单状态 -->
-          <label class='status'>{{item.status}}</label>
+          <block wx:if="{{item.status==0}}">
+            <label class='status'>待发货</label>
+          </block>
+          <block wx:if="{{item.status==1}}">
+            <label class='status'>已发货</label>
+          </block>
+          <block wx:if="{{item.status==2}}">
+            <label class='status'>已完成</label>
+          </block>
+          <block wx:if="{{item.status==3}}">
+            <label class='status'>已取消</label>
+          </block>
+          <block wx:if="{{item.status==4}}">
+            <label class='status'>异常</label>
+          </block>
         </view>
         <!-- 订单头部 end -->
 
@@ -41,12 +51,32 @@
         <!-- 订单底部 end -->
 
         <!-- 订单底部按钮 start -->
-        <view class='button'> 
-          <!-- 确认收货 -->
-          <label class='checkBtn' catchtap='confirmReceipt'>确认收货</label>
+        <view class='button'>
+            <!-- 确认收货 -->
+            <label 
+              class='checkBtn' 
+              style='{{isConfirmBtnShow}}' 
+              catchtap='confirmReceipt' 
+              wx:if="{{!list[index].isConfirm}}"
+            >                
+              确认收货
+            </label>
+            <!-- <navigator url='../orderDetail/orderDetail?orderId={{item.orderId}}' hover-class='none'> -->
+              <label class='checkBtn' wx:else>去评价</label>
+            <!-- </navigator> -->
+
+            <!-- 取消订单 -->
+            <label 
+              class='cancelBtn' 
+              style='{{isCancelBtnShow}}' 
+              catchtap='cancelOrder' 
+              wx:if="{{!list[index].isCancelled}}"
+            >
+              取消订单
+            </label>
+            <label class='cancelBtn' wx:else>已取消</label>
         </view>
         <!-- 订单底部按钮 end -->
-      </navigator>
     </view>
     <!-- 订单列表 end -->
   </block>

@@ -105,7 +105,7 @@
   font-size: 30rpx;
   top: -15rpx;
   float: left;
-  left: 20rpx;
+  left: 350rpx;
 }
 /* 总计金额 */
 .totalPrice{
@@ -123,6 +123,22 @@
   line-height: 150rpx;
   background-color:  #fff;
 } 
+/* 取消订单按钮 */
+.cancelBtn{
+  position: absolute;
+  top: 12rpx;
+  color: black;
+  right: 215rpx;
+  display: inline-block;
+  width: 170rpx;
+  height: 55rpx;
+  text-align: center;
+  font-weight: bold;
+  border: 3rpx black solid; 
+  border-radius: 15rpx;
+  font-size: 30rpx;
+  line-height: 57rpx;
+}
 /* 确认收货按钮 */
 .checkBtn{
   position: absolute;
