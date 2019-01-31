@@ -26,11 +26,28 @@
   left: 200rpx;
   color: #333333;
   width: 60%;
-  font-size: 35rpx;
+  font-size: 30rpx;
   display: -webkit-box;    
   -webkit-box-orient: vertical;    
   -webkit-line-clamp: 2;    
   overflow: hidden;
+}
+
+/* 商品价格 */
+.price{
+  position: absolute;
+  color: #FF6666;
+  font-size: 30rpx;
+  left: 195rpx;
+  bottom: 35rpx;
+}
+/* 商品数量 */
+.amount {
+  position: absolute;
+  font-size: 30rpx;
+  color: gray;
+  right: 20rpx;
+  bottom: 35rpx;
 }
 
 /* 输入框 */
@@ -57,7 +74,7 @@
   width: 90%;
   height: 80rpx;
   line-height: 80rpx;
-  margin-top: 70px;
+  margin-top: 40px;
   color: #FF3030;
   background-color:white;
   border: 3rpx solid #FF3030;

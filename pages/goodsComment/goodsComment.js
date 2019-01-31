@@ -10,9 +10,11 @@ Page({
    */
   data: {
     userId: "",
-    goodsId: "1",
-    goodsImage: "https://a4.vimage1.com/upload/flow/2017/10/20/117/15084947982974.jpg",
-    goodsName: "qwer",
+    goodsId: "",
+    goodsImage: "",
+    goodsName: "",
+    goodsAmount: "",
+    goodsPrice: "",
     commentContent: ""
   },
 
@@ -22,22 +24,12 @@ Page({
   onLoad: function (options) {
     this.data.userId = app.globalData.userId;
     this.data.goodsId = options.goodsId;
-    console.log("userId" + this.data.userId)
-    console.log("goodsId"+this.data.goodsId)
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+    this.setData({
+      goodsImage: options.goodsImage,
+      goodsName: options.goodsName,
+      goodsAmount: options.goodsAmount,
+      goodsPrice: options.goodsPrice
+    });
   },
   // 获取输入框的值
   commentContent: function (e) {
@@ -53,7 +45,6 @@ Page({
         duration: 1000
       });
     } else { 
-      console.log(this.data.commentContent)
       wx.request({
         url: 'http://localhost:8080/comment',
         data: 'goodsId=' + that.data.goodsId + 'userId=' + that.data.userId,
@@ -61,13 +52,16 @@ Page({
           //设置参数内容类型为x-www-form-urlencoded
           'content-type': 'application/x-www-form-urlencoded',
         },
-        fail: function(res) { 
-          if(true) {
+        success: function(res) { 
+          // 判断服务器状态码是否为200
+          if(res.statusCode == 200) {
+            // 提示成功弹窗
             wx.showToast({
               title: '提交成功！',
               icon: 'success',
               duration: 1000,
               success: function() {
+                // 延迟1秒跳转到订单详情页
                 setTimeout( function (){             
                   wx.navigateBack({
                     delta: 1
@@ -75,8 +69,17 @@ Page({
                 },1000);
                 clearTimeout();
               }
-            })
+            });
           }
+        },
+        fail: function() {
+          wx.showToast({
+            title: '提交失败！',
+            icon: 'loading',
+            duration: 1000,
+            success: function () {
+            }
+          });
         }
       });
     }

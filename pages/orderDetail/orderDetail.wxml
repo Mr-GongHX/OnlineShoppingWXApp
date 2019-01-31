@@ -42,7 +42,10 @@
     </view>
     <!-- 商品列表 start -->
     <view class='goodsList' wx:for="{{goodsItem}}" wx:for-item="goods" wx:key="key">
-      <navigator url='../goodsComment/goodsComment?goodsId={{goods.goodsId}}' hover-class='none'>
+      <navigator 
+        url='../goodsComment/goodsComment?goodsId={{goods.goodsId}}&goodsImage={{goods.image}}&goodsName={{goods.name}}&goodsAmount={{goods.amount}}&goodsPrice={{goods.price}}' 
+        hover-class='none'
+      >
         <view class='goods'>  
             <!-- 列表图片 -->
             <image class='list_img' src='{{goods.image}}' />

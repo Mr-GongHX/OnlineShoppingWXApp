@@ -6,6 +6,10 @@
     <image class='img' src='{{goodsImage}}' />
     <!-- 商品名称 -->
     <label class='name'>{{goodsName}}</label>
+    <!-- 商品数量 -->
+    <label class='amount'>x{{goodsAmount}}</label>
+    <!-- 商品单价 -->
+    <label class='price'>￥{{goodsPrice}}</label>
   </view>
   <!-- 商品区 end -->
 
