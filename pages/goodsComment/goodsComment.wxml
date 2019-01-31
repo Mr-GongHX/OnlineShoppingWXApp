@@ -1,11 +1,11 @@
 <!--pages/goodsComment/goodsComment.wxml-->
 <view class='container'>
   <!-- 商品区 start -->
-  <view class='goods' wx:for="{{goodsItem}}" wx:for-item="goods" wx:key="key">
+  <view class='goods'>
     <!-- 商品图片 -->
-    <image class='img' src='{{goods.image}}' />
+    <image class='img' src='{{goodsImage}}' />
     <!-- 商品名称 -->
-    <label class='name'>{{goods.name}}</label>
+    <label class='name'>{{goodsName}}</label>
   </view>
   <!-- 商品区 end -->
 

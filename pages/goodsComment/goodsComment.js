@@ -9,8 +9,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-    goodsId: "",
     userId: "",
+    goodsId: "1",
+    goodsImage: "https://a4.vimage1.com/upload/flow/2017/10/20/117/15084947982974.jpg",
+    goodsName: "qwer",
     commentContent: ""
   },
 
@@ -18,7 +20,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.data.userId = app.globalData.userId
+    this.data.userId = app.globalData.userId;
+    this.data.goodsId = options.goodsId;
+    console.log("userId" + this.data.userId)
+    console.log("goodsId"+this.data.goodsId)
   },
 
   /**

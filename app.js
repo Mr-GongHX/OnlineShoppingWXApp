@@ -20,6 +20,7 @@ App({
       }
     });
   },
+  // 全局变量
   globalData: {
     isLogin: true,
     userId: "1",
