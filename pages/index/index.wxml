@@ -1,8 +1,5 @@
 <!-- 首页 -->
 
-<!-- 导入wxSearch.wxml -->
-<import src="/wxSearch/wxSearch.wxml"/>
-
 <!-- 搜索 start -->
 <view class="wxSearch-section">
    <view class="wxSearch-pancel">
@@ -25,9 +22,6 @@
    </view>
 </view>
 <!-- 搜索 end -->
-
-<!-- 引入模板，注意 is="wxSearch" 和模板template name名称相对应 -->
-<template is="wxSearch" data="{{wxSearchData}}"/>
 
 <!-- 导航栏 -->  
 <view class="navbar">  
