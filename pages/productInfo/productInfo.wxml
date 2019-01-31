@@ -70,7 +70,7 @@
 <!-- 底部悬浮栏 -->
 <view class="detail-nav">
   <view class="car" catchtap="moveToCar">
-    <image src="../../img/shoppingCart.png" />
+    <image src="../../images/shoppingCart.png" />
     <view class="text">
       <text>购物车</text>
     </view>

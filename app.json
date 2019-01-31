@@ -28,20 +28,20 @@
       {
         "pagePath": "pages/index/index",
         "text": "首页",
-        "iconPath": "img/home.png",
-        "selectedIconPath": "img/home-chosen.png"
+        "iconPath": "images/home.png",
+        "selectedIconPath": "images/home-chosen.png"
       },
       {
         "pagePath": "pages/shoppingList/shoppingList",
         "text": "购物车",
-        "iconPath": "img/shoppingCart.png",
-        "selectedIconPath": "img/shoppingCart-chosen.png"
+        "iconPath": "images/shoppingCart.png",
+        "selectedIconPath": "images/shoppingCart-chosen.png"
       },
       {
         "pagePath": "pages/me/me",
         "text": "我的",
-        "iconPath": "img/me.png",
-        "selectedIconPath": "img/me-chosen.png"
+        "iconPath": "images/me.png",
+        "selectedIconPath": "images/me-chosen.png"
       } 
     ]
   }

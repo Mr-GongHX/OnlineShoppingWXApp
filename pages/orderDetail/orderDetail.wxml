@@ -27,7 +27,7 @@
 
   <!-- 收货人信息 start -->
   <view class='receiver'>
-    <image src='../../img/address.png' class='addressImg' />
+    <image src='../../images/address.png' class='addressImg' />
     <text class='name'>{{name}}</text>
     <text class='phone'>{{phone}}</text>
     <text class='address'>{{address}}</text>

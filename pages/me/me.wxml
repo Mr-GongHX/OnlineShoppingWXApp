@@ -28,12 +28,12 @@
   <view class="weui-cells weui-cells_after-title" wx:if="{{isLogin}}">
       <view class="content" bindtap="moveToMyAddress">
         <text>我的地址</text>
-        <image src="../../img/right.png"></image>
+        <image src="../../images/right.png"></image>
       </view>
       <navigator url="../myOrder/myOrder" class="weui-cell">
         <view class="content">
           <text>我的订单</text>
-          <image src="../../img/right.png"></image>
+          <image src="../../images/right.png"></image>
         </view>
       </navigator>
       <!-- 退出登录 -->

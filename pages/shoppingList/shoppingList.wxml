@@ -36,7 +36,7 @@
               </view>
 
               <view class='right'>
-                  <image src='../../img/delete.png' bindtap='shanchu' data-index="{{index}}"></image>
+                  <image src='../../images/delete.png' bindtap='shanchu' data-index="{{index}}"></image>
               </view>
             </view>
 
