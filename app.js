@@ -3,7 +3,7 @@ App({
   onLaunch: function () {
     wx.login({
       timeout: 10000,
-      success: (res) =>{
+      success: res =>{
         console.log(res.code);
         wx.showToast({
           title: '登录成功',

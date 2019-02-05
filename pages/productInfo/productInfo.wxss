@@ -58,7 +58,7 @@
 .car image {
   width: 55rpx;
   height: 55rpx;
-  margin: 10rpx 27rpx;
+  margin: 0rpx 26rpx;
 }
 
 
@@ -68,7 +68,7 @@
   display: inline-block;
   position: absolute;
   top: 60rpx;
-  left: 33rpx;
+  left: 35rpx;
   font-weight: bold;
   color: gray;
 }
