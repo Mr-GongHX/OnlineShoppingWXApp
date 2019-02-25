@@ -42,19 +42,29 @@ navigator{
 }
  
 .list .list_item .info .price{
+  position: absolute;
   color:#FF2727;
-  margin-left: 7rpx;
-  margin-top: 70rpx;
+  left: 0rpx;
+  bottom: 30rpx;
   font-size: 30rpx;
 }
  
 .list .list_item .info .store{
   position: absolute;
   left: 0rpx;
-  bottom: 5rpx;
   color:#747474;
   margin-left: 10rpx;
+  bottom: 0rpx;
   font-size: 20rpx;
+}
+
+/* 商品未找到 */
+.goodsNotFound {
+  width: 100%;
+  height: 30rpx;
+  text-align: center;
+  font-size: 30rpx;
+  margin-top: 20rpx;
 }
 
 /*  加载更多   */

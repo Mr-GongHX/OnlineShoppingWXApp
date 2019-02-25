@@ -5,11 +5,9 @@
    <view class="wxSearch-pancel">
       <input 
         bindinput="wxSearchInput" 
-        bindfocus="wxSerchFocus" 
         bindconfirm="search"
         confirm-type="search"
         value="{{wxSearchData}}" 
-        bindblur="wxSearchBlur" 
         class="wxSearch-input" 
         placeholder="搜索喜欢的商品"
       />
@@ -52,10 +50,10 @@
 </swiper> 
 <!-- 轮播图 end-->
 
-<!--特价商品 start-->
+<!--低价好货 start-->
 <view class="hots-container"> 
   <view class="category-title" bindtap="moveToHotGoodsList">
-    <text class="title">特价商品</text>
+    <text class="title">低价好货</text>
     <view class="line_name">
       <text>欢迎选购！</text>
       <text>查看全部 ></text>
@@ -64,28 +62,30 @@
   <!-- 横向滚动 -->
   <scroll-view scroll-x="true">
       <view class="goods">
-         <block wx:for-items="{{goodsHotItems}}" wx:key="name">
+         <block wx:for-items="{{lowPriceGoodsItems}}"  wx:for-index="index" wx:for-item="item" wx:key="{{goodsId}}">
             <view 
               class="goods-item" 
               catchtap="catchTapCategory" 
-              data-type="{{item.name}}" 
-              data-typeid="{{item.typeId}}"
               catchtap="productInfo"
             > 
-                <image src="{{item.imageurl}}" class="goods-image" />   
-                <text>{{item.name}}</text>
-                <p>￥{{item.newprice}}</p> 
+                <image 
+                  src="{{urlPrefix}}goods/showMyGoodsImg-goodsImg-{{item.goodsId}}" 
+                  class="goods-image" 
+                  mode="aspectFill" 
+                />   
+                <text>{{item.goodsName}}</text>
+                <p>￥{{item.goodsPrice}}</p> 
             </view>
         </block> 
       </view>
     </scroll-view>   
 </view> 
-<!--特价商品 end-->
+<!--低价好货 end-->
 
 <!--新上架商品 start-->
 <view class="new-container"> 
   <view class="category-title">
-    <text class="title">新上架</text>
+    <text class="title">新上架商品</text>
     <view class="line_name">
       <text>欢迎选购！</text>
     </view>
@@ -93,18 +93,20 @@
   <!-- 纵向滚动 -->
   <scroll-view scroll-y="true">
       <view class="new">
-         <block wx:for-items="{{newGoodsItems}}" wx:key="name">
-            <view class="new-good" catchtap="catchTapCategory" data-type="{{item.name}}" data-typeid="{{item.typeId}}">
+         <block wx:for-items="{{newGoodsItems}}" wx:for-index="index" wx:for-item="item" wx:key="{{goodsId}}">
+            <view class="new-good" catchtap="catchTapCategory">
               <view>
-                <image src="{{item.imageurl}}" class="new-image" mode="widthFix"/> 
+                <image 
+                  src="{{urlPrefix}}goods/showMyGoodsImg-goodsImg-{{item.goodsId}}"
+                  class="new-image" 
+                  mode="aspectFill"
+                /> 
               </view>
               <view class="product-name">
-                {{item.name}}
+                {{item.goodsName}}
               </view>
               <view class="product-price-wrap">
-                <p class="product-price-new">￥{{item.newprice}}</p>  
-                <p class="product-price-old">￥{{item.oldprice}}</p> 
-                <p class="discount">{{item.discount}}折</p>  
+                <p class="product-price-new">￥{{item.goodsPrice}}</p>  
               </view>
             </view>
          </block> 
@@ -114,7 +116,7 @@
 <!-- 新上架 end -->
 
 <!-- 触底加载 -->
-<view class="weui-loadmore" hidden="{{isHideLoadMore}}">
+<!-- <view class="weui-loadmore" hidden="{{isHideLoadMore}}">
     <view class="weui-loading"></view>
     <view class="weui-loadmore__tips">努力加载中...</view>
-</view>
+</view> -->

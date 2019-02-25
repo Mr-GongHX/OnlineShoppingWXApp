@@ -1,24 +1,34 @@
 <!-- 搜索列表页 -->
 <view class='list'>
-  <block wx:for='{{dataList}}' wx:key='list' wx:for-item="item">
-  <view class="list_item">
-      <navigator url='../productInfo/productInfo?id={{item.goods_id}}'>
-      <view class='img'>
-        <image src="{{imghref}}{{item.goods_img}}"  mode="scaleToFill"/>
+  <view wx:if="{{goodsList.length !== 0}}">
+    <block wx:for='{{goodsList}}' wx:for-index="index"
+    wx:for-item="item" wx:key="{{goodsId}}"
+    >
+      <view class="list_item">
+          <navigator url='../productInfo/productInfo?id={{item.goodsId}}'>
+            <view class='img'>
+              <image 
+                src="{{urlPrefix}}goods/showMyGoodsImg-goodsImg-{{item.goodsId}}"  
+                mode="aspectFill"
+              />
+            </view>
+            <view class='info'>
+              <view class='title'>{{item.goodsName}}</view>
+              <view class='price'>￥{{item.goodsPrice}}</view>
+              <view class='store'>{{item.shopName}} ></view>
+            </view>
+          </navigator>
+          <view class='clear'></view>
       </view>
-      <view class='info'>
-        <view class='title'>{{item.goods_title}}</view>
-        <view class='price'>￥{{item.goods_price}}</view>
-        <view class='store'>{{item.goods_store}} ></view>
-      </view>
-       </navigator>
-      <view class='clear'></view>
+    </block>
   </view>
-  </block>
+  <view class='goodsNotFound' wx:else>
+    没有找到相关商品
+  </view>
 </view>
 
 <!-- 触底加载 -->
-<view class="weui-loadmore" hidden="{{isHideLoadMore}}">
+<!-- <view class="weui-loadmore" hidden="{{isHideLoadMore}}">
     <view class="weui-loading"></view>
     <view class="weui-loadmore__tips">努力加载中...</view>
-</view>
+</view> -->
