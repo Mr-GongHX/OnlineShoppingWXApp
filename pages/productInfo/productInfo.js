@@ -1,4 +1,7 @@
 // pages/productInfo/productInfo.js
+
+// 获取小程序实例
+const app = getApp();
 Page({
   /**
    * 页面的初始数据
@@ -9,36 +12,10 @@ Page({
     interval: 3000,
     duration: 500,
     imghref: "",
-    goods_info: { 
-      goods_id: 1, 
-      goods_title: "苹果iPhoneXs Max 256GB 玫瑰金", 
-      goods_price: '9999.99', 
-      goods_yunfei: 0, 
-      goods_kucun: 100, 
-      goods_xiaoliang: 1, 
-      goods_shopName:"苹果旗舰店",
-      content: "商品介绍详情啦啦啦啦啦啦啦啦啦阿拉"
-    },
-    goods_img: [
-      { 'img': 'https://a4.vimage1.com/upload/flow/2017/10/20/117/15084947982974.jpg' },
-      { 'img': 'https://a4.vimage1.com/upload/flow/2017/10/20/117/15084947982974.jpg' },
-      { 'img': 'https://a4.vimage1.com/upload/flow/2017/10/20/117/15084947982974.jpg' },
-      { 'img': 'https://a4.vimage1.com/upload/flow/2017/10/20/117/15084947982974.jpg' },
-    ],
-    pjDataList: [
-      { 
-        headpic: 'http://t2.hddhhn.com/uploads/tu/201610/198/scx30045vxd.jpg', 
-        author: '张三', 
-        add_time: '2018-06-01', 
-        content: '好评好评，真实太好了!' 
-      },
-      { 
-        headpic: 'http://t2.hddhhn.com/uploads/tu/201610/198/scx30045vxd.jpg', 
-        author: '张三', 
-        add_time: '2018-06-01',
-        content: '好评好评，真实太好了!' 
-      }
-    ],//评价数据
+    goodsId: "",
+    urlPrefix: "",
+    // 商品详情,评价
+    goodsInfo: [],
   },
   // 预览商品图片
   previewImage: function (e) {
@@ -87,5 +64,50 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that = this;
+    this.setData({
+      goodsId: options.goodsId,
+      urlPrefix: app.globalData.urlPrefix
+    });
+    // 根据商品id查找商品详情
+    wx.request({
+      url: that.data.urlPrefix + 'user/goodsInfo',
+      method: "POST",
+      data: {
+        goodsId: that.data.goodsId
+      },
+      header: {
+        "content-type": "application/x-www-form-urlencoded"
+      },
+      success: function (res) {
+        if (res.statusCode == 200) {
+          that.setData({
+            goodsInfo: res.data
+          });
+        }
+        // 将时间戳转化为（年-月-日）的格式
+        var date = null;
+        var year = null;
+        var month = null;
+        var day = null;
+        for(var i = 0; i< res.data.length; i ++){
+          date = new Date(res.data[i].commentTime);
+          year = date.getFullYear() + '-';
+          month = (date.getMonth() + 1 < 10 ? '0' +
+            (date.getMonth() + 1) : date.getMonth() + 1) + '-';
+          day = date.getDate() < 10 ? '0' +
+            date.getDate() : date.getDate();
+          res.data[i].commentTime = year + month + day;
+        }  
+        //  更新渲染出=层 
+        that.setData({
+          goodsInfo: res.data
+        })
+
+      }
+    });
+  },
+  onShow: function () {   
+    
   }
 })

@@ -56,18 +56,15 @@
     <text class="title">低价好货</text>
     <view class="line_name">
       <text>欢迎选购！</text>
-      <text>查看全部 ></text>
+      <text>查看全部＞</text>
     </view>
   </view> 
   <!-- 横向滚动 -->
   <scroll-view scroll-x="true">
       <view class="goods">
          <block wx:for-items="{{lowPriceGoodsItems}}"  wx:for-index="index" wx:for-item="item" wx:key="{{goodsId}}">
-            <view 
-              class="goods-item" 
-              catchtap="catchTapCategory" 
-              catchtap="productInfo"
-            > 
+          <navigator url='../productInfo/productInfo?goodsId={{item.goodsId}}'>
+            <view class="goods-item"> 
                 <image 
                   src="{{urlPrefix}}goods/showMyGoodsImg-goodsImg-{{item.goodsId}}" 
                   class="goods-image" 
@@ -76,6 +73,7 @@
                 <text>{{item.goodsName}}</text>
                 <p>￥{{item.goodsPrice}}</p> 
             </view>
+          </navigator>
         </block> 
       </view>
     </scroll-view>   
@@ -94,7 +92,8 @@
   <scroll-view scroll-y="true">
       <view class="new">
          <block wx:for-items="{{newGoodsItems}}" wx:for-index="index" wx:for-item="item" wx:key="{{goodsId}}">
-            <view class="new-good" catchtap="catchTapCategory">
+          <navigator url='../productInfo/productInfo?goodsId={{item.goodsId}}'>
+            <view class="new-good">
               <view>
                 <image 
                   src="{{urlPrefix}}goods/showMyGoodsImg-goodsImg-{{item.goodsId}}"
@@ -109,6 +108,7 @@
                 <p class="product-price-new">￥{{item.goodsPrice}}</p>  
               </view>
             </view>
+          </navigator>
          </block> 
       </view>
   </scroll-view>  

@@ -16,9 +16,18 @@
  
 .list_item{position:relative;padding:15rpx 10rpx;background:#fff; border-bottom:1rpx solid #ccc;}
  
-.details_box{ margin-top:6rpx;padding:0 15rpx;font-weight: bold;font-size: 30rpx;background:#fff;}
+.details_box{margin-left: -14rpx; margin-top:6rpx;padding:0 15rpx;font-weight: bold;font-size: 30rpx;background:#fff;}
+
+.goodsImgInfo {
+  margin-left: 0rpx;
+}
+
+.goodsImgInfo image {
+  width: 102%;
+  height: 600rpx;
+}
  
-.pj_box{margin-top:10rpx;padding:0 15rpx;font-size: 13rpx;background:#fff;}
+.pj_box{width:100%;margin-top:10rpx;font-size: 13rpx;background:#fff;}
 .ico_img_jt{vertical-align: middle;width:16rpx; height: 16rpx;}
  
 .pj_u_info .header_img{float:left;}
@@ -28,6 +37,19 @@
  
 .pj_cont{position: absolute;left: 110rpx;top:50rpx;font-size: 25rpx;}
 .pj_img{ margin:10rpx 10rpx 0rpx 10rpx;width:120rpx;height:100rpx;}
+
+/* 暂无商品评价 */
+.noneComment{
+  width: 100%;
+  height: 100rpx;
+  border-bottom: 1rpx solid #ccc;
+}
+.noneComment text{
+  position: relative;
+  left: 275rpx;
+  top: 30rpx;
+  font-size: 30rpx;
+}
 
 .wxParse {
   height: 1000rpx;

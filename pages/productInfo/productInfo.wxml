@@ -2,52 +2,65 @@
 
 <!-- 商品轮播图 start -->
 <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" class="banner" duration="{{duration}}" circular="{{duration}}">
-  <block wx:for="{{goods_img}}" wx:key="goods_info">
+  <!-- <block wx:for="{{}}" wx:key="goodsInfo"> -->
     <swiper-item>
-      <image 
-        src="{{imghref}}{{item.img}}" 
+      <image wx:if="{{goodsId}}"
+        src="{{urlPrefix}}goods/showMyGoodsImg-goodsImg-{{goodsId}}" 
         class="slide-image" 
         mode="aspectFill" 
-        data-src='{{imghref}}{{item.img}}' 
+        data-src='{{urlPrefix}}goods/showMyGoodsImg-goodsImg-{{goodsId}}' 
         bindtap="previewImage"
       />
     </swiper-item>
-  </block>
+  <!-- </block> -->
 </swiper>
 <!-- 商品轮播图 end -->
 
 <!-- 商品详情 start -->
 <view class="info-title">
-  <text>{{goods_info.goods_title}}</text>
+  <text>{{goodsInfo[0].goodsName}}</text>
 </view>
 <view class="info-price clear">
-  <view class='price'>￥{{goods_info.goods_price}}</view>
+  <view class='price'>￥{{goodsInfo[0].goodsPrice}}</view>
 </view>
 <view class="info-shop">
-  <text>店铺：{{goods_info.goods_shopName}}</text>
+  <text>店铺：{{goodsInfo[0].shopName}}</text>
 </view>
 <!-- 商品详情 end -->
 
 <!-- 评价 start -->
-<block wx:if="{{pjDataList!=''}}">
+<block>
   <view class='pj_box' catchtap="moveToCommentDetail">
     <view style="height:60rpx;line-height: 40rpx;border-bottom:1rpx solid #ccc;">
-     <view style='margin-top:6rpx;float:left;font-size:35rpx;font-weight:bold;'>商品评价</view>
-     <view style='margin-top:9rpx;float:right;font-size:30rpx;font-weight:bold; color:#A2A2A2;'>
-        查看全部 >
+     <view style='margin-top:6rpx;margin-left:15rpx;float:left;font-size:35rpx;font-weight:bold;'>
+      商品评价
+     </view>
+     <view style='margin-top:9rpx;margin-right:15rpx;float:right;font-size:25rpx;font-weight:bold; color:#A2A2A2;'>
+        查看全部＞
      </view>
      <view class='clear'></view>
     </view>
-    <block wx:for="{{pjDataList}}" wx:for-item="item" wx:key="pj">
-      <view class="list_item">
+    <block
+      wx:for="{{goodsInfo}}" 
+      wx:for-item="item"
+      wx:for-index="index" 
+      wx:key="goodsInfo[index].userId"
+    >
+      <view wx:if="{{goodsInfo[index].userId}}" class="list_item">
         <view class='pj_u_info clear'>
-          <view class='header_img'><image src="{{item.headpic}}" mode="aspectFit"></image></view>
-          <view class='name'>{{item.author}}</view>
-          <view class='time'>{{item.add_time}}</view>
+          <view class='header_img'>
+            <image 
+              src="{{urlPrefix}}goods/showMyGoodsImg-goodsImg-{{goodsId}}" 
+              mode="aspectFill" 
+            />
+          </view>
+          <view class='name'>{{goodsInfo[index].userNickname}}</view>
+          <view class='time'>{{goodsInfo[index].commentTime}}</view>
         </view>
-        <view class='pj_cont'>
-          {{item.content}}
-        </view>
+        <view class='pj_cont'>{{goodsInfo.commentContent}}</view>
+      </view>
+      <view class='noneComment' wx:else>
+        <text>暂无商品评价！</text>
       </view>
     </block>
   </view>
@@ -56,13 +69,14 @@
 
 <!-- 商品详情 start -->
 <view class='details_box'>
-  <view style="height:40px;line-height: 40px;border-bottom:1rpx solid #ccc;">
-     <view style='font-size:35rpx;'>商品介绍</view>
+  <view style=" height:60rpx;line-height: 40rpx;border-bottom:1rpx solid #ccc;">
+     <view style='margin-left: 15rpx;margin-top:6rpx;float:left;font-size:35rpx;font-weight:bold;'>商品介绍</view>
   </view>
-  <view style='padding:10px 0px;'>
-      <view class="wxParse">
-         {{goods_info.content}}
-      </view>
+  <view class='goodsImgInfo'>
+      <image wx:if="{{goodsId}}"
+        src='{{urlPrefix}}goods/showMyGoodsImg-goodsImgInfo-{{goodsId}}' 
+        mode='aspectFill'
+      />
   </view>
 </view>
 <!-- 商品详情 end -->

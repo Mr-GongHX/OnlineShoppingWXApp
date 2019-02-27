@@ -49,18 +49,6 @@ Page({
       url: "../hotGoodsList/hotGoodsList"
     })
   },
-  // 跳转商品详情页
-  catchTapCategory: function () {
-    wx.navigateTo({
-      url: '../productInfo/productInfo',
-    })
-  },
-  // 跳转商品详情页
-  productInfo: function () {
-    wx.navigateTo({
-      url: '../productInfo/productInfo',
-    })
-  },
   onLoad: function () {
     this.setData({
       urlPrefix: app.globalData.urlPrefix

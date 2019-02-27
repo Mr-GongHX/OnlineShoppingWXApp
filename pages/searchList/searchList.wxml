@@ -15,7 +15,7 @@
             <view class='info'>
               <view class='title'>{{item.goodsName}}</view>
               <view class='price'>￥{{item.goodsPrice}}</view>
-              <view class='store'>{{item.shopName}} ></view>
+              <view class='store'>{{item.shopName}}＞</view>
             </view>
           </navigator>
           <view class='clear'></view>
