@@ -8,14 +8,15 @@ Page({
    */
   data: {
     indicatorDots: true,
-    autoplay: true,
+    autoplay: false,
     interval: 3000,
     duration: 500,
+    pause: false,
     imghref: "",
     goodsId: "",
     urlPrefix: "",
     // 商品详情,评价
-    goodsInfo: [],
+    goodsInfo: []
   },
   // 预览商品图片
   previewImage: function (e) {
@@ -32,8 +33,9 @@ Page({
   },
   // 跳转评价详情
   moveToCommentDetail: function() {
+    var that = this;
     wx.navigateTo({
-      url: "../commentDetail/commentDetail?id={{goods_id}}"
+      url: "../commentDetail/commentDetail?goodsId=" + that.data.goodsId
     })
   },
   // 跳转到购物车
@@ -43,16 +45,41 @@ Page({
     })
   },
   // 加入购物车
-  addCar: function() {
-    wx.showToast({
-      title: '添加成功',
-      icon: 'success',
-      duration: 1000,
-      mask: true,
-      success: function() { //添加成功回调
-        
+  addCar: function(res) {
+    var that = this;
+    //先获取缓存中的已添加购物车的商品信息
+    var cartItems = wx.getStorageSync('cartItems') || []
+    //判断购物车缓存中是否已存在该商品
+    var exist = cartItems.find(function (ele) {
+      return ele.id === that.data.goodsId
+    }) 
+    if (exist) {
+      //如果存在，则增加该商品的购买数量
+      exist.goodsQuantity = parseInt(exist.goodsQuantity) + 1
+    } else {
+      //如果不存在，传入该商品的详细信息
+      cartItems.push({
+        id: that.data.goodsId,
+        goodsQuantity: 1,
+        goodsPrice: that.data.goodsInfo[0].goodsPrice,
+        goodsName: that.data.goodsInfo[0].goodsName,
+        goodsPicture: that.data.urlPrefix + "goods/showMyGoodsImg-goodsImg-" +
+          that.data.goodsId
+      });
+    }
+    //加入购物车数据，存入缓存
+    wx.setStorage({
+      key: 'cartItems',
+      data: cartItems,
+      success: function (res) {
+        //添加购物车的消息提示框
+        wx.showToast({
+          title: "添加成功",
+          icon: "success",
+          durantion: 2000
+        });
       }
-    })
+    });
   },
   // 立即购买
   buyNow: function() {
@@ -81,28 +108,25 @@ Page({
       },
       success: function (res) {
         if (res.statusCode == 200) {
+          // 将时间戳转化为（年-月-日）的格式
+          var date = null;
+          var year = null;
+          var month = null;
+          var day = null;
+          for(var i in res.data){
+            date = new Date(res.data[i].commentTime);
+            year = date.getFullYear() + '-';
+            month = (date.getMonth() + 1 < 10 ? '0' +
+              (date.getMonth() + 1) : date.getMonth() + 1) + '-';
+            day = date.getDate() < 10 ? '0' +
+              date.getDate() : date.getDate();
+            res.data[i].commentTime = year + month + day;
+          }  
+          //  更新渲染层 
           that.setData({
             goodsInfo: res.data
           });
         }
-        // 将时间戳转化为（年-月-日）的格式
-        var date = null;
-        var year = null;
-        var month = null;
-        var day = null;
-        for(var i = 0; i< res.data.length; i ++){
-          date = new Date(res.data[i].commentTime);
-          year = date.getFullYear() + '-';
-          month = (date.getMonth() + 1 < 10 ? '0' +
-            (date.getMonth() + 1) : date.getMonth() + 1) + '-';
-          day = date.getDate() < 10 ? '0' +
-            date.getDate() : date.getDate();
-          res.data[i].commentTime = year + month + day;
-        }  
-        //  更新渲染出=层 
-        that.setData({
-          goodsInfo: res.data
-        })
 
       }
     });

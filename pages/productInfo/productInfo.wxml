@@ -1,17 +1,34 @@
 <!-- 商品详情页 -->
 
 <!-- 商品轮播图 start -->
-<swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" class="banner" duration="{{duration}}" circular="{{duration}}">
+<swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" class="banner" duration="{{duration}}" circular="{{duration}}"
+indicator-color="#ccc" indicator-active-color="white">
+  <swiper-item>
+    <video 
+      wx:if="{{goodsId}}"
+      src="{{urlPrefix}}goods/showMyGoodsVideo-{{goodsId}}"
+      class="slide-image" 
+      object-fit="cover"
+      loop
+      autoplay 
+      page-gesture
+      show-mute-btn
+      play-btn-position="center"
+      enable-play-gesture
+      auto-pause-if-open-native="{{pause}}"
+    />
+  </swiper-item>
   <!-- <block wx:for="{{}}" wx:key="goodsInfo"> -->
-    <swiper-item>
-      <image wx:if="{{goodsId}}"
-        src="{{urlPrefix}}goods/showMyGoodsImg-goodsImg-{{goodsId}}" 
-        class="slide-image" 
-        mode="aspectFill" 
-        data-src='{{urlPrefix}}goods/showMyGoodsImg-goodsImg-{{goodsId}}' 
-        bindtap="previewImage"
-      />
-    </swiper-item>
+  <swiper-item>
+    <image 
+      wx:if="{{goodsId}}"
+      src="{{urlPrefix}}goods/showMyGoodsImg-goodsImg-{{goodsId}}" 
+      class="slide-image" 
+      mode="aspectFill" 
+      data-src='{{urlPrefix}}goods/showMyGoodsImg-goodsImg-{{goodsId}}' 
+      bindtap="previewImage"
+    />
+  </swiper-item>
   <!-- </block> -->
 </swiper>
 <!-- 商品轮播图 end -->
@@ -57,10 +74,10 @@
           <view class='name'>{{goodsInfo[index].userNickname}}</view>
           <view class='time'>{{goodsInfo[index].commentTime}}</view>
         </view>
-        <view class='pj_cont'>{{goodsInfo.commentContent}}</view>
+        <view class='pj_cont'>{{goodsInfo[index].commentContent}}</view>
       </view>
       <view class='noneComment' wx:else>
-        <text>暂无商品评价！</text>
+        <text>该商品暂无评价！</text>
       </view>
     </block>
   </view>

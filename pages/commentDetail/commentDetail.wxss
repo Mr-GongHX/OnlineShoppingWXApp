@@ -3,11 +3,23 @@
 
 .list_item{position:relative;padding:15rpx 10rpx;background:#fff; border-bottom:1rpx solid #ccc;}
 
-.pj_u_info .header_img{float:left;}
+.pj_u_info .header_img{float:left;margin-left: 15rpx;}
 .pj_u_info .header_img image{width:100rpx;height:100rpx;border-radius: 50%;overflow: hidden;}
 .pj_u_info .name{float:left; margin-left:10rpx;font-weight: bold;font-size: 25rpx;color:#333;}
-.pj_u_info .time{ float:right;font-size: 25rpx;color:#999;}
-.pj_cont{position: absolute;left: 120rpx;top:60rpx;font-size: 25rpx;}
+.pj_u_info .time{ float:right;margin-right: 10rpx;font-size: 25rpx;color:#999;}
+.pj_cont{position: absolute;left: 133rpx;top:60rpx;font-size: 25rpx;}
+
+/* 暂无商品评价 */
+.noneComment{
+  width: 100%;
+  height: 100rpx;
+}
+.noneComment text{
+  position: relative;
+  left: 275rpx;
+  top: 30rpx;
+  font-size: 30rpx;
+}
 
 /*  加载更多   */
 .weui-loading {
