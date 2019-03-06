@@ -67,6 +67,7 @@ Page({
             goodsQuantity: 1,
             goodsPrice: that.data.goodsInfo[0].goodsPrice,
             goodsName: that.data.goodsInfo[0].goodsName,
+            selected: true,
             goodsPicture: that.data.urlPrefix + "goods/showMyGoodsImg-goodsImg-" +
               that.data.goodsId
           });

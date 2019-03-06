@@ -114,10 +114,10 @@ Page({
   },
   // 跳转确认订单页
   go: function (e) {
-    this.setData({
-      cartItems: []
-    })
-    wx.setStorageSync("cartItems", [])
+    // this.setData({
+    //   cartItems: []
+    // })
+    // wx.setStorageSync("cartItems", [])
     wx.navigateTo({
       url: '../orderCheck/orderCheck',
     });
@@ -127,7 +127,8 @@ Page({
     var sum = 0
     for (var i = 0; i < this.data.cartItems.length; i++) {
       if (this.data.cartItems[i].selected) {
-        sum += this.data.cartItems[i].value * this.data.cartItems[i].price
+        sum += this.data.cartItems[i].goodsQuantity * 
+        this.data.cartItems[i].goodsPrice;
       }
     }
     //更新数据

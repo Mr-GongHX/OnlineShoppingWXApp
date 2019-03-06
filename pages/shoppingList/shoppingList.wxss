@@ -138,5 +138,5 @@
 }
 .cart_sum{
   margin-bottom: 25rpx;
-  margin-right: -100rpx;
+  /* margin-right: -100rpx; */
 }

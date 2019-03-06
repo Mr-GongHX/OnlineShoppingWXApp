@@ -1,6 +1,11 @@
 <!-- 购物车 -->
-<view class='cartMain'>
-    <view wx:for="{{cartItems}}" wx:for-index="index" wx:for-item="item" wx:key="{{item.id}}">
+<view class='cartMain' wx:if="{{cartItems.length>0}}">
+    <view 
+      wx:for="{{cartItems}}"
+      wx:for-index="index" 
+      wx:for-item="item" 
+      wx:key="{{item.id}}"
+    >
         <view data-id="{{item.id}}"  class='cart-box' data-index="{{index}}">
             <view class='icon'>
                 <icon 
@@ -56,12 +61,30 @@
 
             <!-- 底部 start  -->
             <view class="cart-bottom">
-              <icon wx:if="{{CheckAll}}"  class="cart-icon" type="success" color="#FF3030" size="20" bindtap="select" data-index="{{index}}" />
-              <icon wx:else type="circle"   class="cart-icon" size="20" bindtap="select" data-index="{{index}}"/>
+              <icon 
+                wx:if="{{CheckAll}}" 
+                class="cart-icon" 
+                type="success" 
+                color="#FF3030" 
+                size="20" 
+                bindtap="select" 
+                data-index="{{index}}"
+              />
+              <icon wx:else 
+                type="circle"   
+                class="cart-icon" 
+                size="20" 
+                bindtap="select" 
+                data-index="{{index}}"
+              />
               <text class='checkAll'>全选</text>
 
               <view class='cart-pay'>
-                <text class='cart_pay' bindtap="go" data-id="{{item.id}}">去结算</text>
+                <text 
+                  class='cart_pay' 
+                  bindtap="go" 
+                  data-id="{{item.id}}"
+                >去结算</text>
               </view>
 
               <view class='cart-sum'>
@@ -74,4 +97,7 @@
           </view>
           <!-- 底部 end -->
       </view>
+</view>
+<view wx:else>
+  <text>您的购物车空空如也</text>
 </view>
