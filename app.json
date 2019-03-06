@@ -12,7 +12,10 @@
     "pages/myOrder/myOrder",
     "pages/register/register",
     "pages/orderDetail/orderDetail",
-    "pages/goodsComment/goodsComment"
+    "pages/goodsComment/goodsComment",
+    "pages/phoneArea/phoneArea",
+    "pages/computerArea/computerArea",
+    "pages/accessoryArea/accessoryArea"
   ],
   "window":{
     "backgroundTextStyle":"light",

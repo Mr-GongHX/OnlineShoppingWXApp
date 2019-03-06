@@ -13,11 +13,6 @@ Page({
     interval: 3000, //设置自动切换时间间隔：3s
     duration: 300,  //设置滑动动画时长：0.3s
     wxSearchData: "",  //输入框数据
-    imgUrls: [
-      '../../images/phone.png',
-      '../../images/computer.png',
-      '../../images/accessory.png'
-    ],
     // 低价好货
     lowPriceGoodsItems: [],
     // 新上架商品
@@ -39,15 +34,27 @@ Page({
       })
     }
   },
+  // 跳转手机专区页
+  moveToPhoneArea: function () {
+    wx.navigateTo({
+      url: '../phoneArea/phoneArea',
+    })
+  },
+  // 跳转电脑专区页
+  moveToComputerArea: function () {
+    wx.navigateTo({
+      url: '../computerArea/computerArea',
+    })
+  },
+  // 跳转外设专区页
+  moveToAccessoryArea: function () {
+    wx.navigateTo({
+      url: '../accessoryArea/accessoryArea',
+    })
+  },
   // 输入框内容
   wxSearchInput: function(e){
     this.data.wxSearchData = e.detail.value;
-  },
-  // 跳转低价好货列表页
-  moveToHotGoodsList: function() {
-    wx.navigateTo({
-      url: "../hotGoodsList/hotGoodsList"
-    })
   },
   onLoad: function () {
     this.setData({
