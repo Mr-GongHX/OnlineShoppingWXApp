@@ -89,10 +89,10 @@ Page({
             });     
           } else {
             // 登录失败
-            wx.showToast({
-              title: '登录失败！',
-              icon: 'loading',
-              duration: 1000
+            wx.showModal({
+              title: '登录失败',
+              content: '用户名或密码错误，请重新填写',
+              showCancel: false
             });
           }
         },

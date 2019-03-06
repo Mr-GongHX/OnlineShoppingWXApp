@@ -5,7 +5,11 @@
     <view class="list_item">
       <view class='pj_u_info clear'>
         <view class='header_img'>
-          <image src="{{item.headpic}}" mode="aspectFill" />
+          <image 
+            src="{{urlPrefix}}user/userProfile-{{item.userId}}"
+            style="border: 1rpx solid #ccc"
+            mode="aspectFill" 
+          />
         </view>
         <view class='name'>{{item.userNickname}}</view>
         <view class='time'>{{item.commentTime}}</view>

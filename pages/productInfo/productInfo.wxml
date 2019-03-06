@@ -67,7 +67,8 @@ indicator-color="#ccc" indicator-active-color="white">
         <view class='pj_u_info clear'>
           <view class='header_img'>
             <image 
-              src="{{urlPrefix}}goods/showMyGoodsImg-goodsImg-{{goodsId}}" 
+              src="{{urlPrefix}}user/userProfile-{{goodsInfo[index].userId}}"
+              style='border:1rpx solid #ccc' 
               mode="aspectFill" 
             />
           </view>

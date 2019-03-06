@@ -93,26 +93,6 @@ Page({
         }
       }
     });
-  },
-  // 触底加载更多
-  // onReachBottom: function () {
-  //   var that = this;
-  //   setTimeout(function () {
-  //     that.setData({
-  //       isHideLoadMore: true,
-  //       newGoodsItems: [
-  //         {
-  //           goodId: 100,
-  //           name: '测试数据1',
-  //           url: 'bill',
-  //           imageurl: 'https://a3.vimage1.com/upload/merchandise/pdcvis/2017/08/21/142/fb2960bf8e074d029c24315279289c19-5_218x274_70.jpg',
-  //           newprice: "8612",
-  //           oldprice: "88",
-  //           discount: "8.8",
-  //         }
-  //       ]
-  //     });
-  //   }, 100);
-  // }
+  }
 })
 

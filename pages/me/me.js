@@ -197,7 +197,7 @@ Page({
     var that = this;
     wx.showModal({
       title: '您确定要退出登录吗？',
-      content: '退出之后，您将无法进行购买商品，查看订单等操作',
+      content: '退出之后，您的购物车会被清空以及无法进行购买商品，查看订单等操作',
       showCancel: true,
       success: function (e) {
         // 点击确定
