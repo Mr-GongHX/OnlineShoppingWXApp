@@ -2,28 +2,83 @@
 
 // 获取小程序实例
 const app = getApp();
-
 Page({
   /**
    * 页面的初始数据
    */
   data: {
-    isLogin: false,
+    urlPrefix: "",
     userId: "",
     userProfile: "",
-    nickName: ""
+    nickname: "",
+    balance: ""
   },
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function () {
-    // 初始化设置数据（是否登录，用户Id，用户头像网络地址，用户昵称）
+  onShow: function () {
     this.setData({
-      isLogin : app.globalData.isLogin,
-      userId : app.globalData.userId,
-      userProfile : app.globalData.userProfile,
-      nickName : app.globalData.nickName
+      urlPrefix: app.globalData.urlPrefix
     });
+    // 初始化设置数据（用户Id，用户头像网络地址，用户昵称,用户余额）
+    var that = this;
+    // 获取相应数据
+    wx.getStorage({
+      key: 'userId',
+      success: function (res) {
+        that.setData({
+          userId: res.data
+        });
+      },
+    });
+    wx.getStorage({
+      key: 'nickname',
+      success: function (res) {
+        that.setData({
+          nickname: res.data
+        });
+      },
+    });
+    wx.getStorage({
+      key: 'balance',
+      success: function (res) {
+        that.setData({
+          balance: res.data
+        });
+      },
+    });
+    // 需要设定延时
+    setTimeout(function () {
+      if (that.data.userId != '') {
+        that.setData({
+          userProfile: that.data.urlPrefix +
+            'user/userProfile-' + that.data.userId
+        });
+        wx.request({
+          url: that.data.urlPrefix + 'user/userInfo-' + that.data.userId,
+          method: "POST",
+          header: {
+            //设置参数内容类型为x-www-form-urlencoded
+            'content-type': 'application/x-www-form-urlencoded'
+          },
+          success: function (res) {
+            // 判断服务器是否响应成功
+            if (res.statusCode == 200) {
+              wx.setStorage({
+                key: 'balance',
+                data: res.data.userBalance
+              });
+              wx.getStorage({
+                key: 'balance',
+                success: function (res) {
+                  that.setData({
+                    balance: res.data
+                  });
+                },
+              });
+            }
+          }
+        });
+      }
+    }, 500);
+    clearTimeout();
   },
   /**
    * 用户登录
@@ -49,33 +104,32 @@ Page({
         var imgUrl = res.tempFilePaths;
         // 将头像上传到服务器中
         wx.uploadFile({
-          url: 'http://localhost:8080/uploadUserProfile.do',
+          url: that.data.urlPrefix + 'user/uploadUserProfile-' + that.data.userId,
           filePath: imgUrl[0],
           name: 'userProfile',
           header: {
             // 设置参数内容类型为multipart/form-data
             'content-type': 'multipart/form-data'
           },
-          formData : {
-            // 设置传递参数(用户id)
-            'userId' : app.globalData.userId
-          },
           success: function (res) {
             // 判断服务器返回的状态码是否是200
-            if(res.statusCode != 200) {
-              wx.showToast({
-                title: '上传失败！',
-                icon: 'loading',
-                duration: 1000
-              });
-            } else {
+            if (res.statusCode == 200) {
               wx.showToast({
                 title: '上传成功！',
                 icon: 'success',
                 duration: 1000
               });
-              that.setData({
-                userProfile: imgUrl
+              setTimeout(function () {
+                that.setData({
+                  userProfile: imgUrl
+                });
+              }, 500);
+              clearTimeout();
+            } else {
+              wx.showToast({
+                title: '上传失败！',
+                icon: 'loading',
+                duration: 1000
               });
             }
           },
@@ -140,46 +194,54 @@ Page({
   },
   // 退出登录
   logout: function () {
-    wx.request({
-      url: 'http://localhost:8080/userLogout.do',
-      method: 'POST',
-      data: 'userId=' + app.globalData.userId,
-      header: {
-        //设置参数内容类型为x-www-form-urlencoded
-        'content-type': 'application/x-www-form-urlencoded',
-        'Accept': 'application/json'
-      },
-      success: function (res) {
-        if(res.statusCode == 200) {
-          wx.showToast({
-            title: '退出成功！',
-            icon: 'success',
-            duration: 1000
-          });
-          app.globalData.isLogin = false;
-          app.globalData.userId = "";
-          app.globalData.userProfile = "";
-          app.globalData.nickName = "";
-          this.setData({
-            isLogin: app.globalData.isLogin,
-            userId: app.globalData.userId,
-            userProfile: app.globalData.userProfile,
-            nickName: app.globalData.nickName
-          });
-        } else {
-          wx.showToast({
-            title: '退出失败！',
-            icon: 'loading',
-            duration: 1000
+    var that = this;
+    wx.showModal({
+      title: '您确定要退出登录吗？',
+      content: '退出之后，您将无法进行购买商品，查看订单等操作',
+      showCancel: true,
+      success: function (e) {
+        // 点击确定
+        if (!e.cancel) {
+          // 退出登录请求
+          wx.request({
+            url: that.data.urlPrefix + 'user/userLogout.do',
+            method: 'POST',
+            data: {
+              'userId': that.data.userId
+            },
+            header: {
+              //设置参数内容类型为x-www-form-urlencoded
+              'content-type': 'application/x-www-form-urlencoded',
+            },
+            success: function (res) {
+              if (res.statusCode == 200 && res.data) {
+                // 清空shopId,shopName,shopBalance
+                wx.clearStorage();
+                that.setData({
+                  userId: false
+                })
+                wx.showToast({
+                  title: '退出成功！',
+                  icon: 'success',
+                  duration: 1000
+                });
+              } else {
+                wx.showToast({
+                  title: '退出失败！',
+                  icon: 'loading',
+                  duration: 1000
+                });
+              }
+            },
+            fail: function () {
+              wx.showToast({
+                title: '退出失败！',
+                icon: 'loading',
+                duration: 1000
+              });
+            }
           });
         }
-      },
-      fail: function () {
-        wx.showToast({
-          title: '退出失败！',
-          icon: 'loading',
-          duration: 1000
-        });
       }
     });
   }

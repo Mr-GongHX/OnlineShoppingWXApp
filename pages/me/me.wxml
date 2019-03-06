@@ -4,9 +4,10 @@
   <view class="avatar-wrapper">
       <view class="avatar">
         <image 
-          wx:if="{{isLogin}}"
+          wx:if="{{userId}}"
           style="border-radius:50%; border:1rpx solid white;" 
           src="{{userProfile}}" 
+          mode='aspectFill'
           bindtap="setUserProfile"
         />
         <image 
@@ -16,7 +17,7 @@
         />
       </view>
       <view class="show">
-        <text wx:if="{{isLogin}}">{{nickName}}</text>
+        <text wx:if="{{userId}}">{{nickname}}</text>
         <text wx:else bindtap="toLogin">注册 / 登录</text>
       </view>
   </view>
@@ -25,7 +26,10 @@
   <view class="separate"></view>
 
   <!-- 底部 start -->
-  <view class="weui-cells weui-cells_after-title" wx:if="{{isLogin}}">
+  <view class="weui-cells weui-cells_after-title" wx:if="{{userId}}">
+      <view class="content">
+        <text>我的余额：{{balance}}元</text>
+      </view>
       <view class="content" bindtap="moveToMyAddress">
         <text>我的地址</text>
         <image src="../../images/right.png"></image>
@@ -35,7 +39,7 @@
           <text>我的订单</text>
           <image src="../../images/right.png"></image>
         </view>
-      </navigator>
+      </navigator> 
       <!-- 退出登录 -->
       <view class="button">  
             <button 

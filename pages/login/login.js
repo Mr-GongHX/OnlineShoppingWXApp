@@ -2,15 +2,20 @@
 
 // 获取小程序实例
 const app = getApp();
-
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    urlPrefix: "",
     username: "",
     password: ""
+  },
+  onLoad: function () {
+    this.setData({
+      urlPrefix: app.globalData.urlPrefix
+    });
   },
   // 获取用户名
   usernameInput: function(e) {
@@ -34,27 +39,38 @@ Page({
       })
     // 成功输入
     } else {
+      var that = this;
       // 发起POST登录请求
       wx.request({
-        url: 'http://localhost:8080/userLogin.do',
+        url: that.data.urlPrefix + 'user/userLogin.do',
         method: 'POST',
-        data: 'username='+this.data.username+'&password='+this.data.password, 
+        data: {
+          'username': encodeURI(that.data.username),
+          'password': encodeURI(that.data.password)
+        },  
         header: {
           //设置参数内容类型为x-www-form-urlencoded
-          'content-type': 'application/x-www-form-urlencoded',
-          'Accept': 'application/json'
+          'content-type': 'application/x-www-form-urlencoded'
         },
-        success: function (res) {  // 登录成功         
-          // 赋值（昵称）
-          app.globalData.nickName = "res.data.nickName";
-          // 赋值（用户头像）
-          app.globalData.userProfile = "res.data.userProfile";
-          // 赋值（userId）
-          app.globalData.userId = "res.data.userId";
-          // 修改登录状态 isLogin 为 true
-          app.globalData.isLogin = true;
-          // 判断服务器返回的状态码是否是200
-          if (res.statusCode == 200) {
+        success: function (res) {  
+          // 登录成功         
+          if (res.statusCode == 200 && res.data.userId) {
+            // 赋值（userId）
+            wx.setStorage({
+              key: 'userId',
+              data: res.data.userId,
+            });
+            // 赋值（昵称）
+            wx.setStorage({
+              key: 'nickname',
+              data: res.data.userNickname,
+            });
+            // 赋值（昵称）
+            wx.setStorage({
+              key: 'balance',
+              data: res.data.userBalance,
+            });
+            // 登录成功提示
             wx.showToast({
               title: '登录成功！',
               icon: 'success',
@@ -70,8 +86,9 @@ Page({
                 // 清空计时器
                 clearTimeout();
               }
-            });
+            });     
           } else {
+            // 登录失败
             wx.showToast({
               title: '登录失败！',
               icon: 'loading',
@@ -79,7 +96,8 @@ Page({
             });
           }
         },
-        fail: function () {  // 登录失败
+        fail: function () {  
+          // 登录失败
           wx.showToast({
             title: '登录失败！',
             icon: 'loading',
