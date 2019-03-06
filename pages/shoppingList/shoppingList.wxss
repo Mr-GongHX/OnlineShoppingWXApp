@@ -4,9 +4,11 @@
 }
 .cart-image{
   width: 180rpx;
-  height: 200rpx;
+  height: 180rpx;
+  border-radius: 70rpx;
   float: left;
-  padding: 15rpx 10rpx;
+  padding: 28rpx 10rpx;
+
 }
 .cart-box{
   width: 100%;
@@ -20,9 +22,6 @@
   display: flex;
   flex-direction:column;
   
-}
-.left_imgae{
-  float: left;
 }
 .left_box{
   float: left;

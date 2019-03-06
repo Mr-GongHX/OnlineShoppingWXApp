@@ -47,45 +47,82 @@ Page({
   // 加入购物车
   addCar: function(res) {
     var that = this;
-    //先获取缓存中的已添加购物车的商品信息
-    var cartItems = wx.getStorageSync('cartItems') || []
-    //判断购物车缓存中是否已存在该商品
-    var exist = cartItems.find(function (ele) {
-      return ele.id === that.data.goodsId
-    }) 
-    if (exist) {
-      //如果存在，则增加该商品的购买数量
-      exist.goodsQuantity = parseInt(exist.goodsQuantity) + 1
-    } else {
-      //如果不存在，传入该商品的详细信息
-      cartItems.push({
-        id: that.data.goodsId,
-        goodsQuantity: 1,
-        goodsPrice: that.data.goodsInfo[0].goodsPrice,
-        goodsName: that.data.goodsInfo[0].goodsName,
-        goodsPicture: that.data.urlPrefix + "goods/showMyGoodsImg-goodsImg-" +
-          that.data.goodsId
-      });
-    }
-    //加入购物车数据，存入缓存
-    wx.setStorage({
-      key: 'cartItems',
-      data: cartItems,
-      success: function (res) {
-        //添加购物车的消息提示框
-        wx.showToast({
-          title: "添加成功",
-          icon: "success",
-          durantion: 2000
+    // 用是否能获得userId来判断用户是否已登录
+    wx.getStorage({
+      key: 'userId',
+      success: function (res) {      
+        //先获取缓存中的已添加购物车的商品信息
+        var cartItems = wx.getStorageSync('cartItems') || []
+        //判断购物车缓存中是否已存在该商品
+        var exist = cartItems.find(function (ele) {
+          return ele.id === that.data.goodsId
+        }) 
+        if (exist) {
+          //如果存在，则增加该商品的购买数量
+          exist.goodsQuantity = parseInt(exist.goodsQuantity) + 1
+        } else {
+          //如果不存在，传入该商品的详细信息
+          cartItems.push({
+            id: that.data.goodsId,
+            goodsQuantity: 1,
+            goodsPrice: that.data.goodsInfo[0].goodsPrice,
+            goodsName: that.data.goodsInfo[0].goodsName,
+            goodsPicture: that.data.urlPrefix + "goods/showMyGoodsImg-goodsImg-" +
+              that.data.goodsId
+          });
+        }
+        //加入购物车数据，存入缓存
+        wx.setStorage({
+          key: 'cartItems',
+          data: cartItems,
+          success: function (res) {
+            //添加购物车的消息提示框
+            wx.showToast({
+              title: "添加成功",
+              icon: "success",
+              durantion: 2000
+            });
+          }
+        });
+      },
+      fail: function (res) {
+        wx.showModal({
+          title: '您尚未登录,无法添加购物车',
+          content: '即将带您前往登录页',
+          showCancel: false,
+          success: function () {
+            wx.navigateTo({
+              url: '../login/login',
+            });
+          }
         });
       }
-    });
+    })
   },
   // 立即购买
   buyNow: function() {
-    wx.navigateTo({
-      url: "../orderCheck/orderCheck"
+    wx.getStorage({
+      key: 'userId',
+      success: function (res) {
+        // 跳转确认订单页
+        wx.navigateTo({
+          url: "../orderCheck/orderCheck"
+        })
+      },
+      fail: function (res) {
+        wx.showModal({
+          title: '您尚未登录，无法购买商品',
+          content: '即将带您前往登录页',
+          showCancel: false,
+          success: function () {
+            wx.navigateTo({
+              url: '../login/login',
+            });
+          }
+        });
+      }
     })
+    
   },
   /**
    * 生命周期函数--监听页面加载

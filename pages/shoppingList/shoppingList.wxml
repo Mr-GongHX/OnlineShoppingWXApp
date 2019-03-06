@@ -1,6 +1,6 @@
 <!-- 购物车 -->
 <view class='cartMain'>
-    <view wx:key="{{cartItems}}">
+    <view wx:for="{{cartItems}}" wx:for-index="index" wx:for-item="item" wx:key="{{item.id}}">
         <view data-id="{{item.id}}"  class='cart-box' data-index="{{index}}">
             <view class='icon'>
                 <icon 
@@ -22,21 +22,35 @@
 
             <view class='cart_main'>
               <view class='left'>
-                <view class='left_imgae'>
-                    <image class="cart-image" src="{{item.image}}"></image>
-                </view>
+                <image 
+                  class="cart-image" 
+                  mode='aspectFill' 
+                  src="{{item.goodsPicture}}"
+                />
 
                 <view class='left_box'>
-                    <text class="cart-title">{{item.title}}</text>
-                    <text class="cart-price">￥{{item.price}}</text>
-                    <text bindtap='reduce'  class="input cart-reduce"  data-index="{{index}}">-</text>
-                    <text class="input cart-text">{{item.value}}</text>
-                    <text bindtap='add' class="input cart-add"  data-index="{{index}}">+</text>
+                  <text class="cart-title">{{item.goodsName}}</text>
+                  <text class="cart-price">￥{{item.goodsPrice}}</text>
+                  <text 
+                    bindtap='reduce'  
+                    class="input cart-reduce"  
+                    data-index="{{index}}"
+                  >-</text>
+                  <text class="input cart-text">{{item.goodsQuantity}}</text>
+                  <text 
+                    bindtap='add' 
+                    class="input cart-add" 
+                    data-index="{{index}}"
+                    >+</text>
                 </view>
               </view>
 
               <view class='right'>
-                  <image src='../../images/delete.png' bindtap='shanchu' data-index="{{index}}"></image>
+                  <image 
+                    src='../../images/delete.png' 
+                    bindtap='deleteGoods' 
+                    data-index="{{index}}"
+                  />
               </view>
             </view>
 
