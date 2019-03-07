@@ -5,7 +5,7 @@ Page({
     // 购物车列表
     cartItems: [],
     total: 0,
-    CheckAll: true
+    checkAll: true
   },
   onShow: function () {
     var that = this;
@@ -17,49 +17,49 @@ Page({
         });
       },
     });
-    this.getsumTotal()
+    this.getsumTotal();
   },
   //选择
   select: function (e) {
-    var CheckAll = this.data.CheckAll;
-    CheckAll = !CheckAll
-    var cartItems = this.data.cartItems
+    var checkAll = this.data.checkAll;
+    checkAll = !checkAll;
+    var cartItems = this.data.cartItems;
     for (var i = 0; i < cartItems.length; i++) {
-      cartItems[i].selected = CheckAll
+      cartItems[i].selected = checkAll;
     }
     this.setData({
       cartItems: cartItems,
-      CheckAll: CheckAll
+      checkAll: checkAll
     })
-    this.getsumTotal()
+    this.getsumTotal();
   },
   // 增加商品数量
   add: function (e) {
-    var cartItems = this.data.cartItems   //获取购物车列表
-    var index = e.currentTarget.dataset.index //获取当前点击事件的下标索引
-    var value = cartItems[index].goodsQuantity  //获取购物车里面的value值
+    var cartItems = this.data.cartItems;   //获取购物车列表
+    var index = e.currentTarget.dataset.index;//获取当前点击事件的下标索引
+    var value = cartItems[index].goodsQuantity;  //获取购物车里面的value值
     value++;
     cartItems[index].goodsQuantity = value;
     this.setData({
       cartItems: cartItems
     });
-    this.getsumTotal()
+    this.getsumTotal();
     //存缓存
     wx.setStorageSync("cartItems", cartItems);
   },
   // 减少商品数量
   reduce: function (e) {
-    var cartItems = this.data.cartItems  //获取购物车列表
-    var index = e.currentTarget.dataset.index  //获取当前点击事件的下标索引
-    var value = cartItems[index].goodsQuantity  //获取购物车里面的value值
+    var cartItems = this.data.cartItems;  //获取购物车列表
+    var index = e.currentTarget.dataset.index;  //获取当前点击事件的下标索引
+    var value = cartItems[index].goodsQuantity;  //获取购物车里面的value值
     if (value == 1) {
       wx.showToast({
         title: "不能再少了！",
         icon: "loading",
         duration: 500
-      })
+      });
       value--;
-      cartItems[index].goodsQuantity = 1
+      cartItems[index].goodsQuantity = 1;
     } else {
       value--;
       cartItems[index].goodsQuantity = value;
@@ -67,24 +67,23 @@ Page({
     this.setData({
       cartItems: cartItems
     });
-    this.getsumTotal()
+    this.getsumTotal();
     //存缓存
     wx.setStorageSync("cartItems", cartItems);
   },
   // 选择
   selectedCart: function (e) {
 
-    var cartItems = this.data.cartItems   //获取购物车列表
+    var cartItems = this.data.cartItems;   //获取购物车列表
     var index = e.currentTarget.dataset.index;  //获取当前点击事件的下标索引
     var selected = cartItems[index].selected;    //获取购物车里面的value值
-
     //取反
     cartItems[index].selected = !selected;
     this.setData({
       cartItems: cartItems
     })
     this.getsumTotal();
-    wx.setStorageSync("cartItems", cartItems)
+    wx.setStorageSync("cartItems", cartItems);
   },
   //删除商品
   deleteGoods: function (e) {
@@ -95,9 +94,9 @@ Page({
       success: function (res) {
         // 用户点击确定
         if(!res.cancel){
-          var cartItems = that.data.cartItems  //获取购物车列表
-          var index = e.currentTarget.dataset.index  //获取当前点击事件的下标索引
-          cartItems.splice(index, 1)
+          var cartItems = that.data.cartItems;  //获取购物车列表
+          var index = e.currentTarget.dataset.index;  //获取当前点击事件的下标索引
+          cartItems.splice(index, 1);
           that.setData({
             cartItems: cartItems
           });
@@ -106,7 +105,7 @@ Page({
               cartList: false
             });
           }
-          that.getsumTotal()
+          that.getsumTotal();
           wx.setStorageSync("cartItems", cartItems);      
         }
       },     
@@ -118,13 +117,14 @@ Page({
     //   cartItems: []
     // })
     // wx.setStorageSync("cartItems", [])
+    var that = this;
     wx.navigateTo({
-      url: '../orderCheck/orderCheck',
+      url: '../orderCheck/orderCheck?orderTotal=' + that.data.total,
     });
   },
   //合计
   getsumTotal: function () {
-    var sum = 0
+    var sum = 0;
     for (var i = 0; i < this.data.cartItems.length; i++) {
       if (this.data.cartItems[i].selected) {
         sum += this.data.cartItems[i].goodsQuantity * 
@@ -134,6 +134,6 @@ Page({
     //更新数据
     this.setData({
       total: sum
-    })
+    });
   }
 })

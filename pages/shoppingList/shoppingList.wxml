@@ -6,98 +6,98 @@
       wx:for-item="item" 
       wx:key="{{item.id}}"
     >
-        <view data-id="{{item.id}}"  class='cart-box' data-index="{{index}}">
-            <view class='icon'>
-                <icon 
-                  wx:if="{{item.selected}}" 
-                  type="success" 
-                  color="#FF3030" 
-                  size="20" 
-                  bindtap="selectedCart" 
-                  data-index="{{index}}"
-                />
-                <icon 
-                  wx:else 
-                  type="circle" 
-                  bindtap="selectedCart" 
-                  size="20" 
-                  data-index="{{index}}"
-                />
-            </view>
-
-            <view class='cart_main'>
-              <view class='left'>
-                <image 
-                  class="cart-image" 
-                  mode='aspectFill' 
-                  src="{{item.goodsPicture}}"
-                />
-
-                <view class='left_box'>
-                  <text class="cart-title">{{item.goodsName}}</text>
-                  <text class="cart-price">￥{{item.goodsPrice}}</text>
-                  <text 
-                    bindtap='reduce'  
-                    class="input cart-reduce"  
-                    data-index="{{index}}"
-                  >-</text>
-                  <text class="input cart-text">{{item.goodsQuantity}}</text>
-                  <text 
-                    bindtap='add' 
-                    class="input cart-add" 
-                    data-index="{{index}}"
-                    >+</text>
-                </view>
-              </view>
-
-              <view class='right'>
-                  <image 
-                    src='../../images/delete.png' 
-                    bindtap='deleteGoods' 
-                    data-index="{{index}}"
-                  />
-              </view>
-            </view>
-
-            <!-- 底部 start  -->
-            <view class="cart-bottom">
+      <view data-id="{{item.id}}"  class='cart-box' data-index="{{index}}">
+          <view class='icon'>
               <icon 
-                wx:if="{{CheckAll}}" 
-                class="cart-icon" 
+                wx:if="{{item.selected}}" 
                 type="success" 
                 color="#FF3030" 
                 size="20" 
-                bindtap="select" 
+                bindtap="selectedCart" 
                 data-index="{{index}}"
               />
-              <icon wx:else 
-                type="circle"   
-                class="cart-icon" 
+              <icon 
+                wx:else 
+                type="circle" 
+                bindtap="selectedCart" 
                 size="20" 
-                bindtap="select" 
                 data-index="{{index}}"
               />
-              <text class='checkAll'>全选</text>
+          </view>
 
-              <view class='cart-pay'>
+          <view class='cart_main'>
+            <view class='left'>
+              <image 
+                class="cart-image" 
+                mode='aspectFill' 
+                src="{{item.goodsPicture}}"
+              />
+
+              <view class='left_box'>
+                <text class="cart-title">{{item.goodsName}}</text>
+                <text class="cart-price">￥{{item.goodsPrice}}</text>
                 <text 
-                  class='cart_pay' 
-                  bindtap="go" 
-                  data-id="{{item.id}}"
-                >去结算</text>
-              </view>
-
-              <view class='cart-sum'>
-                  <text class='cart_sum'>
-                      <text class='sum_text'>总计：</text>
-                      <text class='sum_color'>￥{{total}}元</text>
-                  </text>
+                  bindtap='reduce'  
+                  class="input cart-reduce"  
+                  data-index="{{index}}"
+                >-</text>
+                <text class="input cart-text">{{item.goodsQuantity}}</text>
+                <text 
+                  bindtap='add' 
+                  class="input cart-add" 
+                  data-index="{{index}}"
+                  >+</text>
               </view>
             </view>
+
+            <view class='right'>
+                <image 
+                  src='../../images/delete.png' 
+                  bindtap='deleteGoods' 
+                  data-index="{{index}}"
+                />
+            </view>
           </view>
-          <!-- 底部 end -->
-      </view>
+
+          <!-- 底部 start  -->
+          <view class="cart-bottom">
+            <icon 
+              wx:if="{{checkAll}}" 
+              class="cart-icon" 
+              type="success" 
+              color="#FF3030" 
+              size="20" 
+              bindtap="select" 
+              data-index="{{index}}"
+            />
+            <icon wx:else 
+              type="circle"   
+              class="cart-icon" 
+              size="20" 
+              bindtap="select" 
+              data-index="{{index}}"
+            />
+            <text class='checkAll'>全选</text>
+
+            <view class='cart-pay'>
+              <text 
+                class='cart_pay' 
+                bindtap="go" 
+                data-id="{{item.id}}"
+              >去结算</text>
+            </view>
+
+            <view class='cart-sum'>
+                <text class='cart_sum'>
+                    <text class='sum_text'>总计：</text>
+                    <text class='sum_color'>￥{{total}}元</text>
+                </text>
+            </view>
+          </view>
+        </view>
+        <!-- 底部 end -->
+    </view>
 </view>
-<view wx:else>
-  <text>您的购物车空空如也</text>
+<view class="noneGoods" wx:else>
+  您的购物车空空如也~
 </view>

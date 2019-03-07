@@ -1,1 +1,122 @@
 /* pages/orderCheck/orderCheck.wxss */
+.container {
+  width: 100%;
+  background: #FFF;
+}
+
+.chooseAddress {
+  width: 100%;
+  height: 80rpx;
+  margin-top: 20rpx;
+  text-align: center;
+  border-bottom: 20rpx solid #eee;
+}
+
+.chooseAddress text {  
+  font-size: 33rpx;
+}
+
+.address {
+  width: 100%;
+  height: 150rpx;
+  border-bottom: 20rpx solid #eee;
+}
+
+.userName {
+  position: absolute;
+  left: 30rpx;
+  top: 10rpx;
+  width: 100rpx;
+  height: 20rpx;
+  font-weight: bold;
+}
+
+.userPhone {
+  position: absolute;
+  left: 150rpx;
+  top: 10rpx;
+  width: 300rpx;
+  height: 20rpx;
+  font-weight: bold;
+}
+
+.userDetailAddress {
+  position: absolute;
+  left: 30rpx;
+  top: 70rpx;
+  height: 20rpx;
+  color: gray;
+}
+
+.goodsList {
+  width: 100%;
+}
+.goodsItem {
+  height: 220rpx;
+  border-bottom: 3rpx solid #ccc;
+}
+
+.goodsImg {
+  width: 180rpx;
+  height: 180rpx;
+  float: left;
+  margin-left: 28rpx;
+  margin-top: 10rpx;
+}
+
+.goodsName {
+  margin-left: 230rpx;
+  margin-top: 10rpx;
+  font-weight: bold;
+}
+
+.goodsPrice {
+  margin-left: 225rpx;
+  margin-top: 90rpx;
+  color: #FF3030;
+}
+
+.goodsQuantity {
+  float: right;
+  margin-right: 20rpx;
+  margin-top: -50rpx;
+  color: gray;
+}
+
+.orderTotal {
+  border-top: 20rpx solid #eee;
+  width: 100%;
+  height: 100rpx;
+  border-bottom: 3rpx solid #ccc;
+}
+
+.text {
+  float: left;
+  margin-left: 20rpx;
+  margin-top: 20rpx;
+}
+
+.money {
+  float: right;
+  margin-right: 20rpx;
+  margin-top: 20rpx;
+  color: #FF3030;
+}
+
+/* 订单支付按钮 */
+.orderPay {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}
+
+.payBtn {
+  width: 90%;
+  height: 80rpx;
+  line-height: 80rpx;
+  margin-top: 100rpx;
+  color: #FF3030;
+  background-color:white;
+  border: 3rpx solid #FF3030;
+  border-radius: 40rpx;
+}

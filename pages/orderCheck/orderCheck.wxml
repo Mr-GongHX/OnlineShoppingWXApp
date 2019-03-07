@@ -1,4 +1,49 @@
 <!-- 订单确认页 -->
-<view>
-  确认订单页
+<view class='container'>
+  <!-- 选择地址start -->
+  <!-- 未选择地址 -->
+  <view class='chooseAddress' bindtap='chooseAddress' wx:if="{{!addressHasChosen}}">
+    <text>--请选择您的收货地址--</text>
+  </view>
+  <!-- 已选择地址 -->
+  <view class='address' wx:else>
+    <text class='userName'>{{userName}}</text>
+    <text class='userPhone'>{{userPhone}}</text>
+    <text class='userDetailAddress'>{{userDetailAddress}}</text>
+  </view>
+  <!-- 选择地址end -->
+  <!-- 购买商品列表start -->
+  <view class='goodsList'>
+    <block 
+      wx:for="{{cartItems}}"
+      wx:for-index="index" 
+      wx:for-item="item" 
+      wx:key="{{item.id}}"
+    >
+      <view class='goodsItem'>
+      <image src='{{item.goodsPicture}}' class='goodsImg' mode='aspectFill' />
+        <view class='goodsName'>
+          <text>{{item.goodsName}}</text>
+        </view>
+        <view class='goodsPrice'>
+          <text>￥{{item.goodsPrice}}</text>
+        </view>
+        <view class='goodsQuantity'>
+          <text>x{{item.goodsQuantity}}</text>
+        </view>
+      </view>
+    </block>
+  </view>
+  <!-- 购买商品列表end -->
+  <!-- 订单总额start -->
+  <view class='orderTotal'>
+    <text class='text'>订单总额：</text>
+    <text class='money'>￥{{total}}</text>
+  </view>
+  <!-- 订单总额end -->
+  <!-- 订单支付start -->
+  <view class='orderPay'>
+    <button class="payBtn"  bindtap='orderPay'>支付</button> 
+  </view>
+  <!-- 订单支付end -->
 </view>

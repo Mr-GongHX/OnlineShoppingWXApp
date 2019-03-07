@@ -140,3 +140,11 @@
   margin-bottom: 25rpx;
   /* margin-right: -100rpx; */
 }
+
+.noneGoods{
+  width: 100%;
+  height: 30rpx;
+  text-align: center;
+  font-size: 30rpx;
+  margin-top: 20rpx;
+}
