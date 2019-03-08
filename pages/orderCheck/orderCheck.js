@@ -14,6 +14,7 @@ Page({
     userPhone: "",
     userDetailAddress: "",
     cartItems: [],
+    unselectedCartItems: [],
     total: "",
     userId: ""
   },
@@ -41,6 +42,7 @@ Page({
   onShow: function () {
     var that = this;
     var selectedGoods = [];
+    var unselectedGoods = [];
     wx.getStorage({
       key: 'cartItems',
       success: function(res) {
@@ -50,13 +52,19 @@ Page({
             selectedGoods.push(res.data[i]);
           }
         }
+        // 未选择的商品
+        for (var i = 0; i < res.data.length; i++) {
+          if (!res.data[i].selected) {
+            unselectedGoods.push(res.data[i]);
+          }
+        }
         // 更新数据
         that.setData({
-          cartItems: selectedGoods
+          cartItems: selectedGoods,
+          unselectedCartItems: unselectedGoods
         });
       }
     });
-
   },
   // 选择地址
   chooseAddress: function () {
@@ -149,8 +157,9 @@ Page({
                     success: function (res) {
                       // 判断服务器是否响应成功
                       if (res.statusCode == 200 && res.data) {
-                        // 清空购物车
-                        wx.setStorageSync("cartItems", []);
+                        var cartItems = null;
+                        // 清空购物车中已勾选的商品        
+                        wx.setStorageSync("cartItems", that.data.unselectedCartItems)
                         wx.showToast({
                           title: '支付成功',
                           icon: 'success',
