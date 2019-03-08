@@ -7,6 +7,7 @@
       wx:key="{{item.id}}"
     >
       <view data-id="{{item.id}}"  class='cart-box' data-index="{{index}}">
+          <!-- 商品是否选择 -->
           <view class='icon'>
               <icon 
                 wx:if="{{item.selected}}" 
@@ -24,15 +25,15 @@
                 data-index="{{index}}"
               />
           </view>
-
           <view class='cart_main'>
             <view class='left'>
+              <!-- 商品图片 -->
               <image 
                 class="cart-image" 
                 mode='aspectFill' 
                 src="{{item.goodsPicture}}"
               />
-
+              <!-- 商品文字信息 -->
               <view class='left_box'>
                 <text class="cart-title">{{item.goodsName}}</text>
                 <text class="cart-price">￥{{item.goodsPrice}}</text>
@@ -49,7 +50,7 @@
                   >+</text>
               </view>
             </view>
-
+            <!-- 删除按钮 -->
             <view class='right'>
                 <image 
                   src='../../images/delete.png' 
@@ -58,7 +59,6 @@
                 />
             </view>
           </view>
-
           <!-- 底部 start  -->
           <view class="cart-bottom">
             <icon 
@@ -67,26 +67,24 @@
               type="success" 
               color="#FF3030" 
               size="20" 
-              bindtap="select" 
+              bindtap="selectAll" 
               data-index="{{index}}"
             />
             <icon wx:else 
               type="circle"   
               class="cart-icon" 
               size="20" 
-              bindtap="select" 
+              bindtap="selectAll" 
               data-index="{{index}}"
             />
             <text class='checkAll'>全选</text>
-
             <view class='cart-pay'>
               <text 
                 class='cart_pay' 
-                bindtap="go" 
+                bindtap="moveToOrderCheck" 
                 data-id="{{item.id}}"
               >去结算</text>
             </view>
-
             <view class='cart-sum'>
                 <text class='cart_sum'>
                     <text class='sum_text'>总计：</text>

@@ -40,11 +40,19 @@ Page({
    */
   onShow: function () {
     var that = this;
+    var selectedGoods = [];
     wx.getStorage({
       key: 'cartItems',
       success: function(res) {
+        // 已选择的商品
+        for (var i = 0; i < res.data.length; i++) {
+          if (res.data[i].selected) {
+            selectedGoods.push(res.data[i]);
+          }
+        }
+        // 更新数据
         that.setData({
-          cartItems: res.data
+          cartItems: selectedGoods
         });
       }
     });
@@ -125,11 +133,31 @@ Page({
             success: function (res) {
               // 判断服务器是否响应成功
               if (res.statusCode == 200 && res.data) {
-                if (that.data.total < res.data.userBalance) {
-                  wx.showToast({
-                    title: '成功',
-                    icon: 'success',
-                    duration: 500
+                if (that.data.total <= res.data.userBalance) {
+                  // 提交订单
+                  wx.request({
+                    url: that.data.urlPrefix + '',
+                    method: "POST",
+                    data: {
+                      userId: that.data.userId,
+                      
+                    },
+                    header: {
+                      //设置参数内容类型为x-www-form-urlencoded
+                      'content-type': 'application/x-www-form-urlencoded'
+                    },
+                    success: function (res) {
+                      // 判断服务器是否响应成功
+                      if (res.statusCode == 200 && res.data) {
+                        // 清空购物车
+                        wx.setStorageSync("cartItems", []);
+                        wx.showToast({
+                          title: '支付成功',
+                          icon: 'success',
+                          duration: 500
+                        });
+                      }
+                    }
                   });
                 } else {
                   wx.showToast({
@@ -140,11 +168,6 @@ Page({
                 }
               }
             }
-          });
-          wx.showToast({
-            title: '成功',
-            icon: 'success',
-            duration: 500
           });
         },
         fail(res) {
