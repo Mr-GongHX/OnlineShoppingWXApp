@@ -5,6 +5,6 @@ App({
   },
   // 全局变量
   globalData: {
-    urlPrefix: "http://172.20.10.6:8080/"
+    urlPrefix: "http://39.105.167.27:8080/"
   }
 })

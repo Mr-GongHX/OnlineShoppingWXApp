@@ -12,8 +12,9 @@
         />
         <image 
           wx:else
-          style="border-radius:50%; border:1rpx solid white;" 
-          src="" 
+          style="border-radius:50%; border:1rpx solid white; background:white;" 
+          src="../../images/me.png" 
+          mode='aspectFill'
         />
       </view>
       <view class="show">
@@ -42,13 +43,8 @@
       </navigator> 
       <!-- 退出登录 -->
       <view class="button">  
-            <button 
-              class="logoutBtn" 
-              bindtap='logout'
-            >
-            退出登录
-            </button>  
-        </view> 
+        <button class="logoutBtn" bindtap='logout'>退出登录</button>  
+      </view> 
   </view>
   <view class="toLogin" wx:else>
       <view class="text">

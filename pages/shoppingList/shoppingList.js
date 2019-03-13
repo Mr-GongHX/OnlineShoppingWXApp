@@ -22,6 +22,11 @@ Page({
           cartItems: res.data
         });
       },
+      fail: function (res) {
+        that.setData({
+          cartItems: []
+        });
+      }
     });
     // 商品总额
     this.getsumTotal();

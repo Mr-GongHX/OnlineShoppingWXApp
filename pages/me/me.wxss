@@ -65,16 +65,16 @@
 
 /* 退出登录按钮 */
 .button {
-  margin-top: 0px;
-  margin-bottom: 0px;
-  padding-bottom: 0px;
+  margin-top: 0rpx;
+  margin-bottom: 0rpx;
+  padding-bottom: 0rpx;
 }
 
 .logoutBtn {
   width: 90%;
   height: 80rpx;
   line-height: 80rpx;
-  margin-top: 400rpx;
+  margin-top: 300rpx;
   color: #FF3030;
   background-color:white;
   border: 3rpx solid #FF3030;
