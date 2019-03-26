@@ -17,7 +17,7 @@ Page({
     unselectedCartItems: [],
     total: "",
     userId: ""
-  },
+  }, 
   /**
    * 生命周期函数--监听页面加载
    */
@@ -114,6 +114,8 @@ Page({
   },
   // 订单支付
   orderPay: function () {
+    var goodsList = this.data.cartItems;
+    goodsList = JSON.stringify(goodsList); 
     var that = this;
     if (this.data.userName === "" && 
     this.data.userPhone === "" &&
@@ -130,7 +132,7 @@ Page({
         requestAuthModes: ['fingerPrint','facial'],
         challenge: '123456',
         authContent: '请用指纹解锁',
-        success(res) {
+        fail(res) {
           wx.request({
             url: that.data.urlPrefix + 'user/userInfo-' + that.data.userId,
             method: "POST",
@@ -141,18 +143,23 @@ Page({
             success: function (res) {
               // 判断服务器是否响应成功
               if (res.statusCode == 200 && res.data) {
+                // 判断用户余额是否大于等于订单总额
                 if (that.data.total <= res.data.userBalance) {
                   // 提交订单
                   wx.request({
-                    url: that.data.urlPrefix + '',
+                    url: that.data.urlPrefix + 'order/createOrder.do',
                     method: "POST",
                     data: {
                       userId: that.data.userId,
-                      
+                      cartItems: goodsList,
+                      consigneeName: that.data.userName,
+                      consigneeAddress: that.data.userDetailAddress,
+                      consigneePhone: that.data.userPhone,
+                      orderPrice: that.data.total
                     },
                     header: {
                       //设置参数内容类型为x-www-form-urlencoded
-                      'content-type': 'application/x-www-form-urlencoded'
+                      'content-type': 'application/x-www-form-urlencoded',
                     },
                     success: function (res) {
                       // 判断服务器是否响应成功
@@ -179,7 +186,7 @@ Page({
             }
           });
         },
-        fail(res) {
+        success(res) {
           wx.showToast({
             title: '无法验证',
             icon: 'loading',

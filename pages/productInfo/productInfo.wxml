@@ -1,9 +1,13 @@
 <!-- 商品详情页 -->
 
 <!-- 商品轮播图 start -->
-<swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" class="banner" duration="{{duration}}" circular="{{duration}}"
-indicator-color="#ccc" indicator-active-color="white">
+<swiper 
+  indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" 
+  interval="{{interval}}" class="banner" duration="{{duration}}" 
+  circular="{{duration}}" indicator-color="#ccc" indicator-active-color="white"
+>
   <swiper-item>
+    <!-- 商品的视频介绍 -->
     <video 
       wx:if="{{goodsId}}"
       src="{{urlPrefix}}goods/showMyGoodsVideo-{{goodsId}}"
@@ -18,7 +22,7 @@ indicator-color="#ccc" indicator-active-color="white">
       auto-pause-if-open-native="{{pause}}"
     />
   </swiper-item>
-  <!-- <block wx:for="{{}}" wx:key="goodsInfo"> -->
+  <!-- 商品的展示图 -->
   <swiper-item>
     <image 
       wx:if="{{goodsId}}"
@@ -29,7 +33,6 @@ indicator-color="#ccc" indicator-active-color="white">
       bindtap="previewImage"
     />
   </swiper-item>
-  <!-- </block> -->
 </swiper>
 <!-- 商品轮播图 end -->
 

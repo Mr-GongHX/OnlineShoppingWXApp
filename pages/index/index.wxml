@@ -12,7 +12,7 @@
         placeholder="搜索喜欢的商品"
       />
       <view class="placeholder">
-        <icon class="weui-icon-search_in-box" type="search" size="14"></icon> 
+        <icon class="weui-icon-search_in-box" type="search" size="14" />
       </view> 
       <view class="wxSearch-button" catchtap="search">
         <text style="font-weight:bold;">搜索</text>
@@ -68,8 +68,14 @@
   <!-- 横向滚动 -->
   <scroll-view scroll-x="true">
       <view class="goods">
-         <block wx:for-items="{{lowPriceGoodsItems}}"  wx:for-index="index" wx:for-item="item" wx:key="{{goodsId}}">
-          <navigator url='../productInfo/productInfo?goodsId={{item.goodsId}}'>
+         <block 
+          wx:for-items="{{lowPriceGoodsItems}}" wx:for-index="index" 
+          wx:for-item="item" wx:key="{{goodsId}}"
+         >
+          <navigator 
+            url='../productInfo/productInfo?goodsId={{item.goodsId}}'     
+            hover-class="none"
+          >
             <view class="goods-item"> 
                 <image 
                   src="{{urlPrefix}}goods/showMyGoodsImg-goodsImg-{{item.goodsId}}" 
@@ -97,8 +103,14 @@
   <!-- 纵向滚动 -->
   <scroll-view scroll-y="true">
       <view class="new">
-         <block wx:for-items="{{newGoodsItems}}" wx:for-index="index" wx:for-item="item" wx:key="{{goodsId}}">
-          <navigator url='../productInfo/productInfo?goodsId={{item.goodsId}}'>
+         <block 
+          wx:for-items="{{newGoodsItems}}" wx:for-index="index"   
+          wx:for-item="item" wx:key="{{goodsId}}"
+         >
+          <navigator
+            url='../productInfo/productInfo?goodsId={{item.goodsId}}'
+            hover-class="none"
+          >
             <view class="new-good">
               <view>
                 <image 
@@ -120,9 +132,3 @@
   </scroll-view>  
 </view> 
 <!-- 新上架 end -->
-
-<!-- 触底加载 -->
-<!-- <view class="weui-loadmore" hidden="{{isHideLoadMore}}">
-    <view class="weui-loading"></view>
-    <view class="weui-loadmore__tips">努力加载中...</view>
-</view> -->

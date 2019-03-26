@@ -14,6 +14,7 @@ Page({
     pause: false,
     imghref: "",
     goodsId: "",
+    shopId: "",
     urlPrefix: "",
     // 商品详情,评价
     goodsInfo: []
@@ -64,6 +65,7 @@ Page({
           //如果不存在，传入该商品的详细信息
           cartItems.push({
             id: that.data.goodsId,
+            shopId: that.data.goodsInfo[0].shopId,
             goodsQuantity: 1,
             goodsPrice: that.data.goodsInfo[0].goodsPrice,
             goodsName: that.data.goodsInfo[0].goodsName,
@@ -131,7 +133,7 @@ Page({
   onLoad: function (options) {
     var that = this;
     this.setData({
-      goodsId: options.goodsId,
+      goodsId: parseInt(options.goodsId),
       urlPrefix: app.globalData.urlPrefix
     });
     // 根据商品id查找商品详情

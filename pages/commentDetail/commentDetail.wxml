@@ -25,9 +25,3 @@
   <text>该商品暂无评价！</text>
 </view>
 <!-- 评论详情 end -->
-
-<!-- 触底加载 -->
-<!-- <view class="weui-loadmore" hidden="{{isHideLoadMore}}">
-    <view class="weui-loading"></view>
-    <view class="weui-loadmore__tips">努力加载中...</view>
-</view> -->

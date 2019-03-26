@@ -5,7 +5,6 @@
 .cart-image{
   width: 180rpx;
   height: 180rpx;
-  border-radius: 70rpx;
   float: left;
   padding: 28rpx 10rpx;
 

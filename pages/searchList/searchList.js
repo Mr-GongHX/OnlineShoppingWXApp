@@ -38,13 +38,13 @@ Page({
         "content-type": "application/x-www-form-urlencoded"
       },
       success: function (res) {
-        if (res.statusCode == 200) {
+        if (res.statusCode == 200 && res.data) {
           that.setData({
             goodsList: res.data
           });
         }
       }
-    })
+    });
   },
   /**
    * 页面上拉触底事件的处理函数
