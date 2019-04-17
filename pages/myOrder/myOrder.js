@@ -13,7 +13,7 @@ Page({
     orderList: []
   },
   // 初始化加载
-  onLoad: function () {
+  onShow: function () {
     this.setData({
       urlPrefix: app.globalData.urlPrefix
     });

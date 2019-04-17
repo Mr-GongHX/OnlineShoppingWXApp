@@ -46,6 +46,8 @@
         <view class='bottom'>
           <!-- 底部信息 -->
           <view class='bottom_center'>
+          <!-- 商品数量 -->
+            <text class='amount'>共{{item.totalQuantity}}件商品</text>
             <!-- 合计 -->
             <text class='totalPrice'>合计: ￥{{item.totalPrice}}</text>
           </view>

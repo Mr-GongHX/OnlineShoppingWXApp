@@ -74,5 +74,14 @@ Page({
         }
       } 
     });
+  },
+  /**
+   * 不可评价商品
+   */
+  canNotComment: function() {
+    wx.showModal({
+      title: '订单尚未发货，暂无法评价',
+      showCancel: false
+    });
   }
 })

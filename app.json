@@ -1,5 +1,5 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index",
     "pages/shoppingList/shoppingList",
     "pages/me/me",
@@ -16,11 +16,11 @@
     "pages/computerArea/computerArea",
     "pages/accessoryArea/accessoryArea"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#FF3030",
     "navigationBarTitleText": "在线购物",
-    "navigationBarTextStyle":"white"
+    "navigationBarTextStyle": "white"
   },
   "tabBar": {
     "selectedColor": "#FF3030",
@@ -44,7 +44,8 @@
         "text": "我的",
         "iconPath": "images/me.png",
         "selectedIconPath": "images/me-chosen.png"
-      } 
+      }
     ]
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }

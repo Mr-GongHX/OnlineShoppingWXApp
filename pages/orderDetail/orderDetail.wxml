@@ -42,7 +42,9 @@
     </view>
     <!-- 商品列表 start -->
     <view class='goodsList'>
+      <!-- 订单状态为已发货时，可以跳转到评价页 -->
       <navigator 
+        wx:if="{{item.orderStatus==1}}"
         url='../goodsComment/goodsComment?goodsId={{goodsId}}&goodsImg={{goodsImg}}&goodsName={{goodsName}}&goodsQuantity={{goodsQuantity}}&goodsPrice={{goodsPrice}}' 
         hover-class='none'
       >
@@ -59,6 +61,19 @@
             </view>
         </view>
       </navigator>
+      <!-- 订单状态为待发货时，不可评价商品 -->
+      <view class='goods' bindtap='canNotComment' wx:else>  
+            <!-- 列表图片 -->
+            <image class='list_img' src='{{item.goodsImg}}' />
+            <view class='info'>
+              <!-- 列表名称 -->
+              <label class='list_name'>{{item.goodsName}}</label>
+              <!-- 列表数量 -->
+              <label class='list_amount'>x{{item.totalQuantity}}</label>
+              <!-- 列表单价 -->
+              <label class='list_price'>￥{{item.goodsPrice}}</label>
+            </view>
+        </view>
     </view>
     <!-- 商品列表 end -->
   </view>
