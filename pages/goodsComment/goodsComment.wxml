@@ -3,11 +3,11 @@
   <!-- 商品区 start -->
   <view class='goods'>
     <!-- 商品图片 -->
-    <image class='img' src='{{goodsImage}}' />
+    <image class='img' src='{{goodsImg}}' />
     <!-- 商品名称 -->
     <label class='name'>{{goodsName}}</label>
     <!-- 商品数量 -->
-    <label class='amount'>x{{goodsAmount}}</label>
+    <label class='amount'>x{{goodsQuantity}}</label>
     <!-- 商品单价 -->
     <label class='price'>￥{{goodsPrice}}</label>
   </view>

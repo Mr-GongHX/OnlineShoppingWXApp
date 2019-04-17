@@ -1,5 +1,4 @@
 // pages/goodsComment/goodsComment.js
-
 // 获取小程序实例
 const app = getApp();
 
@@ -9,11 +8,12 @@ Page({
    * 页面的初始数据
    */
   data: {
+    urlPrefix: "",
     userId: "",
     goodsId: "",
-    goodsImage: "",
+    goodsImg: "",
     goodsName: "",
-    goodsAmount: "",
+    goodsQuantity: "",
     goodsPrice: "",
     commentContent: ""
   },
@@ -22,12 +22,22 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.data.userId = app.globalData.userId;
-    this.data.goodsId = options.goodsId;
+    var that = this;
+    // 获取用户id
+    wx.getStorage({
+      key: 'userId',
+      success: function(res) {
+        that.setData({
+          userId: res.data
+        });
+      }
+    });
     this.setData({
-      goodsImage: options.goodsImage,
+      urlPrefix: app.globalData.urlPrefix,
+      goodsId: options.goodsId,
+      goodsImg: options.goodsImg,
       goodsName: options.goodsName,
-      goodsAmount: options.goodsAmount,
+      goodsQuantity: options.goodsQuantity,
       goodsPrice: options.goodsPrice
     });
   },
@@ -46,15 +56,19 @@ Page({
       });
     } else { 
       wx.request({
-        url: 'http://localhost:8080/comment',
-        data: 'goodsId=' + that.data.goodsId + 'userId=' + that.data.userId,
+        url: that.data.urlPrefix +  'comment/commentGoods',
+        data: {
+          goodsId: that.data.goodsId,
+          userId: that.data.userId,
+          commentContent: that.data.commentContent
+        },
         header: {
           //设置参数内容类型为x-www-form-urlencoded
           'content-type': 'application/x-www-form-urlencoded',
         },
         success: function(res) { 
           // 判断服务器状态码是否为200
-          if(res.statusCode == 200) {
+          if(res.statusCode == 200 && res.data) {
             // 提示成功弹窗
             wx.showToast({
               title: '提交成功！',

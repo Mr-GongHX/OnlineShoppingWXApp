@@ -16,6 +16,7 @@ Page({
     goodsId: "",
     shopId: "",
     urlPrefix: "",
+    videoDisplay: false,
     // 商品详情,评价
     goodsInfo: []
   },
@@ -171,7 +172,20 @@ Page({
       }
     });
   },
-  onShow: function () {   
-    
+  /**
+   * 播放视频
+   */
+  playVideo: function () {
+    this.setData({
+      videoDisplay: true
+    });
+  },
+  /**
+   * 退出播放
+   */
+  exitVideo: function () {
+    this.setData({
+      videoDisplay: false
+    });
   }
 })

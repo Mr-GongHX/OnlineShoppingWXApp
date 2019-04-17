@@ -47,6 +47,7 @@
 }
 /* 列表图片 */
 .list_img{
+  border: 3rpx solid #ccc; 
   position: absolute;
   width:144rpx;
   height: 144rpx;

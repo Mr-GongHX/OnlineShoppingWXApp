@@ -1,24 +1,24 @@
 <!-- 订单详情页 -->
-<view class='container'>
+<view class='container'  wx:for="{{orderDetail}}" wx:for-item="item" wx:key="key">
   <!-- 订单状态 start -->
   <view class='orderStatus'>
-    <block wx:if="{{status==0}}">
+    <block wx:if="{{item.orderStatus==0}}">
       <icon type='waiting' size='40rpx' />
       <text>待发货</text>
     </block>
-    <block wx:elif="{{status==1}}">
+    <block wx:elif="{{item.orderStatus==1}}">
       <icon type='success' color='rgb(0,255,255)' size='40rpx' />
       <text>已发货</text>
     </block>
-    <block wx:elif="{{status==2}}">
+    <block wx:elif="{{item.orderStatus==2}}">
       <icon type='success' color='red' size='40rpx' />
       <text>已完成</text>
     </block>
-    <block wx:elif="{{status==3}}">
+    <block wx:elif="{{item.orderStatus==3}}">
       <icon type='cancel' color='black' size='40rpx' />
       <text>已取消</text>
     </block>
-    <block wx:elif="{{status==4}}">
+    <block wx:elif="{{item.orderStatus==4}}">
       <icon type='cancel' color='red' size='40rpx' />
       <text>异常</text>
     </block>
@@ -28,34 +28,34 @@
   <!-- 收货人信息 start -->
   <view class='receiver'>
     <image src='../../images/address.png' class='addressImg' />
-    <text class='name'>{{name}}</text>
-    <text class='phone'>{{phone}}</text>
-    <text class='address'>{{address}}</text>
+    <text class='name'>{{item.consigneeName}}</text>
+    <text class='phone'>{{item.consigneePhone}}</text>
+    <text class='address'>{{item.consigneeAddress}}</text>
   </view>
   <!-- 收货人信息 end -->
 
   <!-- 店铺商品详情 start -->
   <view class='shopDetail'>
     <view class='shopHead'>
-      <text class='shopName'>店铺：{{shopName}}</text>
-      <text class='amount'>共{{totalAmount}}件商品</text>
+      <text class='shopName'>店铺：{{item.shopName}}</text>
+      <text class='amount'>共{{item.totalQuantity}}件商品</text>
     </view>
     <!-- 商品列表 start -->
-    <view class='goodsList' wx:for="{{goodsItem}}" wx:for-item="goods" wx:key="key">
+    <view class='goodsList'>
       <navigator 
-        url='../goodsComment/goodsComment?goodsId={{goods.goodsId}}&goodsImage={{goods.image}}&goodsName={{goods.name}}&goodsAmount={{goods.amount}}&goodsPrice={{goods.price}}' 
+        url='../goodsComment/goodsComment?goodsId={{goodsId}}&goodsImg={{goodsImg}}&goodsName={{goodsName}}&goodsQuantity={{goodsQuantity}}&goodsPrice={{goodsPrice}}' 
         hover-class='none'
       >
         <view class='goods'>  
             <!-- 列表图片 -->
-            <image class='list_img' src='{{goods.image}}' />
+            <image class='list_img' src='{{item.goodsImg}}' />
             <view class='info'>
               <!-- 列表名称 -->
-              <label class='list_name'>{{goods.name}}</label>
+              <label class='list_name'>{{item.goodsName}}</label>
               <!-- 列表数量 -->
-              <label class='list_amount'>x{{goods.amount}}</label>
+              <label class='list_amount'>x{{item.totalQuantity}}</label>
               <!-- 列表单价 -->
-              <label class='list_price'>￥{{goods.price}}</label>
+              <label class='list_price'>￥{{item.goodsPrice}}</label>
             </view>
         </view>
       </navigator>
@@ -69,17 +69,9 @@
 
   <!-- 订单详情 start -->
   <view class='orderDetail'>
-    <text class='orderNum'>订单编号：{{orderNum}}</text>
-    <text class='orderCreateTime'>下单时间：{{orderCreateTime}}</text>
-    <text class='orderTotalAmount'>商品金额：￥{{totalPrice}}</text>
+    <text class='orderNum'>订单编号：{{item.orderCode}}</text>
+    <text class='orderCreateTime'>下单时间：{{item.orderCreateTime}}</text>
+    <text class='orderTotalAmount'>商品金额：￥{{item.totalPrice}}</text>
   </view>
   <!-- 订单详情 end -->
-
-  <!-- 去评价 start -->
-  <!-- <navigator url='../goodsComment/goodsComment?goodsId={{goodsId}}' hover-class='none'>
-    <view class='button'>
-      <view class='comment'>去评价 →</view>
-    </view>
-  </navigator> -->
-  <!-- 去评价 end -->
 </view>

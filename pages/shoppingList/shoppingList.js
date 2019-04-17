@@ -1,4 +1,6 @@
 // pages/shoppingList/shoppingList.js
+// 获取小程序实例
+const app = getApp();
 
 Page({
   data: {
@@ -7,7 +9,16 @@ Page({
     // 商品总额
     total: 0,
     // 是否全选
-    checkAll: true
+    checkAll: true,
+    urlPrefix: ""
+  },
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function () {
+    this.setData({
+      urlPrefix: app.globalData.urlPrefix
+    });
   },
   /**
    * 页面唤起时触发
@@ -30,6 +41,35 @@ Page({
     });
     // 商品总额
     this.getsumTotal();
+    // 遍历购物车列表
+    var flag = false;
+    var cartItems = this.data.cartItems;
+    var goodsQuantity = "";
+    for(var i = 0; i < cartItems.length; i ++) {
+      goodsQuantity = cartItems[i].goodsQuantity;
+      wx.request({
+        url: that.data.urlPrefix + 'goods/showGoodsQuantity-' + 
+        cartItems[i].id,
+        method: "POST",
+        header: {
+          "content-type": "application/x-www-form-urlencoded"
+        },
+        success: function (res) {
+          if (res.statusCode == 200 && res.data) {
+            if (goodsQuantity > res.data) {
+              flag = true;
+            }
+          }
+        }
+      });
+    }
+    if(flag) {
+      wx.showModal({
+        title: '提示',
+        content: '您购物车列表里一个或多个商品超库存上限，请修改购买商品的数量！',
+        showCancel: false
+      });
+    }
   },
   /**
    * 全选
@@ -50,29 +90,52 @@ Page({
     })
     // 商品总额
     this.getsumTotal();
-    // 异步存缓存
+    // 同步存缓存
     wx.setStorageSync("cartItems", cartItems);
   },
   /**
    * 增加商品数量
    */
   add: function (e) {
+    var that = this;
     //获取购物车列表
     var cartItems = this.data.cartItems;
     //获取当前点击事件的下标索引
     var index = e.currentTarget.dataset.index;
     //获取购物车里面的value值
     var value = cartItems[index].goodsQuantity;
-    value++;
-    cartItems[index].goodsQuantity = value;
-    // 更新界面
-    this.setData({
-      cartItems: cartItems
+    // 获取对应商品的goodsId
+    var goodsId = cartItems[index].id;
+    // 请求对应商品的库存
+    wx.request({
+      url: that.data.urlPrefix + 'goods/showGoodsQuantity-' + goodsId,
+      method: "POST",
+      header: {
+        "content-type": "application/x-www-form-urlencoded"
+      },
+      success: function (res) {
+        if(res.statusCode == 200 && res.data) {
+          if(value >= res.data) {
+            wx.showToast({
+              title: "已超库存上限！",
+              icon: "loading",
+              duration: 500
+            });
+          } else {
+            value++;
+            cartItems[index].goodsQuantity = value;
+            // 更新界面
+            that.setData({
+              cartItems: cartItems
+            });
+            // 商品总额
+            that.getsumTotal();
+            // 同步存缓存
+            wx.setStorageSync("cartItems", cartItems);
+          }
+        }
+      }
     });
-    // 商品总额
-    this.getsumTotal();
-    // 异步存缓存
-    wx.setStorageSync("cartItems", cartItems);
   },
   /**
    * 减少商品数量
@@ -99,7 +162,7 @@ Page({
     });
     // 商品总额
     this.getsumTotal();
-    // 异步存缓存
+    // 同步存缓存
     wx.setStorageSync("cartItems", cartItems);
   },
   /**
@@ -120,7 +183,7 @@ Page({
     })
     // 商品总额
     this.getsumTotal();
-    // 异步存缓存
+    // 同步存缓存
     wx.setStorageSync("cartItems", cartItems);
   },
   /**
@@ -150,7 +213,7 @@ Page({
           }
           // 商品总额
           that.getsumTotal();
-          // 异步存缓存
+          // 同步存缓存
           wx.setStorageSync("cartItems", cartItems);
         }
       },
@@ -184,7 +247,6 @@ Page({
           this.data.cartItems[i].goodsPrice;
       }
     }
-    console.log("结果"+sum)
     //更新界面
     this.setData({
       total: sum

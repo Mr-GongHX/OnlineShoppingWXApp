@@ -151,7 +151,7 @@ Page({
                     method: "POST",
                     data: {
                       userId: that.data.userId,
-                      cartItems: goodsList,
+                      cartItems: goodsList.toString(),
                       consigneeName: that.data.userName,
                       consigneeAddress: that.data.userDetailAddress,
                       consigneePhone: that.data.userPhone,
@@ -172,6 +172,13 @@ Page({
                           icon: 'success',
                           duration: 500
                         });
+                        // 跳转到首页
+                        setTimeout(function() {
+                          wx.switchTab({
+                            url: '../index/index',
+                          });
+                        },500);
+                        clearTimeout();
                       }
                     }
                   });

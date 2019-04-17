@@ -1,41 +1,44 @@
 <!-- 我的订单 -->
 <view class='container'>
-  <block wx:if="{{list.length>0}}">   
+  <block wx:if="{{orderList.length>0}}">   
     <!-- 订单列表 start -->
-    <view class='orderList' wx:for="{{list}}" wx:key="key">
-      <navigator url='../orderDetail/orderDetail?orderId={{item.orderId}}' hover-class='none'>
+    <view class='orderList' wx:for="{{orderList}}" wx:key="key">
+      <navigator 
+        url='../orderDetail/orderDetail?orderId={{item.orderId}}' 
+        hover-class='none'
+      >
         <!-- 订单头部 start -->
         <view class='head'>
           <label class='shopName'>店铺：{{item.shopName}}</label>
           <!-- 订单状态 -->
-          <block wx:if="{{item.status==0}}">
+          <block wx:if="{{item.orderStatus==0}}">
             <label class='status'>待发货</label>
           </block>
-          <block wx:if="{{item.status==1}}">
+          <block wx:if="{{item.orderStatus==1}}">
             <label class='status'>已发货</label>
           </block>
-          <block wx:if="{{item.status==2}}">
+          <block wx:if="{{item.orderStatus==2}}">
             <label class='status'>已完成</label>
           </block>
-          <block wx:if="{{item.status==3}}">
+          <block wx:if="{{item.orderStatus==3}}">
             <label class='status'>已取消</label>
           </block>
-          <block wx:if="{{item.status==4}}">
+          <block wx:if="{{item.orderStatus==4}}">
             <label class='status'>异常</label>
           </block>
         </view>
         <!-- 订单头部 end -->
 
         <!-- 商品列表 start -->
-        <view class='goodsList' wx:for="{{item.goodsItem}}" wx:for-item="goods" wx:key="key">
+        <view class='goodsList'>
           <!-- 列表图片 -->
-          <image class='list_img' src='{{goods.image}}'></image>
+          <image class='list_img' src='{{item.goodsImg}}'></image>
           <!-- 列表名称 -->
-          <label class='list_name'>{{goods.name}}</label>
+          <label class='list_name'>{{item.goodsName}}</label>
           <!-- 列表数量 -->
-          <label class='list_amount'>x{{goods.amount}}</label>
+          <label class='list_amount'>x{{item.goodsQuantity}}</label>
           <!-- 列表价格 -->
-          <label class='list_price'>￥{{goods.price}}</label>
+          <label class='list_price'>￥{{item.goodsPrice}}</label>
         </view>
         <!-- 商品列表 end -->
 
@@ -43,37 +46,11 @@
         <view class='bottom'>
           <!-- 底部信息 -->
           <view class='bottom_center'>
-            <!-- 商品数量 -->
-            <text class='amount'>共{{item.totalAmount}}件商品</text>
             <!-- 合计 -->
             <text class='totalPrice'>合计: ￥{{item.totalPrice}}</text>
           </view>
         </view>
         <!-- 订单底部 end -->
-
-        <!-- 订单底部按钮 start -->
-        <!-- <view class='button'>
-            <!-- 确认收货 -->
-            <!-- <label 
-              class='checkBtn' 
-              catchtap='confirmReceipt' 
-              wx:if="{{!list[index].isConfirm}}"
-            >                
-              确认收货
-            </label>
-            <label class='checkBtn' wx:else>已完成</label> -->
-
-            <!-- 取消订单 -->
-            <!-- <label 
-              class='cancelBtn' 
-              catchtap='cancelOrder' 
-              wx:if="{{list[index].status==0&&!list[index].isCancelled}}"
-            >
-              取消订单
-            </label>
-            <label class='cancelBtn' wx:else>已取消</label>
-        </view> -->
-        <!-- 订单底部按钮 end -->
       </navigator>
     </view>
     <!-- 订单列表 end -->

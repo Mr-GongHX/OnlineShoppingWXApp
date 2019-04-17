@@ -4,23 +4,35 @@
 <swiper 
   indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" 
   interval="{{interval}}" class="banner" duration="{{duration}}" 
-  circular="{{duration}}" indicator-color="#ccc" indicator-active-color="white"
+  circular="{{duration}}" indicator-color="#aaa" indicator-active-color="#FF3030"
 >
   <swiper-item>
     <!-- 商品的视频介绍 -->
-    <video 
-      wx:if="{{goodsId}}"
-      src="{{urlPrefix}}goods/showMyGoodsVideo-{{goodsId}}"
-      class="slide-image" 
-      object-fit="cover"
-      loop
-      autoplay 
-      page-gesture
-      show-mute-btn
-      play-btn-position="center"
-      enable-play-gesture
-      auto-pause-if-open-native="{{pause}}"
-    />
+    <view class="videoArea">
+      <image 
+        wx:if="{{goodsId}}"
+        src="{{urlPrefix}}goods/showMyGoodsImg-goodsImg-{{goodsId}}" 
+        class="slide-image" 
+        mode="aspectFill" 
+        data-src='{{urlPrefix}}goods/showMyGoodsImg-goodsImg-{{goodsId}}' 
+        bindtap="playVideo"
+      />
+      <video 
+        wx:if="{{videoDisplay}}"
+        src="{{urlPrefix}}goods/showMyGoodsVideo-{{goodsId}}"
+        class="slide-video" 
+        object-fit="cover"
+        loop
+        autoplay 
+        page-gesture
+        show-mute-btn
+        play-btn-position="center"
+        enable-play-gesture
+        auto-pause-if-open-native="{{pause}}"
+      />
+      <button wx:if="{{videoDisplay}}" bindtap='exitVideo' class="playVideo">
+      退出播放</button>
+    </view>
   </swiper-item>
   <!-- 商品的展示图 -->
   <swiper-item>
