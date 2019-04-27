@@ -104,30 +104,31 @@ Page({
     })
   },
   // 立即购买
-  buyNow: function() {
-    wx.getStorage({
-      key: 'userId',
-      success: function (res) {
-        // 跳转确认订单页
-        wx.navigateTo({
-          url: "../orderCheck/orderCheck"
-        })
-      },
-      fail: function (res) {
-        wx.showModal({
-          title: '您尚未登录，无法购买商品',
-          content: '即将带您前往登录页',
-          showCancel: false,
-          success: function () {
-            wx.navigateTo({
-              url: '../login/login',
-            });
-          }
-        });
-      }
-    })
+  // buyNow: function() {
+  //   var goodsMoney = this.data.goodsInfo[0].goodsPrice
+  //   wx.getStorage({
+  //     key: 'userId',
+  //     success: function (res) {
+  //       // 跳转确认订单页
+  //       wx.navigateTo({
+  //         url: "../orderCheck/orderCheck?orderTotal=" + goodsMoney
+  //       })
+  //     },
+  //     fail: function (res) {
+  //       wx.showModal({
+  //         title: '您尚未登录，无法购买商品',
+  //         content: '即将带您前往登录页',
+  //         showCancel: false,
+  //         success: function () {
+  //           wx.navigateTo({
+  //             url: '../login/login',
+  //           });
+  //         }
+  //       });
+  //     }
+  //   })
     
-  },
+  // },
   /**
    * 生命周期函数--监听页面加载
    */

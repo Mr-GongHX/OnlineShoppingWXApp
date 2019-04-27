@@ -54,11 +54,11 @@ Page({
             day = date.getDate() < 10 ? '0' +
               date.getDate() : date.getDate() + '    ';
             hour = (date.getHours() + 1 < 10 ? '0' + 
-              (date.getHours() + 1) : date.getHours() + 1) + ':';
+              (date.getHours() + 1) : date.getHours()) + ':';
             minute = (date.getMinutes() + 1 < 10 ? '0' +
-              (date.getMinutes() + 1) : date.getMinutes() + 1)  + ':';
+              (date.getMinutes() + 1) : date.getMinutes())  + ':';
             second = (date.getSeconds() + 1 < 10 ? '0' +
-              (date.getSeconds() + 1) : date.getSeconds() + 1);
+              (date.getSeconds() + 1) : date.getSeconds());
             res.data[i].orderCreateTime = 
               year + month + day + hour + minute + second;
           }  

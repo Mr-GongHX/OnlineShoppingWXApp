@@ -52,6 +52,10 @@
   border-radius: 15rpx;
 }
 
+.btnhover {
+  background-color: #eee;
+}
+
 /*设置页面整体布局*/
 page{  
   display: flex;  

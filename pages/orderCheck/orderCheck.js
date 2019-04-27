@@ -132,7 +132,7 @@ Page({
         requestAuthModes: ['fingerPrint','facial'],
         challenge: '123456',
         authContent: '请用指纹解锁',
-        fail(res) {
+        success(res) {
           wx.request({
             url: that.data.urlPrefix + 'user/userInfo-' + that.data.userId,
             method: "POST",
@@ -193,7 +193,7 @@ Page({
             }
           });
         },
-        success(res) {
+        fail(res) {
           wx.showToast({
             title: '无法验证',
             icon: 'loading',

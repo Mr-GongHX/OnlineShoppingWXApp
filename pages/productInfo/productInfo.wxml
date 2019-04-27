@@ -124,6 +124,6 @@
   </view>
   <view class="button">
     <text class="addCar" bindtap="addCar">加入购物车</text>
-    <text class="buyNow" bindtap="buyNow">立即购买</text>
+    <!-- <text class="buyNow" bindtap="buyNow">立即购买</text> -->
   </view>
 </view>
